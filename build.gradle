@@ -34,7 +34,7 @@ dependencies {
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	
 	// https://mvnrepository.com/artifact/jakarta.el/jakarta.el-api
-	implementation group: 'jakarta.el', name: 'jakarta.el-api', version: '5.0.0'
+	implementation group: 'jakarta.el', name: 'jakarta.el-api', version: '6.0.1'
 	// https://mvnrepository.com/artifact/jakarta.servlet.jsp.jstl/jakarta.servlet.jsp.jstl-api
 	implementation group: 'jakarta.servlet.jsp.jstl', name: 'jakarta.servlet.jsp.jstl-api', version: '3.0.0'
 	// https://mvnrepository.com/artifact/jakarta.servlet.jsp/jakarta.servlet.jsp-api

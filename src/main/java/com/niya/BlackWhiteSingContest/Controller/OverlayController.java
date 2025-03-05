@@ -18,7 +18,7 @@ public class OverlayController {
 	public String MainOverlay(@RequestParam(value = "token") String token, Model model) {
 		if(!token.equals(tokenKey)) {
 			model.addAttribute("msg", "잘못된 접근입니다");
-			model.addAttribute("url", "backPage");
+			model.addAttribute("url", "/");
 			return "alert";
 		}
 		
