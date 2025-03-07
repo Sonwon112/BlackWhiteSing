@@ -1,0 +1,184 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'BMDOHYEON';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMDOHYEON.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.contentBody{
+	position : absolute;
+	visibility: hidden;
+	background-color: white;
+	width:100%;
+	height:900px;
+	
+}
+
+.contentTitle{
+	margin:30px;
+	font-family: "BMDOHYEON";
+	font-size:5em;
+	text-align: center;
+}
+
+.mainContent{
+	display: flex;
+	height:55%;
+	width:100%;
+	align-items: center;
+	justify-content: center;
+}
+
+.drawNameCard{
+	display: inline;
+	margin-left : 150px;
+	margin-right : 150px;
+	border : solid 2px #BBBBBB;
+	border-radius : 20px;
+	width:18em;
+	height:90%;
+}
+
+.drawnProfile{
+	width:18em;
+	height:18em;
+	border-radius: 18px 18px 0px 0px;
+}
+
+.drawnName{
+	display:flex;
+	font-family :"BMDOHYEON";
+	font-size:3em;
+	justify-content:center;
+	align-items: center;
+	height:14vh;
+}
+
+.imageRoullet{
+	margin-left:-2em;
+	display:flex;
+	width:100%;	
+}
+
+.r2ImageRoullet{
+	display:flex;
+	overflow:hidden;
+	width:48%;
+}
+
+.roulletProfile{
+	margin-top:1em;
+	width:11em;
+	height:11em;
+	opacity: 0.8;
+}
+
+.roulletPick{
+	margin-left:-1em;
+	margin-top:-1em;
+	width:14em;
+	width:14em;
+}
+
+.flex{
+	display:flex;
+}
+
+.braketColumn{
+	display:flex;
+}
+.matchTitle{
+	font-family: "BMDOHYEON";
+	font-size:2.3em;
+	width:100%;
+	text-align:center;
+	margin-top:-0.6em;
+	-webkit-text-stroke:1px white;
+}
+
+.match{
+	width:30%;
+	margin:1em;
+	border-top:1px solid #BBBBBB;
+	border-bottom:1px solid #BBBBBB;
+	
+}
+
+.braketProfile{
+	width:12em;
+	height:12em;
+}
+
+.braketParticipant{
+	display:flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.braketNameCard{
+	display:inline;
+	margin:10px 20px 10px 20px;
+}
+
+.braketName{
+	font-family:"BMDOHYEON";
+	font-size:1.3em;
+	text-align:center;
+}
+.finalcolumn{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height:70%;
+}
+
+.finalBraketNameCard{
+	border:1px solid #BBBBBB;
+	border-radius: 20px;
+	margin:10px;
+}
+
+.finalNameCardProfile{
+	width: 16em;
+	height: 16em;
+	border-radius: 18px 18px 0px 0px;
+}
+.themeCard{
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 12%;
+	height: 35vh;
+	border: 1px solid #BBBBBB;
+	border-radius: 20px;
+}
+
+.theme{
+	font-family :"BMDOHYEON";
+	font-size: 3em;
+	text-align: center;
+}
+
+#screen0{
+	margin:0px;
+	padding: 0px;
+	background-color: black;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#VS{
+	font-family: "BMDOHYEON";
+	font-size:3em;
+}
+
+#logo{
+	width: 30em;
+	height: 30em;
+}

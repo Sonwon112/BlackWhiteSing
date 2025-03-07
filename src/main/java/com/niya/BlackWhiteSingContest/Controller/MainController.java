@@ -13,4 +13,9 @@ public class MainController {
 	public String index() {
 		return "특정 사용자만 접근 가능합니다";
 	}
+	
+	@GetMapping("/finalMatch")
+	public String RockScissorsPaper() {
+		return "rockPaperScissors";
+	}
 }
