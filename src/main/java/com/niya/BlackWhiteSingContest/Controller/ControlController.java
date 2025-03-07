@@ -1,18 +1,35 @@
 package com.niya.BlackWhiteSingContest.Controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.niya.BlackWhiteSingContest.Model.ControlDTO;
+import com.niya.BlackWhiteSingContest.Service.ControlService;
+
+import lombok.extern.slf4j.Slf4j;
 
 @RequestMapping("/control")
 @Controller
+@Slf4j
 public class ControlController {
+	
+	private static final String CHANGE_SCREEN_EVENT = "changeScreen";
+	private static final String DRAW_PARTICIPANT_EVENT = "drawParticipant";
+	private static final String DRAW_CARD_EVENT = "drawCard";
+	private static final String SET_TEAM_EVENT = "setTeam";
+	private static final String OVERLAY = "overlay";
+	
+	@Autowired
+	private ControlService service;
 	
 	@Value("${token}")
 	private String tokenKey;
@@ -29,8 +46,49 @@ public class ControlController {
 	}
 	
 	@PostMapping("/change")
-	public void ChangeMode(ControlDTO dto) {
-		 
+	public ResponseEntity<ControlDTO> ChangeMode(@RequestBody ControlDTO dto) {
+		
+		log.info(dto.getName()+"이"+dto.getType()+"을 보냈습니다. : "+dto.getTag());
+		
+		if(!service.checkName(dto.getName())) {
+			ControlDTO responseDTO = new ControlDTO();
+			responseDTO.setType(402);
+			responseDTO.setTag("can't found User");
+			ResponseEntity<ControlDTO> response = new ResponseEntity<ControlDTO>(responseDTO, HttpStatus.NOT_FOUND);
+			return response;
+		}
+		
+		switch(dto.getTag()) {
+			case "0":
+				log.info("로고화면 출력");
+				break;
+			case "1":
+				log.info("1라운드 추첨");
+				break;
+			case "2":
+				log.info("1라운드 대진표 표시");
+				break;
+			case "3":
+				log.info("2라운드 추첨");
+				break;
+			case "4":
+				log.info("2라운드 대진표 표시");
+				break;
+			case "5":
+				log.info("3라운드 테마 추첨");
+				break;
+			case "6":
+				log.info("3라운드 팀 편성");
+				break;
+		}
+		service.sendToOverlay(OVERLAY, CHANGE_SCREEN_EVENT, dto.getTag());
+		
+		ControlDTO responseDTO = new ControlDTO();
+		responseDTO.setType(200);
+		responseDTO.setTag("success");
+		ResponseEntity<ControlDTO> response = new ResponseEntity<ControlDTO>(responseDTO, HttpStatus.OK);
+		
+		return response;
 	}
 	
 }

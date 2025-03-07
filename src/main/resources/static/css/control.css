@@ -14,3 +14,9 @@
 .title{
 	font-size:20px;
 }
+
+.flex{
+	display: flex;
+	align-items:center;
+	height: 40px;
+}

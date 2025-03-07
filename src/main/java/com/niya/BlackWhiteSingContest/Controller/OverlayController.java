@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class OverlayController {
 	
-	@Value("token")
+	@Value("${token}")
 	private String tokenKey;
 
 	@GetMapping("")
