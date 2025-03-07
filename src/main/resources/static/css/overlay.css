@@ -128,8 +128,57 @@
 	font-size:1.3em;
 	text-align:center;
 }
+.finalcolumn{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height:70%;
+}
+
+.finalBraketNameCard{
+	border:1px solid #BBBBBB;
+	border-radius: 20px;
+	margin:10px;
+}
+
+.finalNameCardProfile{
+	width: 16em;
+	height: 16em;
+	border-radius: 18px 18px 0px 0px;
+}
+.themeCard{
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 12%;
+	height: 35vh;
+	border: 1px solid #BBBBBB;
+	border-radius: 20px;
+}
+
+.theme{
+	font-family :"BMDOHYEON";
+	font-size: 3em;
+	text-align: center;
+}
+
+#screen0{
+	margin:0px;
+	padding: 0px;
+	background-color: black;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 
 #VS{
 	font-family: "BMDOHYEON";
 	font-size:3em;
+}
+
+#logo{
+	width: 30em;
+	height: 30em;
 }

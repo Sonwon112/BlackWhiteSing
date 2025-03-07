@@ -3,8 +3,19 @@
  */
 let drawScreen = []; // 0 : 로고 표시, 1 : 1라운드, 2 : 1라운드, 3 : 2라운드, 4 : 2라운드, 5 : 테마 추첨, 6 : 파이널
 let currScreen;
+let themePos=[
+	["0%","24%"],
+	["0%","44%"],
+	["0%","64%"],
+	["19%","24%"],
+	["19%","44%"],
+	["19%","64%"]
+]
+
+
 
 $("document").ready(()=>{
+	currScreen = $("#scene0");
 	
 	for(let i = 0; i < 7; i++){
 		let id = "#screen"+i
@@ -39,5 +50,11 @@ $("document").ready(()=>{
 		// 3라운드 팀원지정
 	});
 	
-	$("#screen2").css("visibility","visible");
+	for(let i = 0; i < 6; i++){
+		let cardID = "#themeCard"+i;
+		$(cardID).css("margin-top",""+themePos[i][0]);
+		$(cardID).css("margin-left",""+themePos[i][1]);
+	}
+	
+	//$("#screen5").css("visibility","visible");
 });
