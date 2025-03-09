@@ -42,6 +42,7 @@
 		3라운드
 		<button onclick="changeMode(5)">테마 추첨</button>
 		<button onclick="changeMode(6)">3라운드 팀편성</button>
+		<button onclick="changeMode(7)">3라운드 팀편성</button>
 	</div>
 </div>
 <!-- 추첨 박스 -->
@@ -50,21 +51,22 @@
 	<hr/>
 	<div class="innerBox">
 		1라운드[대진표]
-		<button>추첨</button>
+		<button onclick="shuffle(0)">추첨</button>
 		<button>리셋</button>
 	</div>
 	<div class="innerBox">
 		2라운드[대진표]
-		<button>흑팀 추첨</button>
+		<button onclick="shuffle(1)">흑팀 추첨</button>
 		<button>흑팀 리셋</button>
 		&nbsp;
-		<button>백팀 추첨</button>
+		<button onclick="shuffle(2)">백팀 추첨</button>
 		<button>백팀 리셋</button>
 	</div>
 	<div class="innerBox">
 		3라운드[테마]
-		<button>추첨</button>
-		<button>리셋</button>
+		<button onclick="shuffle(3)">추첨</button>
+		<button onclick="changeTheme(0)">리셋</button>
+		<button onclick="changeTheme(1)">뽑기</button>
 	</div>
 	
 </div>
