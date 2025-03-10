@@ -44,6 +44,10 @@
 		<button onclick="changeMode(6)">3라운드 팀편성</button>
 		<button onclick="changeMode(7)">3라운드 팀편성</button>
 	</div>
+	<div class="innerBox">
+		우승자 발표
+		<button onclick="changeMode(5)">공개하기</button>
+	</div>
 </div>
 <!-- 추첨 박스 -->
 <div class="outerBox">

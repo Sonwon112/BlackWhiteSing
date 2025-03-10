@@ -21,5 +21,9 @@ public class ControlService {
 	public void sendToOverlay(String target, String eventName, String data) {
 		sseService.sendData(target, eventName, data);
 	}
+	
+	public void sendToControl(String eventName, String data) {
+		
+	}
 
 }
