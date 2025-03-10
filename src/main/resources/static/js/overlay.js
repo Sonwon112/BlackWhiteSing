@@ -80,6 +80,28 @@ $("document").ready(() => {
 	eventSource.addEventListener("setTeam", (event) => {
 		// 3라운드 팀원지정
 	});
+	
+	eventSource.addEventListener("rsp", (event) =>{
+		console.log(event.data);
+		// 가위 바위 보
+		let [team,hand] = event.data.split(";");
+		let imgUrl = "";
+		switch(hand){
+			case "0":
+				imgUrl = "url(/img/rock.png)"
+				break;
+			case "1":
+				imgUrl = "url(/img/scissors.png)"
+				break;
+			case "2":
+				imgUrl = "url(/img/paper.png)"
+				break;
+		}
+		let rpsId = "#rps"+team;
+		$(rpsId).css("background-image",imgUrl);
+		
+		$(rpsId).css("visibillity", "visible");
+	});
 
 	//$("#screen5").css("visibility", "visible");
 });

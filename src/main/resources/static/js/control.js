@@ -45,6 +45,14 @@ function connectSSE() {
 		}
 
 	});
+	eventSource.addEventListener("rsp",(event)=>{
+		console.log(event.data);
+		let [team,hand] = event.data.split(";");
+		text = hand =="0" ? "바위" : hand=="1" ? "가위" : "보";
+				
+		let handId = "#hand"+team;
+		$(handId).text(text);
+	});
 }
 
 function changeMode(index) {

@@ -48,6 +48,7 @@ public class MainController {
 		
 		String data = hand.getTeam()+";"+hand.getHand();
 		controlService.sendToControl(RockScissorsPaper, data);
+		controlService.sendToOverlay(RockScissorsPaper, data);
 		
 		ControlDTO dto = new ControlDTO();
 		dto.setType(200);

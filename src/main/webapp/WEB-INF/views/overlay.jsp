@@ -366,6 +366,10 @@
 	<!-- 3라운드 팀 편성표 -->
 	<div id="screen6" class="contentBody">
 		<div class="contentTitle">FINAL</div>
+		<div class="rpsColumn">
+			<div id="rps0" class="rps">&nbsp;</div>
+			<div id="rps1" class="rps">&nbsp;</div>
+		</div>
 		<div class="finalcolumn">
 			<%
 			for (int i = 0; i < 3; i++) {

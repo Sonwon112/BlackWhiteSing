@@ -130,7 +130,7 @@ src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Medium.otf')format('o
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height:70%;
+	height:40%;
 }
 
 .finalBraketNameCard{
@@ -173,6 +173,20 @@ src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Medium.otf')format('o
 	height: 100vh;
 	width:100%;
 	object-fit:cover;
+}
+
+.rpsColumn{
+	display:flex;
+	align-items:center;
+	justify-content: center;
+}
+.rps{
+	width:10em;
+	height:10em;
+	
+	background-size:contain;
+	margin-left:19%;
+	margin-right:19%;
 }
 
 #screen0{
