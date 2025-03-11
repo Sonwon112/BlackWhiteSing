@@ -44,6 +44,10 @@
 		<button onclick="changeMode(6)">3라운드 팀편성</button>
 		<button onclick="changeMode(7)">3라운드 팀편성</button>
 	</div>
+	<div class="innerBox">
+		우승자 발표
+		<button onclick="changeMode(5)">공개하기</button>
+	</div>
 </div>
 <!-- 추첨 박스 -->
 <div class="outerBox">
@@ -132,12 +136,14 @@
 			<input type="text" placeholder="팀장">&nbsp;<button>입력</button>&nbsp;
 			<input type="text" placeholder="팀원1">&nbsp;<button>입력</button>&nbsp;
 			<input type="text" placeholder="팀원2">&nbsp;<button>입력</button>&nbsp;
+			<div id="hand0">흑팀 가위바위보 결과</div>
 		</div>
 		<div class="flex">
 			백팀&nbsp;
 			<input type="text" placeholder="팀장">&nbsp;<button>입력</button>&nbsp;
 			<input type="text" placeholder="팀원1">&nbsp;<button>입력</button>&nbsp;
 			<input type="text" placeholder="팀원2">&nbsp;<button>입력</button>&nbsp;
+			<div id="hand1">백팀 가위바위보 결과</div>
 		</div>
 		<hr>
 		<div class="flex">

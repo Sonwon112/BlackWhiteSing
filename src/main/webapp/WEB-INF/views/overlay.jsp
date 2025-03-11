@@ -19,39 +19,34 @@
 	<!-- 1라운드 대진표 추첨 -->
 	<div id="screen1" class="contentBody">
 		<!-- title -->
-		<div class="contentTitle">1라운드 대진표 추첨</div>
+		<div class="contentTitle">
+			<img alt="1라운드 대진표 추첨 타이틀" src="/img/part/braket_title.png"></>
+		</div>
 		<!-- 메인 컨텐츠 -->
 		<div class="mainContent">
-			<div class="drawNameCard">
+			<div class="drawNameCard" id="r11Profile" style="margin-top:-80%">
 				<!-- 먼저 추첨 된 참여자 -->
-				<img class="drawnProfile" id="r11Profile" alt="첫번째 당첨자"
-					src="/img/none_profile.png">
-				<div class="drawnName">
-					<div id="r11Name">ㅇㅇㅇ</div>
-				</div>
+				&nbsp;
 			</div>
-			<div id="VS">VS</div>
-			<div class="drawNameCard">
+			<div id="VS">
+				<img alt="vs" src="/img/logo/vs.png"/>
+			</div>
+			<div class="drawNameCard" id="r12Profile" style="margin-top:-80%">
 				<!-- 먼저 추첨 된 참여자 -->
-				<img class="drawnProfile" id="r12Profile" alt="첫번째 당첨자"
-					src="/img/none_profile.png">
-				<div class="drawnName">
-					<div id="r12Name">ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</div>
-				</div>
+				&nbsp;
 			</div>
 		</div>
 		<!-- 이미지 룰렛 -->
 		<div class="imageRoullet">
 			<%
 			for (int i = 0; i < 12; i++) {
-				if (i == 5) {
+				if (i != 5) {
 			%>
-			<img id="roulletProfile<%=i %>" class="roulletPick" alt="참여자프로필<%=i %>" src="/img/none_profile.png"/>
+			<img id="r1_roulletProfile<%=i %>" class="roulletProfile" alt="참여자프로필<%=i %>" src="/img/none_profile.png"/>
 			<%
 			} else {
 			%>
-			<img id="roulletProfile<%=i %>" class="roulletProfile" alt="참여자프로필<%=i %>"
-				src="/img/none_profile.png" />
+			<img id="r1_roulletProfile<%=i %>" class="roulletPick" alt="참여자프로필<%=i %>" src="/img/none_profile.png"/>
 			<%
 			}
 			}
@@ -60,7 +55,9 @@
 	</div>
 	<!-- 1라운드 대진표 -->
 	<div id="screen2" class="contentBody">
-		<div class="contentTitle">1ROUND</div>
+		<div class="contentTitle">
+			<img alt="1라운드 대진표 타이틀" src="/img/part/round1_title.png"></>
+		</div>
 		<div class="braketColumn">
 			<div class="match">
 				<div class="matchTitle">MATCH1</div>
@@ -170,41 +167,35 @@
 	<!-- 2라운드 대진표 추첨 -->
 	<div id="screen3" class="contentBody">
 		<!-- title -->
-		<div class="contentTitle">대진표 추첨</div>
+		<div class="contentTitle">
+			<img alt="2라운드 대진표 추첨 타이틀" src="/img/part/braket_title.png"></>
+		</div>
 		<!-- 메인 컨텐츠 -->
 		<div class="mainContent">
 			<div class="drawNameCard" style="margin-right: 280px">
-				<!-- 먼저 추첨 된 참여자 -->
-				<img class="drawnProfile" id="r21Profile" alt="첫번째 당첨자"
-					src="/img/none_profile.png">
-				<div class="drawnName">
-					<div id="r11Name">ㅇㅇㅇ</div>
-				</div>
+				&nbsp;
 			</div>
-			<div id="VS">VS</div>
+			<div id="VS">
+				<img alt="vs" src="/img/logo/vs.png">
+			</div>
 			<div class="drawNameCard" style="margin-left: 280px">
-				<!-- 먼저 추첨 된 참여자 -->
-				<img class="drawnProfile" id="r22Profile" alt="첫번째 당첨자"
-					src="/img/none_profile.png">
-				<div class="drawnName">
-					<div id="r12Name">ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</div>
-				</div>
+				&nbsp;
 			</div>
 		</div>
 		<!-- 이미지 룰렛 -->
 		<div class="flex" style="margin-left: 1.4%">
 			<div class="r2ImageRoullet" style="margin-left: 1.2em;">
 				<%
-				for (int i = 0; i < 12; i++) {
+				for (int i = 0; i < 6; i++) {
 					if (i == 2) {
 				%>
 				<img class="roulletPick" alt="참여자프로필<%=i%>"
-					src="/img/none_profile.png" />
+					src="/img/none_profile.png" id="r2b_roulletProfile<%=i %>" />
 				<%
 				} else {
 				%>
 				<img class="roulletProfile" alt="참여자프로필<%=i%>"
-					src="/img/none_profile.png" />
+					src="/img/none_profile.png" id="r2b_roulletProfile<%=i %>" />
 				<%
 				}
 				}
@@ -212,16 +203,16 @@
 			</div>
 			<div class="r2ImageRoullet" style="margin-left: 1em;">
 				<%
-				for (int i = 0; i < 12; i++) {
+				for (int i = 0; i < 6; i++) {
 					if (i == 2) {
 				%>
 				<img class="roulletPick" alt="참여자프로필<%=i%>"
-					src="/img/none_profile.png" />
+					src="/img/none_profile.png"  id="r2w_roulletProfile<%=i %>" />
 				<%
 				} else {
 				%>
 				<img class="roulletProfile" alt="참여자프로필<%=i%>"
-					src="/img/none_profile.png" />
+					src="/img/none_profile.png"  id="r2w_roulletProfile<%=i %>" />
 				<%
 				}
 				}
@@ -232,7 +223,9 @@
 	</div>
 	<!-- 2라운드 대진표 -->
 	<div id="screen4" class="contentBody">
-		<div class="contentTitle">2ROUND</div>
+		<div class="contentTitle">
+			<img alt="2라운드 대진표 타이틀" src="/img/part/round2_title.png"></>
+		</div>
 		<div class="braketColumn">
 			<div class="match">
 				<div class="matchTitle">MATCH1</div>
@@ -365,28 +358,26 @@
 	</div>
 	<!-- 3라운드 팀 편성표 -->
 	<div id="screen6" class="contentBody">
-		<div class="contentTitle">FINAL</div>
+		<div class="contentTitle">
+			<img alt="3라운드 대진표 타이틀" src="/img/part/final_title.png"></>
+		</div>
+		<div class="rpsColumn">
+			<div id="rps0" class="rps">&nbsp;</div>
+			<div id="rps1" class="rps">&nbsp;</div>
+		</div>
 		<div class="finalcolumn">
 			<%
 			for (int i = 0; i < 3; i++) {
 			%>
-			<div class="finalBraketNameCard">
-				<img alt="" src="/img/none_profile.png" id="finalProfile<%=i%>"
-					class="finalNameCardProfile" />
-				<div class="drawnName" id="finalName<%=i%>">ㅇㅇㅇ</div>
-			</div>
+			<div class="finalBraketNameCard" id="finalProfile<%=i%>">&nbsp;</div>
 			<%
 			}
 			%>
-			<div id="VS">VS</div>
+			<div id="VS"><img alt="vs" src="/img/logo/vs.png"></div>
 			<%
 			for (int i = 3; i < 6; i++) {
 			%>
-			<div class="finalBraketNameCard">
-				<img alt="" src="/img/none_profile.png" id="finalProfile<%=i%>"
-					class="finalNameCardProfile" />
-				<div class="drawnName" id="finalName<%=i%>">ㅇㅇㅇ</div>
-			</div>
+			<div class="finalBraketNameCard" id="finalProfile<%=i%>">&nbsp;</div>
 			<%
 			}
 			%>
@@ -394,7 +385,9 @@
 	</div>
 	<!-- 3라운드 대진표 -->
 	<div id="screen7" class="contentBody">
-		<div class="contentTitle">FINAL</div>
+		<div class="contentTitle">
+			<img alt="3라운드 대진표 타이틀" src="/img/part/final_title.png"></>
+		</div>
 		<div class="flex" style="justify-content:center;align-item:center;">
 			<div class="braketColumn">
 				<div class="match" style="margin:120px 25px 0px 25px;">
@@ -405,7 +398,9 @@
 								src="/img/none_profile.png" />
 							<div class="braketName" id="r3m11n">ㅇㅇㅇ</div>
 						</div>
-						<div class="braketName">VS</div>
+						<div class="braketName">
+							<img alt="vs" src="/img/logo/vs.png"/>
+						</div>
 						<div class="braketNameCard">
 							<img class="braketProfile" id="r3m12p" alt="매치1,2번 참가자"
 								src="/img/none_profile.png" />
@@ -422,7 +417,9 @@
 								src="/img/none_profile.png" />
 							<div class="braketName" id="r3m21n">ㅇㅇㅇ</div>
 						</div>
-						<div class="braketName">VS</div>
+						<div class="braketName">
+							<img alt="vs" src="/img/logo/vs.png"/>
+						</div>
 						<div class="braketNameCard">
 							<img class="braketProfile" id="r3m22p" alt="매치2,2번 참가자"
 								src="/img/none_profile.png" />

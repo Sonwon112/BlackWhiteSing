@@ -32,6 +32,18 @@ public class SSEService {
 	}
 	
 	/**
+	 * 스태프 전체에게 데이터를 전송하는 함수
+	 * @param eventName 발생 이벤트
+	 * @param data 보낼 데이터
+	 */
+	public void sendDataToStaff(String eventName, String data) {
+		for(String key : emitterMap.keySet()) {
+			if(key.equals("overlay")) continue;
+			sendData(key, eventName, data);
+		}
+	}
+	
+	/**
 	 * 서버에서 데이터를 보내야할 때 send하는 부분
 	 * @param target 보낼 대상
 	 * @param eventName 발생 이벤트

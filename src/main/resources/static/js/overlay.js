@@ -3,9 +3,12 @@
  */
 let drawScreen = []; // 0 : 로고 표시, 1 : 1라운드, 2 : 1라운드, 3 : 2라운드, 4 : 2라운드, 5 : 테마 추첨, 6 : 파이널
 let currScreen;
-let round1Profile = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-let round2BlackProfile = [];
-let round2WhiteProfile = [];
+let r1RoulletIndex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+let r1RoulletHideArr = [0,1,2,3,4,5,6,7,8,9,10,11];
+let r1HideOrder = [11,0,10,1,9,2,8,3,7,4,6,5];
+let r1Pick = [];
+let r2BlackRoulletIndex = [];
+let r2WhiteRoulletIndex = [0, 1, 2, 3, 4, 5];
 let themeCard = [];
 
 let themePos = [
@@ -26,15 +29,26 @@ let pickPos = [
 $("document").ready(() => {
 	currScreen = $("#screen0");
 
+	// 화면 제어를 위한 배열에 삽입
 	for (let i = 0; i < 8; i++) {
 		let id = "#screen" + i
 		drawScreen.push($(id));
 	}
 
-	for (let i = 0; i < 12; i++) {
-		let roulletProfileId = "#roulletProfile" + i;
-		$(roulletProfileId).attr("src", "/img/" + round1Profile[i] + ".png");
+	// 1라운드 흑팀 룰렛 이미지 삽입
+	for (let i = 0; i < r1RoulletIndex.length; i++) {
+		let roulletProfileId = "#r1_roulletProfile" + i;
+		let imgName = "roullet/black/roullet" + r1RoulletIndex[i];
+		$(roulletProfileId).attr("src", "/img/" + imgName + ".webp");
 	}
+
+	// 2라운드 백팀 룰렛 이미지 삽입
+	for (let i = 0; i < r2WhiteRoulletIndex.length; i++) {
+		let roulletProfileId = "#r2w_roulletProfile" + i;
+		let imgName = "roullet/white/roullet" + r2WhiteRoulletIndex[i];
+		$(roulletProfileId).attr("src", "/img/" + imgName + ".webp");
+	}
+
 
 	resetThemeCard();
 
@@ -61,17 +75,25 @@ $("document").ready(() => {
 
 	eventSource.addEventListener("drawCard", (event) => {
 		// 카드 뽑기
+		if (event.data == "0") {
+			// 리셋
+		} else {
+			checkIsFull().then(()=>roulletRotate(Number(event.data)));
+		}
 	});
 
 	eventSource.addEventListener("drawTheme", (event) => {
 		// 테마 뽑기
 
 		if (event.data === "1") {
+			// 카드 고르기
 			PickTheme();
 		} else if (event.data === "0") {
 			console.log("theme : " + event.data);
+			// 리셋
 			resetThemeCard();
 		} else {
+			// 테마 섞기
 			//console.log("테마추첨 시작");
 			drawnTheme();
 		}
@@ -79,6 +101,28 @@ $("document").ready(() => {
 
 	eventSource.addEventListener("setTeam", (event) => {
 		// 3라운드 팀원지정
+	});
+
+	eventSource.addEventListener("rsp", (event) => {
+		console.log(event.data);
+		// 가위 바위 보
+		let [team, hand] = event.data.split(";");
+		let imgUrl = "";
+		switch (hand) {
+			case "0":
+				imgUrl = "url(/img/rock.png)"
+				break;
+			case "1":
+				imgUrl = "url(/img/scissors.png)"
+				break;
+			case "2":
+				imgUrl = "url(/img/paper.png)"
+				break;
+		}
+		let rpsId = "#rps" + team;
+		$(rpsId).css("background-image", imgUrl);
+
+		$(rpsId).css("visibillity", "visible");
 	});
 
 	//$("#screen5").css("visibility", "visible");
@@ -94,6 +138,7 @@ function drawn1RoundProfile() {
 
 }
 
+// 테마 섞는 함수
 function drawnTheme() {
 	let shuffleCount = Math.floor(Math.random() * 10 + 10);
 	let count = 0;
@@ -166,9 +211,7 @@ function drawnTheme() {
 	}, 300);
 
 }
-
-
-
+// 카드 뽑는 함수
 function PickTheme() {
 	let themePickIndex = [0, 1, 2, 3, 4, 5];
 
@@ -294,6 +337,7 @@ function PickTheme() {
 	}, 3000);
 }
 
+// 테마 리셋하는 테마
 function resetThemeCard() {
 	themeCard.length = 0;
 	for (let i = 0; i < 6; i++) {
@@ -301,7 +345,7 @@ function resetThemeCard() {
 		$(cardID).css("margin-top", themePos[i][0] + "px");
 		$(cardID).css("margin-left", themePos[i][1] + "px");
 		$(cardID).css("display", "");
-		
+
 
 		const element = document.querySelector(cardID);
 		element.animate(
@@ -316,11 +360,183 @@ function resetThemeCard() {
 				easing: 'ease'
 			}
 		);
-		
+
 		$(cardID).css("background-image", "url(/img/theme/theme_back.png)");
 
-	themeCard.push(cardID);
+		themeCard.push(cardID);
+
+	}
 
 }
 
+let isFullPick = false;
+
+async function checkIsFull(){
+	if(!isFullPick)return;
+	let element = document.querySelector("#r11Profile");
+	element.animate({
+		transform: [
+			'translateY(150%)',
+			'translateY(0%)',
+		]
+	},
+	{
+		duration: 1000,
+		fill: 'forwards',
+		easing: 'ease'
+	});
+	
+	element = document.querySelector("#r12Profile");
+	element.animate({
+		transform: [
+			'translateY(150%)',
+			'translateY(0%)',
+		]
+	},
+	{
+		duration: 1000,
+		fill: 'forwards',
+		easing: 'ease'
+	});
+	
+	return new Promise((r)=>{
+		setTimeout(r,1200)
+		isFullPick = false;
+	});
+}
+
+
+function roulletRotate(round){
+	
+	if(r1Pick.length != 0){
+		let hideID = "#r1_roulletProfile"+r1HideOrder[r1Pick.length-1];
+		const element = document.querySelector(hideID);
+		element.animate({
+			opacity:[
+				0.5,0
+			]
+		},
+		{
+			duration: 1200,
+			fill: 'forwards',
+			easing: 'ease'
+		});
+	}
+	
+	let roullet = "#r"+round+"_roulletProfile";
+	
+	let cycle = Math.floor(Math.random()*16+20);
+	let count = 0;
+	let time=90;
+	
+	let rotateRoullet = setInterval(()=>{
+		switch(round){
+			case 1:
+				// 1라운드
+				let arr = r1RoulletIndex.slice(1);
+				arr.push(r1RoulletIndex[0]);
+				r1RoulletIndex = arr;
+				for (let i = 0; i < r1RoulletIndex.length; i++) {
+					let id = roullet + r1RoulletHideArr[i];
+					$(id).attr("src", "/img/roullet/black/roullet"+r1RoulletIndex[i]+".webp");
+					//console.log(id+","+r1RoulletIndex[i]);
+				}
+				let id = roullet + r1RoulletHideArr[r1RoulletHideArr-1];
+				$(id).attr("src", "/img/roullet/black/roullet"+r1RoulletIndex[r1RoulletIndex.length-1]+".webp");
+			
+				break;
+			case 2:
+				// 2라운드
+				break;
+			case 3:
+				// 3라운드
+				break;
+		}
+		count++;
+		if(cycle - count == 5) time = 1000;
+		if(count == cycle){
+			clearInterval(rotateRoullet);
+			setTimeout(()=>{
+				PickPart(round);	
+			}, 1000);
+			
+		} 
+	},time);
+
+}
+
+function PickPart(round){
+	switch(round){
+			case 1:
+				const pickProfile =  document.querySelector("#r1_roulletProfile5");
+				pickProfile.animate(
+					{
+						transform: [
+							'scale(1)',
+							'scale(1.2)',
+							'scale(1)'
+						]
+					},
+					{
+						duration: 1200,
+						fill: 'forwards',
+						easing: 'ease'
+				});
+				
+				let pickImg = $("#r1_roulletProfile5").attr("src").split("/")[4];
+				pickImg = pickImg.split(".")[0];
+				pickImg = pickImg.slice(7);
+				
+				r1Pick.push(pickImg);
+				//console.log(r1Pick);
+				r1RoulletIndex = r1RoulletIndex.filter((e)=> e!=r1Pick[r1Pick.length - 1]);
+				
+				setTimeout(()=>{
+					if (r1Pick.length % 2 == 1) {
+						// 첫번째
+						const element = document.querySelector("#r11Profile");
+						element.style.backgroundImage = "url(/img/part/black/namecard" + r1Pick[r1Pick.length - 1] + ".png)";
+						element.animate(
+							{
+								transform: [
+									'translateY(0)',
+									'translateY(150%)',
+								]
+							},
+							{
+								duration: 1000,
+								fill: 'forwards',
+								easing: 'ease'
+							}
+						);
+					} else {
+						// 두번째
+						const element = document.querySelector("#r12Profile");
+						element.style.backgroundImage = "url(/img/part/black/namecard" + r1Pick[r1Pick.length - 1] + ".png)";
+						element.animate(
+							{
+								transform: [
+									'translateY(0)',
+									'translateY(150%)',
+								]
+							},
+							{
+								duration: 1000,
+								fill: 'forwards',
+								easing: 'ease'
+							}
+						);
+						isFullPick = true;
+					}
+					
+					r1RoulletHideArr = r1RoulletHideArr.filter((e)=>e != r1HideOrder[r1Pick.length-1]);
+				},2400);				
+				break;
+			case 2:
+				
+				break;
+			case 3:
+				
+				break;
+		}
 }

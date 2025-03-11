@@ -18,8 +18,12 @@ public class ControlService {
 		return sseService.checkName(name);
 	}
 	
-	public void sendToOverlay(String target, String eventName, String data) {
-		sseService.sendData(target, eventName, data);
+	public void sendToOverlay(String eventName, String data) {
+		sseService.sendData("overlay", eventName, data);
+	}
+	
+	public void sendToControl(String eventName, String data) {
+		sseService.sendDataToStaff(eventName, data);
 	}
 
 }

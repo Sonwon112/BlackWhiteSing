@@ -36,8 +36,11 @@ src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Medium.otf')format('o
 	margin-right : 150px;
 	border : solid 2px #BBBBBB;
 	border-radius : 20px;
-	width:18em;
-	height:90%;
+	width:33vh;
+	height:44vh;
+	background-image: url("/img/theme/theme_back.png");
+	background-size:contain;
+	background-repeat: no-repeat;
 }
 
 .drawnProfile{
@@ -71,7 +74,7 @@ src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Medium.otf')format('o
 	margin-top:1em;
 	width:11em;
 	height:11em;
-	opacity: 0.8;
+	opacity: 0.5;
 }
 
 .roulletPick{
@@ -101,8 +104,7 @@ src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Medium.otf')format('o
 	width:30%;
 	margin:1em;
 	border-top:1px solid #BBBBBB;
-	border-bottom:1px solid #BBBBBB;
-	
+	border-bottom:1px solid #BBBBBB;	
 }
 
 .braketProfile{
@@ -130,13 +132,20 @@ src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Medium.otf')format('o
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height:70%;
+	height:40%;
 }
 
 .finalBraketNameCard{
 	border:1px solid #BBBBBB;
 	border-radius: 20px;
 	margin:10px;
+	width: 24vh;
+	height: 32vh;
+	border: 1px solid #BBBBBB;
+	border-radius: 20px;
+	background-image: url("/img/theme/theme_back.png");
+	background-size:contain;
+	background-repeat: no-repeat;
 }
 
 .finalNameCardProfile{
@@ -175,7 +184,22 @@ src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Medium.otf')format('o
 	object-fit:cover;
 }
 
+.rpsColumn{
+	display:flex;
+	align-items:center;
+	justify-content: center;
+}
+.rps{
+	width:10em;
+	height:10em;
+	
+	background-size:contain;
+	margin-left:19%;
+	margin-right:19%;
+}
+
 #screen0{
+	position : absolute;
 	margin:0px;
 	padding: 0px;
 	display: flex;

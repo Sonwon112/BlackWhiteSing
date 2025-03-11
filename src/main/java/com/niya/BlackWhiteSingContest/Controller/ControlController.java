@@ -82,7 +82,7 @@ public class ControlController {
 			log.info("3라운드 팀 편성");
 			break;
 		}
-		service.sendToOverlay(OVERLAY, CHANGE_SCREEN_EVENT, dto.getTag());
+		service.sendToOverlay(CHANGE_SCREEN_EVENT, dto.getTag());
 
 		ControlDTO responseDTO = new ControlDTO();
 		responseDTO.setType(200);
@@ -104,10 +104,12 @@ public class ControlController {
 			ResponseEntity<ControlDTO> response = new ResponseEntity<ControlDTO>(responseDTO, HttpStatus.NOT_FOUND);
 			return response;
 		}
-
+		
+		int temp = Integer.parseInt(dto.getTag());
+		
 		if (dto.getTag().equals("3")){
 			log.info("테마 추첨");
-			service.sendToOverlay(OVERLAY, DRAW_THEME_EVENT, dto.getTag());
+			service.sendToOverlay( DRAW_THEME_EVENT, dto.getTag());
 		}
 		else {
 			switch (dto.getTag()) {
@@ -121,7 +123,7 @@ public class ControlController {
 				log.info("2라운드 백 대진표 추첨");
 				break;
 			}
-			service.sendToOverlay(OVERLAY, DRAW_CARD_EVENT, dto.getTag());
+			service.sendToOverlay( DRAW_CARD_EVENT, ""+(temp+1));
 		}
 		
 		ControlDTO responseDTO = new ControlDTO();
@@ -144,7 +146,7 @@ public class ControlController {
 			return response;
 		}
 		
-		service.sendToOverlay(OVERLAY, DRAW_THEME_EVENT, dto.getTag());
+		service.sendToOverlay( DRAW_THEME_EVENT, dto.getTag());
 		
 		ControlDTO responseDTO = new ControlDTO();
 		responseDTO.setType(200);
