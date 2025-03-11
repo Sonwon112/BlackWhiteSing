@@ -104,7 +104,9 @@ public class ControlController {
 			ResponseEntity<ControlDTO> response = new ResponseEntity<ControlDTO>(responseDTO, HttpStatus.NOT_FOUND);
 			return response;
 		}
-
+		
+		int temp = Integer.parseInt(dto.getTag());
+		
 		if (dto.getTag().equals("3")){
 			log.info("테마 추첨");
 			service.sendToOverlay( DRAW_THEME_EVENT, dto.getTag());
@@ -121,7 +123,7 @@ public class ControlController {
 				log.info("2라운드 백 대진표 추첨");
 				break;
 			}
-			service.sendToOverlay( DRAW_CARD_EVENT, dto.getTag());
+			service.sendToOverlay( DRAW_CARD_EVENT, ""+(temp+1));
 		}
 		
 		ControlDTO responseDTO = new ControlDTO();
