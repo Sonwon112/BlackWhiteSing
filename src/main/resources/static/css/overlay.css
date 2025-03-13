@@ -59,7 +59,7 @@ src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Medium.otf')format('o
 }
 
 .imageRoullet{
-	margin-left:-2em;
+	margin-left:-14em;
 	display:flex;
 	width:100%;	
 }
@@ -78,14 +78,23 @@ src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Medium.otf')format('o
 }
 
 .roulletPick{
-	margin-left:-1em;
-	margin-top:-1em;
-	width:14em;
-	width:14em;
+	margin-top:1em;
+	width:11em;
+	height:11em;
 }
 
 .flex{
 	display:flex;
+}
+
+.center{
+	align-items: center;
+	justify-content: center;
+}
+
+.mask{
+	width: 80%;
+	overflow: hidden;
 }
 
 .braketColumn{

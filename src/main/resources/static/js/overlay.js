@@ -4,12 +4,18 @@
 let drawScreen = []; // 0 : 로고 표시, 1 : 1라운드, 2 : 1라운드, 3 : 2라운드, 4 : 2라운드, 5 : 테마 추첨, 6 : 파이널
 let currScreen;
 let r1RoulletIndex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-let r1RoulletHideArr = [0,1,2,3,4,5,6,7,8,9,10,11];
-let r1HideOrder = [11,0,10,1,9,2,8,3,7,4,6,5];
 let r1Pick = [];
+
 let r2BlackRoulletIndex = [];
 let r2WhiteRoulletIndex = [0, 1, 2, 3, 4, 5];
 let themeCard = [];
+
+// 1라운드
+let r1_roulletMask;
+let r1_imageRoullet;
+let r1_profileWidth;
+let r1_roulletWidth;
+let cloneList;
 
 let themePos = [
 	[20, 460],
@@ -41,6 +47,17 @@ $("document").ready(() => {
 		let imgName = "roullet/black/roullet" + r1RoulletIndex[i];
 		$(roulletProfileId).attr("src", "/img/" + imgName + ".webp");
 	}
+	
+	// 자연스러운 회전 룰렛을 위해 복제
+	r1_imageRoullet = document.querySelector("#r1_imageRoullet");
+	r1_roulletMask = document.querySelector("#r1_roulletMask");
+	cloneList = document.querySelectorAll("#r1_imageRoullet img");
+	for(let i = 0; i < 12; i++){
+		let clone = cloneList[i].cloneNode(true);
+		r1_imageRoullet.appendChild(clone);	
+	}
+	
+	
 
 	// 2라운드 백팀 룰렛 이미지 삽입
 	for (let i = 0; i < r2WhiteRoulletIndex.length; i++) {
@@ -48,6 +65,7 @@ $("document").ready(() => {
 		let imgName = "roullet/white/roullet" + r2WhiteRoulletIndex[i];
 		$(roulletProfileId).attr("src", "/img/" + imgName + ".webp");
 	}
+
 
 
 	resetThemeCard();
@@ -65,6 +83,13 @@ $("document").ready(() => {
 		if (currScreen != null)
 			currScreen.fadeOut(1500);
 
+		switch (screenIndex) {
+			case 1:
+				
+				break;
+
+		}
+
 		drawScreen[screenIndex].fadeIn(1500);
 		currScreen = drawScreen[screenIndex];
 	});
@@ -74,12 +99,24 @@ $("document").ready(() => {
 	});
 
 	eventSource.addEventListener("drawCard", (event) => {
-		// 카드 뽑기
-		if (event.data == "0") {
-			// 리셋
-		} else {
-			checkIsFull().then(()=>roulletRotate(Number(event.data)));
+		let index = Number(event.data);
+		
+		switch(index){
+			case 0 :
+				// 리셋
+				
+				break;
+			case 1 :
+				// 1라운드
+				
+				
+
+				//console.log(`1라운드 룰렛 ${r1_imageRoullet}, 프로필 폭 ${r1_profileWidth}, 전체 길이 ${r1_roulletWidth}`)
+				
+				checkIsFull().then(() => roulletRotate(Number(index)));
+				break;
 		}
+
 	});
 
 	eventSource.addEventListener("drawTheme", (event) => {
@@ -89,7 +126,7 @@ $("document").ready(() => {
 			// 카드 고르기
 			PickTheme();
 		} else if (event.data === "0") {
-			console.log("theme : " + event.data);
+			//console.log("theme : " + event.data);
 			// 리셋
 			resetThemeCard();
 		} else {
@@ -128,15 +165,6 @@ $("document").ready(() => {
 	//$("#screen5").css("visibility", "visible");
 });
 
-function drawn1RoundProfile() {
-	let cycle = Math.floor(Math.random() * 15 + 20);
-	let count = 1;
-
-	let roullet = setInterval(() => {
-
-	});
-
-}
 
 // 테마 섞는 함수
 function drawnTheme() {
@@ -337,7 +365,7 @@ function PickTheme() {
 	}, 3000);
 }
 
-// 테마 리셋하는 테마
+// 테마 리셋하는 함수
 function resetThemeCard() {
 	themeCard.length = 0;
 	for (let i = 0; i < 6; i++) {
@@ -371,8 +399,8 @@ function resetThemeCard() {
 
 let isFullPick = false;
 
-async function checkIsFull(){
-	if(!isFullPick)return;
+async function checkIsFull() {
+	if (!isFullPick) return;
 	let element = document.querySelector("#r11Profile");
 	element.animate({
 		transform: [
@@ -380,12 +408,12 @@ async function checkIsFull(){
 			'translateY(0%)',
 		]
 	},
-	{
-		duration: 1000,
-		fill: 'forwards',
-		easing: 'ease'
-	});
-	
+		{
+			duration: 1000,
+			fill: 'forwards',
+			easing: 'ease'
+		});
+
 	element = document.querySelector("#r12Profile");
 	element.animate({
 		transform: [
@@ -393,150 +421,185 @@ async function checkIsFull(){
 			'translateY(0%)',
 		]
 	},
-	{
-		duration: 1000,
-		fill: 'forwards',
-		easing: 'ease'
-	});
-	
-	return new Promise((r)=>{
-		setTimeout(r,1200)
-		isFullPick = false;
-	});
-}
-
-
-function roulletRotate(round){
-	
-	if(r1Pick.length != 0){
-		let hideID = "#r1_roulletProfile"+r1HideOrder[r1Pick.length-1];
-		const element = document.querySelector(hideID);
-		element.animate({
-			opacity:[
-				0.5,0
-			]
-		},
 		{
-			duration: 1200,
+			duration: 1000,
 			fill: 'forwards',
 			easing: 'ease'
 		});
-	}
-	
-	let roullet = "#r"+round+"_roulletProfile";
-	
-	let cycle = Math.floor(Math.random()*16+20);
-	let count = 0;
-	let time=90;
-	
-	let rotateRoullet = setInterval(()=>{
-		switch(round){
-			case 1:
-				// 1라운드
-				let arr = r1RoulletIndex.slice(1);
-				arr.push(r1RoulletIndex[0]);
-				r1RoulletIndex = arr;
-				for (let i = 0; i < r1RoulletIndex.length; i++) {
-					let id = roullet + r1RoulletHideArr[i];
-					$(id).attr("src", "/img/roullet/black/roullet"+r1RoulletIndex[i]+".webp");
-					//console.log(id+","+r1RoulletIndex[i]);
-				}
-				let id = roullet + r1RoulletHideArr[r1RoulletHideArr-1];
-				$(id).attr("src", "/img/roullet/black/roullet"+r1RoulletIndex[r1RoulletIndex.length-1]+".webp");
-			
-				break;
-			case 2:
-				// 2라운드
-				break;
-			case 3:
-				// 3라운드
-				break;
-		}
-		count++;
-		if(cycle - count == 5) time = 1000;
-		if(count == cycle){
-			clearInterval(rotateRoullet);
-			setTimeout(()=>{
-				PickPart(round);	
-			}, 1000);
-			
-		} 
-	},time);
 
+	return new Promise((r) => {
+		setTimeout(r, 1200)
+		isFullPick = false;
+	});
+}
+let currIdx = 12;
+let translate = 0;
+const speed = 150;
+let pickId = "";
+let appendIdx = 0;
+
+function move(timing_func){
+	currIdx += -1;
+	translate += r1_profileWidth*-1;
+	r1_imageRoullet.style.transform = `translateX(${translate}px)`;
+	r1_imageRoullet.style.transition = `all ${speed}ms ${timing_func}`;
+	
+	let first = r1RoulletIndex[0];
+	r1RoulletIndex = r1RoulletIndex.slice(1);
+	r1RoulletIndex.push(first);
+
+	if (currIdx === 0) {
+		setTimeout(() => {
+			r1_imageRoullet.style.transition = 'none 0ms ease';
+			currIdx = r1RoulletIndex.length;
+			translate = 0;
+			r1_imageRoullet.style.transform = `translateX(${translate}px)`;
+		}, speed*0.8);
+	}
 }
 
-function PickPart(round){
-	switch(round){
-			case 1:
-				const pickProfile =  document.querySelector("#r1_roulletProfile5");
-				pickProfile.animate(
-					{
-						transform: [
-							'scale(1)',
-							'scale(1.2)',
-							'scale(1)'
-						]
-					},
-					{
-						duration: 1200,
-						fill: 'forwards',
-						easing: 'ease'
-				});
-				
-				let pickImg = $("#r1_roulletProfile5").attr("src").split("/")[4];
-				pickImg = pickImg.split(".")[0];
-				pickImg = pickImg.slice(7);
-				
-				r1Pick.push(pickImg);
-				//console.log(r1Pick);
-				r1RoulletIndex = r1RoulletIndex.filter((e)=> e!=r1Pick[r1Pick.length - 1]);
-				
-				setTimeout(()=>{
-					if (r1Pick.length % 2 == 1) {
-						// 첫번째
-						const element = document.querySelector("#r11Profile");
-						element.style.backgroundImage = "url(/img/part/black/namecard" + r1Pick[r1Pick.length - 1] + ".png)";
-						element.animate(
-							{
-								transform: [
-									'translateY(0)',
-									'translateY(150%)',
-								]
-							},
-							{
-								duration: 1000,
-								fill: 'forwards',
-								easing: 'ease'
-							}
-						);
-					} else {
-						// 두번째
-						const element = document.querySelector("#r12Profile");
-						element.style.backgroundImage = "url(/img/part/black/namecard" + r1Pick[r1Pick.length - 1] + ".png)";
-						element.animate(
-							{
-								transform: [
-									'translateY(0)',
-									'translateY(150%)',
-								]
-							},
-							{
-								duration: 1000,
-								fill: 'forwards',
-								easing: 'ease'
-							}
-						);
-						isFullPick = true;
+function roulletRotate(round) {
+	switch (round) {
+		case 1:
+			if(pickId != ""){
+				let targets = document.querySelectorAll(pickId);
+				targets.forEach((e)=>{
+					e.remove();
+				})
+			}
+			let tmp = cloneList[0]
+			r1_profileWidth = tmp.clientWidth;
+			r1_roulletWidth = r1_profileWidth * r1RoulletIndex.length;
+			r1_imageRoullet.style.width = `${r1_roulletWidth}px`;
+			
+			let maskWidth = r1_roulletMask.clientWidth;
+			
+			r1_roulletMask.style.width = maskWidth-(r1_profileWidth*r1Pick.length)+"px";
+			console.log(r1_roulletMask.style.width+", "+r1_profileWidth*r1Pick.length);
+			
+			let cycle = Math.floor(Math.random() * 20 + 30);
+			let count = 0;
+			
+			r1_imageRoullet.style.transform = `translateX(${translate+(r1_profileWidth)}px)`;
+			r1_imageRoullet.style.transition = `all 400ms ease-in-out`;
+			
+			let r1_roullet = setInterval(() => {
+				//console.log(`${cycle} 중 ${count}번 도는중 ${currIdx}`)
+				move('ease-in')
+
+				count++;
+				if (cycle - count < 8){
+					clearInterval(r1_roullet);
+					r1_roullet = setInterval(() => {
+					//console.log(`${cycle} 중 ${count}번 도는중 ${currIdx}`)
+					move('ease-in')
+					count++;
+					if (cycle - count < 5) {
+						clearInterval(r1_roullet);
+						r1_roullet = setInterval(() => {
+						console.log(`${cycle} 중 ${count}번 도는중 ${currIdx}`)
+						move('ease-in')
+						count++;
+						if (count == cycle+1){
+							clearInterval(r1_roullet);
+							setTimeout(()=>PickPart(round),1000);
+						}
+						}, speed * 4);
 					}
-					
-					r1RoulletHideArr = r1RoulletHideArr.filter((e)=>e != r1HideOrder[r1Pick.length-1]);
-				},2400);				
-				break;
-			case 2:
-				
-				break;
-			case 3:
-				
-				break;
-		}
+				}, speed*1.5);
+				} 
+
+			}, speed);
+			
+			
+
+			break;
+
+	}
+}
+
+let pos = 5;
+function PickPart(round) {
+	switch (round) {
+		case 1:
+			pickId ="#r1_roulletProfile"+r1RoulletIndex[pos];
+			
+			if(r1RoulletIndex[pos] >=5 )pos--;
+			console.log(r1RoulletIndex+", "+pickId);
+			
+			const pickProfile = document.querySelectorAll(pickId);
+			pickProfile.forEach((e)=>{
+				e.className = "roulletPick"
+				e.animate(
+				{
+					transform: [
+						'scale(1)',
+						'scale(1.2)',
+						'scale(1)'
+					]
+				},
+				{
+					duration: 1200,
+					fill: 'forwards',
+					easing: 'ease'
+				});
+			});
+			
+
+			let pickImg = $(pickId).attr("src").split("/")[4];
+			pickImg = pickImg.split(".")[0];
+			pickImg = pickImg.slice(7);
+
+			r1Pick.push(pickImg);
+			//console.log(r1Pick);
+			r1RoulletIndex = r1RoulletIndex.filter((e) => e != r1Pick[r1Pick.length - 1]);
+
+			setTimeout(() => {
+				if (r1Pick.length % 2 == 1) {
+					// 첫번째
+					const element = document.querySelector("#r11Profile");
+					element.style.backgroundImage = "url(/img/part/black/namecard" + r1Pick[r1Pick.length - 1] + ".png)";
+					element.animate(
+						{
+							transform: [
+								'translateY(0)',
+								'translateY(150%)',
+							]
+						},
+						{
+							duration: 1000,
+							fill: 'forwards',
+							easing: 'ease'
+						}
+					);
+				} else {
+					// 두번째
+					const element = document.querySelector("#r12Profile");
+					element.style.backgroundImage = "url(/img/part/black/namecard" + r1Pick[r1Pick.length - 1] + ".png)";
+					element.animate(
+						{
+							transform: [
+								'translateY(0)',
+								'translateY(150%)',
+							]
+						},
+						{
+							duration: 1000,
+							fill: 'forwards',
+							easing: 'ease'
+						}
+					);
+					isFullPick = true;
+				}
+
+			}, 2400);
+			
+			break;
+		case 2:
+
+			break;
+		case 3:
+
+			break;
+	}
 }
