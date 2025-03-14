@@ -78,10 +78,9 @@ src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Medium.otf')format('o
 }
 
 .roulletPick{
-	margin-left:-1em;
-	margin-top:-1em;
-	width:14em;
-	width:14em;
+	margin-top:1em;
+	width:11em;
+	width:11em;
 }
 
 .flex{
@@ -121,11 +120,19 @@ src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Medium.otf')format('o
 .braketNameCard{
 	display:inline;
 	margin:10px 20px 10px 20px;
+	background-image: url("/img/theme/theme_back.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	width:24vh;
+	height:32vh;
+	border-radius: 20px;
 }
 
 .braketName{
 	font-family:"DNFForgedBlade";
-	font-size:1.3em;
+	font-size:2em;
+	font-weight:bold;
+	color:white;
 	text-align:center;
 }
 .finalcolumn{

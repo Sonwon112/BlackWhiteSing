@@ -11,6 +11,8 @@ let r2BlackRoulletIndex = [];
 let r2WhiteRoulletIndex = [0, 1, 2, 3, 4, 5];
 let themeCard = [];
 
+let pickProfile;
+
 let themePos = [
 	[20, 460],
 	[20, 844],
@@ -48,7 +50,8 @@ $("document").ready(() => {
 		let imgName = "roullet/white/roullet" + r2WhiteRoulletIndex[i];
 		$(roulletProfileId).attr("src", "/img/" + imgName + ".webp");
 	}
-
+	
+	pickProfile =  document.querySelector("#r1_roulletProfile5");
 
 	resetThemeCard();
 
@@ -67,6 +70,11 @@ $("document").ready(() => {
 
 		drawScreen[screenIndex].fadeIn(1500);
 		currScreen = drawScreen[screenIndex];
+		
+		// 대진표 갱신
+		if(event.data == "2" || event.data == "4"){
+			setBraketNameCard(event.data);
+		}
 	});
 
 	eventSource.addEventListener("drawParticipant", (event) => {
@@ -77,7 +85,7 @@ $("document").ready(() => {
 		// 카드 뽑기
 		if (event.data == "0") {
 			// 리셋
-		} else {
+		} else {			
 			checkIsFull().then(()=>roulletRotate(Number(event.data)));
 		}
 	});
@@ -127,6 +135,25 @@ $("document").ready(() => {
 
 	//$("#screen5").css("visibility", "visible");
 });
+
+function setBraketNameCard(tag){
+	let idx = 0;
+	switch(round){
+		case "2":
+			// 1라운드
+			let id = "r1m";
+			for(let i = 1; i <= 6; i++){
+				$(id+""+i+"1").css("background-image","/img/part/black/namecard"+r1Pick[idx++]+".png");
+				$(id+""+i+"2").css("background-image","/img/part/black/namecard"+r1Pick[idx++]+".png");
+			}
+			break;
+		case "4":
+			// 2라운드
+			
+			break;
+			
+	}
+}
 
 function drawn1RoundProfile() {
 	let cycle = Math.floor(Math.random() * 15 + 20);
@@ -407,6 +434,7 @@ async function checkIsFull(){
 
 
 function roulletRotate(round){
+	pickProfile.className="roulletProfile";
 	
 	if(r1Pick.length != 0){
 		let hideID = "#r1_roulletProfile"+r1HideOrder[r1Pick.length-1];
@@ -422,53 +450,93 @@ function roulletRotate(round){
 			easing: 'ease'
 		});
 	}
+	if(r1RoulletIndex.length == 1){
+		move(round);
+		pickProfile.className = "roulletPick";
+		PickPart(round);
+		return;
+	}
 	
-	let roullet = "#r"+round+"_roulletProfile";
 	
-	let cycle = Math.floor(Math.random()*16+20);
+	let cycle = Math.floor(Math.random()*20+20);
 	let count = 0;
 	let time=90;
 	
 	let rotateRoullet = setInterval(()=>{
-		switch(round){
-			case 1:
-				// 1라운드
-				let arr = r1RoulletIndex.slice(1);
-				arr.push(r1RoulletIndex[0]);
-				r1RoulletIndex = arr;
-				for (let i = 0; i < r1RoulletIndex.length; i++) {
-					let id = roullet + r1RoulletHideArr[i];
-					$(id).attr("src", "/img/roullet/black/roullet"+r1RoulletIndex[i]+".webp");
-					//console.log(id+","+r1RoulletIndex[i]);
-				}
-				let id = roullet + r1RoulletHideArr[r1RoulletHideArr-1];
-				$(id).attr("src", "/img/roullet/black/roullet"+r1RoulletIndex[r1RoulletIndex.length-1]+".webp");
-			
-				break;
-			case 2:
-				// 2라운드
-				break;
-			case 3:
-				// 3라운드
-				break;
-		}
+		move(round);
 		count++;
-		if(cycle - count == 5) time = 1000;
-		if(count == cycle){
+		if(cycle - count <= 10){
 			clearInterval(rotateRoullet);
-			setTimeout(()=>{
-				PickPart(round);	
-			}, 1000);
 			
+			rotateRoullet = setInterval(()=>{
+				move(round);
+				count++;
+				if(cycle - count <= 3){
+					clearInterval(rotateRoullet);
+					rotateRoullet = setInterval(()=>{
+						move(round);
+						count++;
+						if(cycle == count){
+							clearInterval(rotateRoullet);
+							
+							setTimeout(()=>{
+								pickProfile.className = "roulletPick";
+								PickPart(round);	
+							}, 1200);
+						}
+					},time * 5);
+				}
+			},time * 2);
 		} 
 	},time);
 
 }
 
+function move(round){
+	let roullet = "#r"+round+"_roulletProfile";
+	switch(round){
+		case 1:
+				for(let i = 0; i < r1RoulletIndex.length;i++){
+					let id = roullet+r1RoulletHideArr[i];
+					const element = document.querySelector(id);
+					element.animate({
+						transform: [
+							'translateX(0em)',
+							'translateX(-11em)',
+						]
+					},
+					{
+						duration: 80,
+						fill: 'none',
+						easing: 'ease-in'
+					});
+				}
+			// 1라운드
+			let arr = r1RoulletIndex.slice(1);
+			arr.push(r1RoulletIndex[0]);
+			r1RoulletIndex = arr;
+			for (let i = 0; i < r1RoulletIndex.length; i++) {
+				let id = roullet + r1RoulletHideArr[i];
+				$(id).attr("src", "/img/roullet/black/roullet"+r1RoulletIndex[i]+".webp");
+				//console.log(id+","+r1RoulletIndex[i]);
+			}
+			let id = roullet + r1RoulletHideArr[r1RoulletHideArr-1];
+			$(id).attr("src", "/img/roullet/black/roullet"+r1RoulletIndex[r1RoulletIndex.length-1]+".webp");
+			
+			break;
+		case 2:
+			// 2라운드
+			break;
+		case 3:
+			// 3라운드
+			break;
+	}
+}
+
+
 function PickPart(round){
 	switch(round){
 			case 1:
-				const pickProfile =  document.querySelector("#r1_roulletProfile5");
 				pickProfile.animate(
 					{
 						transform: [
