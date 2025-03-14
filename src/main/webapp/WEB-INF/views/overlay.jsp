@@ -37,21 +37,26 @@
 			</div>
 		</div>
 		<!-- 이미지 룰렛 -->
-		<div class="imageRoullet">
-			<%
-			for (int i = 0; i < 12; i++) {
-				if (i != 5) {
-			%>
-			<img id="r1_roulletProfile<%=i %>" class="roulletProfile" alt="참여자프로필<%=i %>" src="/img/none_profile.png"/>
-			<%
-			} else {
-			%>
-			<img id="r1_roulletProfile<%=i %>" class="roulletProfile" alt="참여자프로필<%=i %>" src="/img/none_profile.png"/>
-			<%
-			}
-			}
-			%>
+		<div class="flex center">
+			<div class="flex mask" id="r1_mask">
+				<div class="imageRoullet" id="r1RoulletOutter">
+					<%
+					for (int i = 0; i < 12; i++) {
+						if (i != 5) {
+					%>
+					<img id="r1_roulletProfile<%=i %>" class="roulletProfile" alt="참여자프로필<%=i %>" src="/img/none_profile.png"/>
+					<%
+					} else {
+					%>
+					<img id="r1_roulletProfile<%=i %>" class="roulletProfile" alt="참여자프로필<%=i %>" src="/img/none_profile.png"/>
+					<%
+					}
+					}
+					%>
+				</div>
+			</div>
 		</div>
+		
 	</div>
 	<!-- 1라운드 대진표 -->
 	<div id="screen2" class="contentBody">

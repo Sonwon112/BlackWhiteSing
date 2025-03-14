@@ -59,9 +59,11 @@ src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Medium.otf')format('o
 }
 
 .imageRoullet{
-	margin-left:-2em;
+	margin-left:5.5em;
 	display:flex;
-	width:100%;	
+	width:100%;
+	align-items: center;
+	justify-content: center;
 }
 
 .r2ImageRoullet{
@@ -75,6 +77,8 @@ src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Medium.otf')format('o
 	width:11em;
 	height:11em;
 	opacity: 0.5;
+	will-change: transform;
+	
 }
 
 .roulletPick{
@@ -85,6 +89,17 @@ src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Medium.otf')format('o
 
 .flex{
 	display:flex;
+}
+
+.center{
+	align-items: center;
+	justify-content: center;
+}
+
+.mask{
+	width:70%;
+	overflow: hidden;
+	align-items:center;
 }
 
 .braketColumn{
@@ -126,6 +141,7 @@ src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Medium.otf')format('o
 	width:24vh;
 	height:32vh;
 	border-radius: 20px;
+	opacity: 0;
 }
 
 .braketName{

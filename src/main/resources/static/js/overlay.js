@@ -13,6 +13,14 @@ let themeCard = [];
 
 let pickProfile;
 
+let r1Roullet;
+let r2bRoullet;
+let r2wRoullet;
+
+let r1RoulletImgs = [];
+let r2BlackImgs = [];
+let r2WhiteImgs = [];
+
 let themePos = [
 	[20, 460],
 	[20, 844],
@@ -40,18 +48,31 @@ $("document").ready(() => {
 	// 1라운드 흑팀 룰렛 이미지 삽입
 	for (let i = 0; i < r1RoulletIndex.length; i++) {
 		let roulletProfileId = "#r1_roulletProfile" + i;
-		let imgName = "roullet/black/roullet" + r1RoulletIndex[i];
-		$(roulletProfileId).attr("src", "/img/" + imgName + ".webp");
-	}
+		let img = new Image();
+		img.src = "/img/roullet/black/roullet" + r1RoulletIndex[i]+".webp";
+		
+		let element = document.querySelector(roulletProfileId);
+		element.src= img.src;
 
+		r1RoulletImgs.push(element);
+	}
+	r1Roullet = document.querySelector("#r1RoulletOutter");
+	
 	// 2라운드 백팀 룰렛 이미지 삽입
 	for (let i = 0; i < r2WhiteRoulletIndex.length; i++) {
 		let roulletProfileId = "#r2w_roulletProfile" + i;
-		let imgName = "roullet/white/roullet" + r2WhiteRoulletIndex[i];
-		$(roulletProfileId).attr("src", "/img/" + imgName + ".webp");
+		let blackRoulletProfileId = "r2b_roulletProfile"+i;
+		let img = new Image();
+		img.src = "/img/roullet/white/roullet" + r1RoulletIndex[i]+".webp";
+			
+		let element1 = document.querySelector(roulletProfileId);
+		element1.src= img.src;
+		r2WhiteImgs.push(element1);
+		
+		let element2 = document.querySelector(blackRoulletProfileId);
+		r2BlackImgs.push(element2);
 	}
-	
-	pickProfile =  document.querySelector("#r1_roulletProfile5");
+	pickProfile = r1RoulletImgs[5];
 
 	resetThemeCard();
 
@@ -137,15 +158,61 @@ $("document").ready(() => {
 });
 
 function setBraketNameCard(tag){
+	
 	let idx = 0;
-	switch(round){
+	switch(tag){
 		case "2":
-			// 1라운드
-			let id = "r1m";
-			for(let i = 1; i <= 6; i++){
-				$(id+""+i+"1").css("background-image","/img/part/black/namecard"+r1Pick[idx++]+".png");
-				$(id+""+i+"2").css("background-image","/img/part/black/namecard"+r1Pick[idx++]+".png");
+			if(r1Pick.length != 12){
+				// 테스트 데이터
+				r1Pick = [2,3,4,1,5,8,7,6,9,10,11,0];
 			}
+			// 1라운드
+			let id = "#r1m";
+			let match = 6;
+			let i = 1;
+			
+			let r1Braket = setInterval(()=>{
+				let e1 = document.querySelector(id+i+"1");
+				let e2 = document.querySelector(id+i+"2");
+				//console.log(e1+", "+""+e2);
+				$(id+i+"1").css("background-image","url(/img/part/black/namecard"+r1Pick[idx++]+".png)");
+				$(id+i+"2").css("background-image","url(/img/part/black/namecard"+r1Pick[idx++]+".png)");
+				e1.animate({
+					transform:[
+						'translateY(20px)',
+						'translateY(0px)'	
+					],
+					opacity:[
+						0,
+						1
+					]
+				},
+				{
+					duration: 300,
+					fill: 'forwards',
+					easing: 'ease'
+				});
+				e2.animate({
+					transform:[
+						'translateY(20px)',
+						'translateY(0px)'	
+					],
+					opacity:[
+						0,
+						1
+					]
+				},
+				{
+					duration: 300,
+					fill: 'forwards',
+					easing: 'ease'
+				});
+				
+				i++;
+				if(i > match)clearInterval(r1Braket);
+			},600);
+				
+			
 			break;
 		case "4":
 			// 2라운드
@@ -397,6 +464,7 @@ function resetThemeCard() {
 }
 
 let isFullPick = false;
+let pickIndex=5;
 
 async function checkIsFull(){
 	if(!isFullPick)return;
@@ -437,21 +505,19 @@ function roulletRotate(round){
 	pickProfile.className="roulletProfile";
 	
 	if(r1Pick.length != 0){
-		let hideID = "#r1_roulletProfile"+r1HideOrder[r1Pick.length-1];
-		const element = document.querySelector(hideID);
-		element.animate({
-			opacity:[
-				0.5,0
-			]
-		},
-		{
-			duration: 1200,
-			fill: 'forwards',
-			easing: 'ease'
-		});
+		r1RoulletImgs = r1RoulletImgs.filter((e)=>e!=pickProfile);
+		pickProfile.remove();
+		r1Roullet.style.marginLeft = r1RoulletImgs.length%2 == 0 ? "5.5em" : "0em";
+		if(r1RoulletImgs.length == 8){
+			$("#r1_mask").animate({width:"650px"},800);
+		}else if(r1RoulletImgs.length == 4){
+			$("#r1_mask").animate({width:"200px"},800);
+		}
 	}
+	pickIndex = r1RoulletImgs.length%2 == 0 ? (r1RoulletImgs.length/2) - 1 : Math.floor(r1RoulletImgs.length/2);
 	if(r1RoulletIndex.length == 1){
 		move(round);
+		pickProfile = r1RoulletImgs[pickIndex];
 		pickProfile.className = "roulletPick";
 		PickPart(round);
 		return;
@@ -463,66 +529,46 @@ function roulletRotate(round){
 	let time=90;
 	
 	let rotateRoullet = setInterval(()=>{
-		move(round);
+		move(round,time);
 		count++;
 		if(cycle - count <= 10){
-			clearInterval(rotateRoullet);
-			
-			rotateRoullet = setInterval(()=>{
-				move(round);
+			let rotateRoullet2 = setInterval(()=>{
+				move(round, time*2);
 				count++;
 				if(cycle - count <= 3){
-					clearInterval(rotateRoullet);
+					
+					clearInterval(rotateRoullet2);
 					rotateRoullet = setInterval(()=>{
-						move(round);
+						move(round, time*4);
 						count++;
 						if(cycle == count){
 							clearInterval(rotateRoullet);
-							
 							setTimeout(()=>{
+								pickProfile = r1RoulletImgs[pickIndex];
 								pickProfile.className = "roulletPick";
 								PickPart(round);	
-							}, 1200);
+							}, time * 4 + 500);	
 						}
-					},time * 5);
+						
+					},time*4);
 				}
-			},time * 2);
-		} 
-	},time);
+				
+			},time*2);
+			clearInterval(rotateRoullet);	
+		}
+		
+	},time+10);
 
 }
 
-function move(round){
-	let roullet = "#r"+round+"_roulletProfile";
+let dura;
+
+function move(round, duration){
+	
 	switch(round){
 		case 1:
-				for(let i = 0; i < r1RoulletIndex.length;i++){
-					let id = roullet+r1RoulletHideArr[i];
-					const element = document.querySelector(id);
-					element.animate({
-						transform: [
-							'translateX(0em)',
-							'translateX(-11em)',
-						]
-					},
-					{
-						duration: 80,
-						fill: 'none',
-						easing: 'ease-in'
-					});
-				}
-			// 1라운드
-			let arr = r1RoulletIndex.slice(1);
-			arr.push(r1RoulletIndex[0]);
-			r1RoulletIndex = arr;
-			for (let i = 0; i < r1RoulletIndex.length; i++) {
-				let id = roullet + r1RoulletHideArr[i];
-				$(id).attr("src", "/img/roullet/black/roullet"+r1RoulletIndex[i]+".webp");
-				//console.log(id+","+r1RoulletIndex[i]);
-			}
-			let id = roullet + r1RoulletHideArr[r1RoulletHideArr-1];
-			$(id).attr("src", "/img/roullet/black/roullet"+r1RoulletIndex[r1RoulletIndex.length-1]+".webp");
-			
+			dura = duration;
+			requestAnimationFrame(r1Anim);
 			break;
 		case 2:
 			// 2라운드
@@ -531,6 +577,34 @@ function move(round){
 			// 3라운드
 			break;
 	}
+}
+
+function r1Anim(){
+	let roullet = "#r1_roulletProfile";
+	for(let i = 0; i < r1RoulletIndex.length;i++){
+		r1RoulletImgs[i].animate({
+			transform: [
+				'translateX(0em)',
+				'translateX(-11em)',
+			]
+		},
+		{
+			duration: dura,
+			fill: 'none',
+			easing: 'linear'
+		});
+	}
+	// 1라운드
+	setTimeout(()=>{
+		let clone =  r1RoulletImgs[0].cloneNode(true);
+		r1Roullet.insertAdjacentElement('beforeend',clone);
+		/*r1Roullet.appendChild(clone);
+		r1RoulletImgs[0].remove();
+		
+		r1RoulletImgs = r1RoulletImgs.slice(1);
+		r1RoulletImgs.push(clone);*/
+		//console.log(r1RoulletImgs);
+	}, dura-10);
 }
 
 
@@ -546,13 +620,14 @@ function PickPart(round){
 						]
 					},
 					{
-						duration: 1200,
+						duration: 1000,
 						fill: 'forwards',
 						easing: 'ease'
 				});
 				
-				let pickImg = $("#r1_roulletProfile5").attr("src").split("/")[4];
-				pickImg = pickImg.split(".")[0];
+				let pickImg = pickProfile.src;
+				pickImg = pickImg.split("/");
+				pickImg = pickImg[pickImg.length-1].split(".")[0];
 				pickImg = pickImg.slice(7);
 				
 				r1Pick.push(pickImg);
@@ -597,7 +672,6 @@ function PickPart(round){
 						isFullPick = true;
 					}
 					
-					r1RoulletHideArr = r1RoulletHideArr.filter((e)=>e != r1HideOrder[r1Pick.length-1]);
 				},2400);				
 				break;
 			case 2:
