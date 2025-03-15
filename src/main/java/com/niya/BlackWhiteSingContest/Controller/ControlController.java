@@ -170,7 +170,19 @@ public class ControlController {
 	@PostMapping("/leaving_out")
 	public ResponseEntity<ControlDTO> setLeavingOut(@RequestBody ControlDTO dto){
 		log.info(dto.getName() + "이" + dto.getType() + "을 보냈습니다. : " + dto.getTag());
-		service.leavingOut(dto.getTag());
+		
+		switch(dto.getType()) {
+			case 10:
+				// 탈락
+				service.leavingOut(dto.getTag());
+				break;
+			case 11:
+				// 탈락 초기화
+				service.resetLeavingOut(dto.getTag());
+				break;
+		}
+		
+		
 		
 		return successDTO();
 	}

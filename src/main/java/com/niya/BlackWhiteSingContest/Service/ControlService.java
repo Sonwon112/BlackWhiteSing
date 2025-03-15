@@ -45,5 +45,9 @@ public class ControlService {
 		sseService.sendDataToStaff("leavingOut", data);
 	}
 	
+	public void resetLeavingOut(String data) {
+		sseService.sendData("overlay", "resetLeavingOut", data);
+		sseService.sendDataToStaff("resetLeavingOut", data);
+	}
 	
 }

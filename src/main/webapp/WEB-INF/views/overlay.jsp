@@ -175,7 +175,7 @@
 				for (int i = 0; i < 6; i++) {
 					if (i == 2) {
 				%>
-				<img class="roulletPick" alt="참여자프로필<%=i%>"
+				<img class="roulletProfile" alt="참여자프로필<%=i%>"
 					src="/img/none_profile.png" id="r2b_roulletProfile<%=i %>" />
 				<%
 				} else {

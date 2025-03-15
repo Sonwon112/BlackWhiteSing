@@ -81,6 +81,11 @@ function connectSSE() {
 		let [round, match, pos] = event.data.split(";");
 		applyLeavingOut(round,match,pos);
 	});
+	eventSource.addEventListener("resetLeavingOut",(event)=>{
+		let [round, match] = event.data.split(";");
+		applyResetLeavingOut(round,match);
+	});
+	
 }
 
 function changeMode(index) {
@@ -159,9 +164,29 @@ function applyLeavingOut(round,match,pos){
 	posVal = pos % 2 == 1 ? (match-1)*2 : (match-1)*2+1;
 	let id = `#r${round}Txt${posVal}`
 	
-	$(id).css("text-decoration","line-throuhg");
+	console.log(id);
+	$(id).css("text-decoration","line-through");
 	let btnClass = `.r${round}m${match}`;
 	$(btnClass).attr("disabled",true);
+}
+
+function resetLeavingOut(round,match){
+	let postData={
+		type : 11,
+		tag : round+";"+match,
+		name : "staffName"
+	}
+	sendServer("leaving_out",postData);
+}
+
+function applyResetLeavingOut(round,match){
+	let id1 = `#r${round}Txt${(match-1)*2}`
+	let id2 = `#r${round}Txt${(match-1)*2+1}`
+	
+	$(id1).css("text-decoration","none");
+	$(id2).css("text-decoration","none");
+	let btnClass = `.r${round}m${match}`;
+	$(btnClass).attr("disabled",false);
 }
 
 

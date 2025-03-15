@@ -4,6 +4,7 @@
 let drawScreen = []; // 0 : 로고 표시, 1 : 1라운드, 2 : 1라운드, 3 : 2라운드, 4 : 2라운드, 5 : 테마 추첨, 6 : 파이널
 let currScreen;
 let r1RoulletIndex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+let r1LeaveArr = []
 
 let r2bRoulletIndex = []
 let r2wRoulletIndex = [12,13,14,15,16,17]
@@ -102,6 +103,17 @@ $("document").ready(() => {
 		if(event.data == "2" || event.data == "4"){
 			setBraketNameCard(event.data);
 		}
+		
+		if(event.data=="3"){
+			if(r2bRoulletIndex.length == 6){
+				for(let i = 0; i < r2bRoulletIndex.length; i++){
+					let img = new Image();
+					img.src = "/img/roullet/roullet" + r2bRoulletIndex[i]+".webp";
+					r2BlackImgs[0].src = img.src;
+				}	
+			}
+			
+		}
 	});
 
 	eventSource.addEventListener("drawParticipant", (event) => {
@@ -168,15 +180,47 @@ $("document").ready(() => {
 		
 		setLeavingOut(round,match,pos);
 	});
+	eventSource.addEventListener("resetLeavingOut",(event)=>{
+		let [round, match] = event.data.split(";");
+		
+		unsetLeavingOut(round,match);
+	});
+	
 	//$("#screen5").css("visibility", "visible");
 });
+
 
 function setLeavingOut(round,match,pos){
 	let id = `#r${round}m${match}${pos}`
 	let e = document.querySelector(id);
+	
+	r1LeaveArr.push(e);
+	
+	if(round == 1){
+		posVal = pos % 2 == 1 ? (match-1)*2+1 : (match-1)*2;	
+		
+		r2bRoulletIndex.push(r1Pick[posVal]);
+		console.log(r2bRoulletIndex);
+	}
+
 	e.style.backgroundColor="#000000";
 	
-	e.animate({opacity:[0.2]},{duration:300,fill:"forwards",easing:"ease"})
+	e.animate({opacity:[0.2]},{duration:300,fill:"forwards",easing:"ease"});
+}
+
+function unsetLeavingOut(round,match){
+	let e1 = document.querySelector(`#r${round}m${match}1`);
+	let e2 = document.querySelector(`#r${round}m${match}2`);
+	let pv1 = (match-1)*2;
+	let pv2 = (match-1)*2+1;
+	
+	
+	r1LeaveArr = r1LeaveArr.filter((e)=>{e!=e1 && e!=e2});
+	r2bRoulletIndex = r2bRoulletIndex.filter((e)=>{e!=pv1 && e!=pv2});
+	console.log(r2bRoulletIndex);
+	
+	e1.animate({opacity:1},{duration:300,fill:"forwards",easing:"ease"});
+	e2.animate({opacity:1},{duration:300,fill:"forwards",easing:"ease"});
 }
 
 function setR3TeamNameCard(team, teamOrder, partIndex){
@@ -206,7 +250,7 @@ function setBraketNameCard(tag){
 	
 	let idx = 0;
 	let targetArr = [];
-	
+	let round;
 	//console.log(targetArr);
 	// 1라운드
 	let id = "#r1m"; // #r라운드m
@@ -216,6 +260,7 @@ function setBraketNameCard(tag){
 	switch(tag){
 		case "2":
 			// 1라운드
+			round = 0;
 			id = "#r1m";
 			match = 6;
 			i = 1;
@@ -223,6 +268,7 @@ function setBraketNameCard(tag){
 			if(r1Pick.length != 12){
 				// 테스트 데이터
 				targetArr = [2,3,4,1,5,8,7,6,9,10,11,0];
+				r1Pick = targetArr;
 			}else{
 				targetArr = r1Pick;
 			}
@@ -231,6 +277,7 @@ function setBraketNameCard(tag){
 			sendServer("pick",1,targetArr);
 			break;
 		case "4":
+			round = 1;
 			// 2라운드
 			id = "#r2m";
 			match = 6;
@@ -239,6 +286,7 @@ function setBraketNameCard(tag){
 			if(r2Pick.length != 12){
 				// 테스트 데이터
 				targetArr = [2,3,4,1,5,2,7,1,2,10,11,0];
+				r2Pick = targetArr;
 			}else{
 				targetArr = r2Pick;
 			}
@@ -251,6 +299,7 @@ function setBraketNameCard(tag){
 	let tmp2 = "";
 	let e1;
 	let e2;
+	
 	for(let j = 1; j <= match; j++){
 		tmp1 = id+j+1;
 		tmp2 = id+j+2;
@@ -264,6 +313,12 @@ function setBraketNameCard(tag){
 	let Braket = setInterval(() => {
 		let e1 = document.querySelector(id + i + "1");
 		let e2 = document.querySelector(id + i + "2");
+		let op1 = 1;
+		let op2 = 1;
+		
+		if(r1LeaveArr.includes(e1)) op1 = 0.2;
+		else if(r1LeaveArr.includes(e2)) op2 = 0.2;
+		
 		//console.log(e1+", "+""+e2);
 		$(id + i + "1").css("background-image", "url(/img/part/participant/namecard" + targetArr[idx++] + ".png)");
 		$(id + i + "2").css("background-image", "url(/img/part/participant/namecard" + targetArr[idx++] + ".png)");
@@ -274,7 +329,7 @@ function setBraketNameCard(tag){
 			],
 			opacity: [
 				0,
-				1
+				op1
 			]
 		},
 			{
@@ -289,7 +344,7 @@ function setBraketNameCard(tag){
 			],
 			opacity: [
 				0,
-				1
+				op2
 			]
 		},
 			{

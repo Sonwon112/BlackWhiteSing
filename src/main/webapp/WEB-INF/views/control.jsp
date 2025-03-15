@@ -120,21 +120,27 @@
 		<hr/>
 		<div class="flex">
 			1. <p id="r1Txt0">참여자1</p>&nbsp;<button class="r1m1" onclick="setLeavingOut(1,1,1)">탈락</button>&nbsp;vs&nbsp;<p id="r1Txt1">참여자2</p>&nbsp;<button class="r1m1" onclick="setLeavingOut(1,1,2)">탈락</button>
+			&nbsp;<button onclick="resetLeavingOut(1,1)">리셋</button>
 		</div>
 		<div class="flex">
 			2. <p id="r1Txt2">참여자1</p>&nbsp;<button class="r1m2" onclick="setLeavingOut(1,2,1)">탈락</button>&nbsp;vs&nbsp;<p id="r1Txt3">참여자2</p>&nbsp;<button class="r1m2" onclick="setLeavingOut(1,2,2)">탈락</button>
+			&nbsp;<button onclick="resetLeavingOut(1,2)">리셋</button>
 		</div>
 		<div class="flex">
 			3. <p id="r1Txt4">참여자1</p>&nbsp;<button class="r1m3" onclick="setLeavingOut(1,3,1)">탈락</button>&nbsp;vs&nbsp;<p id="r1Txt5">참여자2</p>&nbsp;<button class="r1m3" onclick="setLeavingOut(1,3,2)">탈락</button>
+			&nbsp;<button onclick="resetLeavingOut(1,3)">리셋</button>
 		</div>
 		<div class="flex">
 			4. <p id="r1Txt6">참여자1</p>&nbsp;<button class="r1m4" onclick="setLeavingOut(1,4,1)">탈락</button>&nbsp;vs&nbsp;<p id="r1Txt7">참여자2</p>&nbsp;<button class="r1m4" onclick="setLeavingOut(1,4,2)">탈락</button>
+			&nbsp;<button onclick="resetLeavingOut(1,4)">리셋</button>
 		</div>
 		<div class="flex">
 			5. <p id="r1Txt8">참여자1</p>&nbsp;<button class="r1m5" onclick="setLeavingOut(1,5,1)">탈락</button>&nbsp;vs&nbsp;<p id="r1Txt9">참여자2</p>&nbsp;<button class="r1m5" onclick="setLeavingOut(1,5,2)">탈락</button>
+			&nbsp;<button onclick="resetLeavingOut(1,5)">리셋</button>
 		</div>
 		<div class="flex">
 			6. <p id="r1Txt10">참여자1</p>&nbsp;<button class="r1m6" onclick="setLeavingOut(1,6,1)">탈락</button>&nbsp;vs&nbsp;<p id="r1Txt11">참여자2</p>&nbsp;<button class="r1m6" onclick="setLeavingOut(1,6,2)">탈락</button>
+			&nbsp;<button onclick="resetLeavingOut(1,6)">리셋</button>
 		</div>
 	</details>
 </div>
@@ -145,21 +151,27 @@
 		<hr/>
 		<div class="flex">
 			1.<p id="r2Txt0">참여자1</p>&nbsp;<button class="r2m1" onclick="setLeavingOut(2,1,1)">탈락</button>&nbsp;vs&nbsp;<p id="r2Txt1">참여자2</p>&nbsp;<button class="r2m1" onclick="setLeavingOut(2,1,2)">탈락</button>
+			&nbsp;<button onclick="resetLeavingOut(2,1)">리셋</button>
 		</div>
 		<div class="flex">
 			2.<p id="r2Txt2">참여자1</p>&nbsp;<button class="r2m2" onclick="setLeavingOut(2,2,1)">탈락</button>&nbsp;vs&nbsp;<p id="r2Txt3">참여자2</p>&nbsp;<button class="r2m2" onclick="setLeavingOut(2,2,2)">탈락</button>
+			&nbsp;<button onclick="resetLeavingOut(2,2)">리셋</button>
 		</div>
 		<div class="flex">
 			3.<p id="r2Txt4">참여자1</p>&nbsp;<button class="r2m3" onclick="setLeavingOut(2,3,1)">탈락</button>&nbsp;vs&nbsp;<p id="r2Txt5">참여자2</p>&nbsp;<button class="r2m3" onclick="setLeavingOut(2,3,2)">탈락</button>
+			&nbsp;<button onclick="resetLeavingOut(2,3)">리셋</button>
 		</div>
 		<div class="flex">
 			4.<p id="r2Txt6">참여자1</p>&nbsp;<button class="r2m4" onclick="setLeavingOut(2,4,1)">탈락</button>&nbsp;vs&nbsp;<p id="r2Txt7">참여자2</p>&nbsp;<button class="r2m4" onclick="setLeavingOut(2,4,2)">탈락</button>
+			&nbsp;<button onclick="resetLeavingOut(2,4)">리셋</button>
 		</div>
 		<div class="flex">
 			5.<p id="r2Txt8">참여자1</p>&nbsp;<button class="r2m5" onclick="setLeavingOut(2,5,1)">탈락</button>&nbsp;vs&nbsp;<p id="r2Txt9">참여자2</p>&nbsp;<button class="r2m5" onclick="setLeavingOut(2,5,2)">탈락</button>
+			&nbsp;<button onclick="resetLeavingOut(2,5)">리셋</button>
 		</div>
 		<div class="flex">
 			6.<p id="r2Txt10">참여자1</p>&nbsp;<button class="r2m6" onclick="setLeavingOut(2,6,1)">탈락</button>&nbsp;vs&nbsp;<p id="r2Txt11">참여자2</p>&nbsp;<button class="r2m6" onclick="setLeavingOut(2,6,2)">탈락</button>
+			&nbsp;<button onclick="resetLeavingOut(2,6)">리셋</button>
 		</div>
 	</details>
 </div>
@@ -188,27 +200,36 @@
 			<!-- Match1의 흑 -->
 			<input type="text" placeholder="흑"/>&nbsp;
 			<button>입력</button>&nbsp;
+			<button onclick="setLeavingOut(3,1,1)">탈락</button>&nbsp;
 			<!-- Match1의 백 -->
 			<input type="text" placeholder="백"/>&nbsp;
 			<button>입력</button>&nbsp;
+			<button onclick="setLeavingOut(3,1,2)">탈락</button>&nbsp;
+			<button onclick="resetLeavingOut(3,1)">리셋</button>
 		</div>
 		<div class="flex">
 			2.<p id="theme1">테마 2</p>&ensp; 
 			<!-- Match2의 흑 -->
 			<input type="text" placeholder="흑"/>&nbsp;
 			<button>입력</button>&nbsp;
+			<button onclick="setLeavingOut(3,2,1)">탈락</button>&nbsp;
 			<!-- Match2의 백 -->
 			<input type="text" placeholder="백"/>&nbsp;
 			<button>입력</button>&nbsp;
+			<button onclick="setLeavingOut(3,2,2)">탈락</button>&nbsp;
+			<button onclick="resetLeavingOut(3,2)">리셋</button>
 		</div>
 		<div class="flex">
 			3.<p id="theme2">테마 3</p>&ensp;
 			<!-- Match3의 흑 -->
 			<input type="text" placeholder="흑"/>&nbsp;
 			<button>입력</button>&nbsp;
+			<button onclick="setLeavingOut(3,3,1)">탈락</button>&nbsp;
 			<!-- Match3의 백 -->
 			<input type="text" placeholder="백"/>&nbsp;
 			<button>입력</button>&nbsp;
+			<button onclick="setLeavingOut(3,3,2)">탈락</button>&nbsp;
+			<button onclick="resetLeavingOut(3,3)">리셋</button>
 		</div>
 	</details>
 </div>
