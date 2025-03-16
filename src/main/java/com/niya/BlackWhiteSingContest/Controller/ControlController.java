@@ -162,6 +162,15 @@ public class ControlController {
 		return successDTO();
 	}
 	
+	@PostMapping("/set_r3_match")
+	public ResponseEntity<ControlDTO> SetR3Match(@RequestBody ControlDTO dto){
+		log.info(dto.getName() + "이" + dto.getType() + "을 보냈습니다. : " + dto.getTag());
+		service.setR3Match(dto.getTag());
+		
+		return successDTO();
+	}
+	
+	
 	/**
 	 * 탈락자 상태 변경
 	 * @param dto

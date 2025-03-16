@@ -50,4 +50,9 @@ public class ControlService {
 		sseService.sendDataToStaff("resetLeavingOut", data);
 	}
 	
+	public void setR3Match(String data) {
+		sseService.sendData("overlay", "setR3Match", data);
+		sseService.sendDataToStaff("setR3Match", data);
+	}
+	
 }

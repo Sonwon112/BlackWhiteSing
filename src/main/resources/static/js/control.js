@@ -85,6 +85,10 @@ function connectSSE() {
 		let [round, match] = event.data.split(";");
 		applyResetLeavingOut(round,match);
 	});
+	eventSource.addEventListener("setR3Match",(event)=>{
+		let [match,team,idx] = event.data.split(";");
+		
+	})
 	
 }
 
@@ -141,7 +145,10 @@ function setTeam(team, index){
 	let inputName = $(inputId).val();
 	
 	let arrIndex = Participant.indexOf(inputName);
-	
+	if(arrIndex == -1){
+		alert("잘못된 닉네임입니다.");
+		return;
+	}
 	
 	let postData = {
 		type : team,
@@ -149,8 +156,34 @@ function setTeam(team, index){
 		name : staffName
 	}
 	
-	sendServer("setTeam",postData)
+	sendServer("set_team",postData)
 }
+
+function setR3Match(match, team ){
+	let inputId = `#mi${match}${team}`;
+	let inputName = $(inputId).val();
+	
+	let arrIndex = Participant.indexOf(inputName);
+	if(arrIndex == -1){
+		alert("잘못된 닉네임입니다.");
+		return;
+	}
+	
+	let postData={
+		type : 20,
+		tag : match+";"+team+";"+arrIndex;
+		name : staffName
+	}
+	
+	sendServer("set_r3_match",postData);
+	
+}
+
+function applyR3Match(match, team, idx){
+	let inputId = `#mi${match}${team}`;
+	$(inputId).val(Participant[idx]);
+}
+
 
 function setLeavingOut(round,match,pos){
 	let postData = {
