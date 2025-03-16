@@ -45,7 +45,12 @@ public class ControlController {
 
 		return "control";
 	}
-
+	
+	/**
+	 * 화면 변경
+	 * @param dto
+	 * @return
+	 */
 	@PostMapping("/change")
 	public ResponseEntity<ControlDTO> ChangeMode(@RequestBody ControlDTO dto) {
 
@@ -84,14 +89,14 @@ public class ControlController {
 		}
 		service.sendToOverlay(CHANGE_SCREEN_EVENT, dto.getTag());
 
-		ControlDTO responseDTO = new ControlDTO();
-		responseDTO.setType(200);
-		responseDTO.setTag("success");
-		ResponseEntity<ControlDTO> response = new ResponseEntity<ControlDTO>(responseDTO, HttpStatus.OK);
-
-		return response;
+		return successDTO();
 	}
 
+	/**
+	 * 테마 셔플 요청 시
+	 * @param dto
+	 * @return
+	 */
 	@PostMapping("/shuffle")
 	public ResponseEntity<ControlDTO> Shuffle(@RequestBody ControlDTO dto) {
 
@@ -126,6 +131,72 @@ public class ControlController {
 			service.sendToOverlay( DRAW_CARD_EVENT, ""+(temp+1));
 		}
 		
+		return successDTO();
+	}
+	
+	/**
+	 * 명단 오류시 이름 변경
+	 * @param dto
+	 * @return
+	 */
+	@PostMapping("/change_name")
+	public ResponseEntity<ControlDTO> ChangeName(@RequestBody ControlDTO dto){
+		log.info(dto.getName() + "이" + dto.getType() + "을 보냈습니다. : " + dto.getTag());
+		service.chaneName(dto.getType(), dto.getTag());
+		
+		return successDTO();
+	}
+	
+	/**
+	 * 3라운드 팀 구성
+	 * @param dto
+	 * @return
+	 */
+	@PostMapping("/set_team")
+	public ResponseEntity<ControlDTO> SetTeam(@RequestBody ControlDTO dto){
+		log.info(dto.getName() + "이" + dto.getType() + "을 보냈습니다. : " + dto.getTag());
+		int teamOrder = Integer.parseInt(dto.getTag().split(";")[0]);
+		int partIndex = Integer.parseInt(dto.getTag().split(";")[1]);
+		service.setTeam(dto.getType(), teamOrder, partIndex);
+		
+		return successDTO();
+	}
+	
+	@PostMapping("/set_r3_match")
+	public ResponseEntity<ControlDTO> SetR3Match(@RequestBody ControlDTO dto){
+		log.info(dto.getName() + "이" + dto.getType() + "을 보냈습니다. : " + dto.getTag());
+		service.setR3Match(dto.getTag());
+		
+		return successDTO();
+	}
+	
+	
+	/**
+	 * 탈락자 상태 변경
+	 * @param dto
+	 * @return
+	 */
+	@PostMapping("/leaving_out")
+	public ResponseEntity<ControlDTO> setLeavingOut(@RequestBody ControlDTO dto){
+		log.info(dto.getName() + "이" + dto.getType() + "을 보냈습니다. : " + dto.getTag());
+		
+		switch(dto.getType()) {
+			case 10:
+				// 탈락
+				service.leavingOut(dto.getTag());
+				break;
+			case 11:
+				// 탈락 초기화
+				service.resetLeavingOut(dto.getTag());
+				break;
+		}
+		
+		
+		
+		return successDTO();
+	}
+	
+	private ResponseEntity<ControlDTO> successDTO(){
 		ControlDTO responseDTO = new ControlDTO();
 		responseDTO.setType(200);
 		responseDTO.setTag("success");
@@ -134,26 +205,4 @@ public class ControlController {
 		return response;
 	}
 	
-	@PostMapping("/change_theme")
-	public ResponseEntity<ControlDTO> ChangeTheme(@RequestBody ControlDTO dto){
-		log.info(dto.getName() + "이" + dto.getType() + "을 보냈습니다. : " + dto.getTag());
-
-		if (!service.checkName(dto.getName())) {
-			ControlDTO responseDTO = new ControlDTO();
-			responseDTO.setType(402);
-			responseDTO.setTag("can't found User");
-			ResponseEntity<ControlDTO> response = new ResponseEntity<ControlDTO>(responseDTO, HttpStatus.NOT_FOUND);
-			return response;
-		}
-		
-		service.sendToOverlay( DRAW_THEME_EVENT, dto.getTag());
-		
-		ControlDTO responseDTO = new ControlDTO();
-		responseDTO.setType(200);
-		responseDTO.setTag("success");
-		ResponseEntity<ControlDTO> response = new ResponseEntity<ControlDTO>(responseDTO, HttpStatus.OK);
-
-		return response;
-	}
-
 }

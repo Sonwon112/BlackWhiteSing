@@ -8,6 +8,8 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
 <script src="/js/overlay.js"></script>
+<script src="/js/overlay_roullet.js"></script>
+<script src="/js/overlay_Theme.js"></script>
 <link href="/css/overlay.css" rel="stylesheet" />
 </head>
 <body>
@@ -35,6 +37,9 @@
 				<!-- 먼저 추첨 된 참여자 -->
 				&nbsp;
 			</div>
+		</div>
+		<div class="flex center">
+			<img alt="vs" src="/img/logo/arrowpoint.png" style="width:2%"/>
 		</div>
 		<!-- 이미지 룰렛 -->
 		<div class="flex center">
@@ -170,7 +175,7 @@
 				for (int i = 0; i < 6; i++) {
 					if (i == 2) {
 				%>
-				<img class="roulletPick" alt="참여자프로필<%=i%>"
+				<img class="roulletProfile" alt="참여자프로필<%=i%>"
 					src="/img/none_profile.png" id="r2b_roulletProfile<%=i %>" />
 				<%
 				} else {
@@ -211,16 +216,12 @@
 			<div class="match">
 				<div class="matchTitle">MATCH1</div>
 				<div class="braketParticipant">
-					<div class="braketNameCard">
-						<img class="braketProfile" id="r2m11p" alt="매치1,1번 참가자"
-							src="/img/none_profile.png" />
-						<div class="braketName" id="r2m11n">ㅇㅇㅇ</div>
+					<div class="braketNameCard" id="r2m11">
+						&nbsp;
 					</div>
 					<div class="braketName">VS</div>
-					<div class="braketNameCard">
-						<img class="braketProfile" id="r2m12p" alt="매치1,2번 참가자"
-							src="/img/none_profile.png" />
-						<div class="braketName" id="r2m12n">ㅇㅇㅇ</div>
+					<div class="braketNameCard" id="r2m12">
+						&nbsp;
 					</div>
 				</div>
 			</div>
@@ -228,16 +229,12 @@
 			<div class="match">
 				<div class="matchTitle">MATCH2</div>
 				<div class="braketParticipant">
-					<div class="braketNameCard">
-						<img class="braketProfile" id="r2m21p" alt="매치2,1번 참가자"
-							src="/img/none_profile.png" />
-						<div class="braketName" id="r2m21n">ㅇㅇㅇ</div>
+					<div class="braketNameCard" id="r2m21">
+						&nbsp;
 					</div>
 					<div class="braketName">VS</div>
-					<div class="braketNameCard">
-						<img class="braketProfile" id="r2m22p" alt="매치2,2번 참가자"
-							src="/img/none_profile.png" />
-						<div class="braketName" id="r2m22n">ㅇㅇㅇ</div>
+					<div class="braketNameCard" id="r2m22">
+						&nbsp;
 					</div>
 				</div>
 			</div>
@@ -245,16 +242,12 @@
 			<div class="match">
 				<div class="matchTitle">MATCH3</div>
 				<div class="braketParticipant">
-					<div class="braketNameCard">
-						<img class="braketProfile" id="r2m31p" alt="매치3,1번 참가자"
-							src="/img/none_profile.png" />
-						<div class="braketName" id="r2m31n">ㅇㅇㅇ</div>
+					<div class="braketNameCard" id="r2m31">
+						&nbsp;
 					</div>
 					<div class="braketName">VS</div>
-					<div class="braketNameCard">
-						<img class="braketProfile" id="r2m32p" alt="매치3,2번 참가자"
-							src="/img/none_profile.png" />
-						<div class="braketName" id="r2m32n">ㅇㅇㅇ</div>
+					<div class="braketNameCard" id="r2m32">
+						&nbsp;
 					</div>
 				</div>
 			</div>
@@ -264,16 +257,12 @@
 			<div class="match">
 				<div class="matchTitle">MATCH4</div>
 				<div class="braketParticipant">
-					<div class="braketNameCard">
-						<img class="braketProfile" id="r2m41p" alt="매치4,1번 참가자"
-							src="/img/none_profile.png" />
-						<div class="braketName" id="r2m11n">ㅇㅇㅇ</div>
+					<div class="braketNameCard" id="r2m41">
+						&nbsp;
 					</div>
 					<div class="braketName">VS</div>
-					<div class="braketNameCard">
-						<img class="braketProfile" id="r2m42p" alt="매치4,2번 참가자"
-							src="/img/none_profile.png" />
-						<div class="braketName" id="r2m12n">ㅇㅇㅇ</div>
+					<div class="braketNameCard" id="r2m42">
+						&nbsp;
 					</div>
 				</div>
 			</div>
@@ -281,16 +270,12 @@
 			<div class="match">
 				<div class="matchTitle">MATCH5</div>
 				<div class="braketParticipant">
-					<div class="braketNameCard">
-						<img class="braketProfile" id="r2m51p" alt="매치5,1번 참가자"
-							src="/img/none_profile.png" />
-						<div class="braketName" id="r2m21n">ㅇㅇㅇ</div>
+					<div class="braketNameCard" id="r2m51">
+						&nbsp;
 					</div>
 					<div class="braketName">VS</div>
-					<div class="braketNameCard">
-						<img class="braketProfile" id="r2m52p" alt="매치5,2번 참가자"
-							src="/img/none_profile.png" />
-						<div class="braketName" id="r2m22n">ㅇㅇㅇ</div>
+					<div class="braketNameCard" id="r2m52">
+						&nbsp;
 					</div>
 				</div>
 			</div>
@@ -298,16 +283,12 @@
 			<div class="match">
 				<div class="matchTitle">MATCH6</div>
 				<div class="braketParticipant">
-					<div class="braketNameCard">
-						<img class="braketProfile" id="r2m61p" alt="매치6,1번 참가자"
-							src="/img/none_profile.png" />
-						<div class="braketName" id="r2m61n">ㅇㅇㅇ</div>
+					<div class="braketNameCard" id="r2m61">
+						&nbsp;
 					</div>
 					<div class="braketName">VS</div>
-					<div class="braketNameCard">
-						<img class="braketProfile" id="r2m62p" alt="매치6,2번 참가자"
-							src="/img/none_profile.png" />
-						<div class="braketName" id="r2m62n">ㅇㅇㅇ</div>
+					<div class="braketNameCard" id="r2m62">
+						&nbsp;
 					</div>
 				</div>
 			</div>
@@ -350,15 +331,15 @@
 			<%
 			for (int i = 0; i < 3; i++) {
 			%>
-			<div class="finalBraketNameCard" id="finalProfile<%=i%>">&nbsp;</div>
+			<div class="finalBraketNameCard" id="finalProfile0<%=i%>">&nbsp;</div>
 			<%
 			}
 			%>
 			<div id="VS"><img alt="vs" src="/img/logo/vs.png"></div>
 			<%
-			for (int i = 3; i < 6; i++) {
+			for (int i = 0; i < 3; i++) {
 			%>
-			<div class="finalBraketNameCard" id="finalProfile<%=i%>">&nbsp;</div>
+			<div class="finalBraketNameCard" id="finalProfile1<%=i%>">&nbsp;</div>
 			<%
 			}
 			%>
@@ -369,64 +350,35 @@
 		<div class="contentTitle">
 			<img alt="3라운드 대진표 타이틀" src="/img/part/final_title.png"></>
 		</div>
-		<div class="flex" style="justify-content:center;align-item:center;">
-			<div class="braketColumn">
-				<div class="match" style="margin:120px 25px 0px 25px;">
-					<div id="themeTitle0" class="matchTitle">Theme1</div>
-					<div class="braketParticipant">
-						<div class="braketNameCard">
-							<img class="braketProfile" id="r3m11p" alt="매치1,1번 참가자"
-								src="/img/none_profile.png" />
-							<div class="braketName" id="r3m11n">ㅇㅇㅇ</div>
-						</div>
-						<div class="braketName">
-							<img alt="vs" src="/img/logo/vs.png"/>
-						</div>
-						<div class="braketNameCard">
-							<img class="braketProfile" id="r3m12p" alt="매치1,2번 참가자"
-								src="/img/none_profile.png" />
-							<div class="braketName" id="r3m12n">ㅇㅇㅇ</div>
-						</div>
-					</div>
+		<div class="braketColumn" style="margin-top:10em">
+			<div class="match">
+				<div id="themeTitle0" class="matchTitle">Theme1</div>
+				<div class="braketParticipant">
+					<div class="braketNameCard" id="r3m11">&nbsp;</div>
+					<div class="braketName">VS</div>
+					<div class="braketNameCard" id="r3m12">&nbsp;</div>
 				</div>
+			</div>
 
-				<div class="match" style="margin:120px 25px 0px 25px;">
-					<div  id="themeTitle1" class="matchTitle">Theme2</div>
-					<div class="braketParticipant">
-						<div class="braketNameCard">
-							<img class="braketProfile" id="r3m21p" alt="매치2,1번 참가자"
-								src="/img/none_profile.png" />
-							<div class="braketName" id="r3m21n">ㅇㅇㅇ</div>
-						</div>
-						<div class="braketName">
-							<img alt="vs" src="/img/logo/vs.png"/>
-						</div>
-						<div class="braketNameCard">
-							<img class="braketProfile" id="r3m22p" alt="매치2,2번 참가자"
-								src="/img/none_profile.png" />
-							<div class="braketName" id="r3m22n">ㅇㅇㅇ</div>
-						</div>
-					</div>
+			<div class="match">
+				<div id="themeTitle1" class="matchTitle">Theme2</div>
+				<div class="braketParticipant">
+					<div class="braketNameCard" id="r3m21">&nbsp;</div>
+					<div class="braketName">VS</div>
+					<div class="braketNameCard" id="r3m22">&nbsp;</div>
 				</div>
+			</div>
 
-				<div class="match" style="margin:120px 25px 0px 25px;">
-					<div id="themeTitle2" class="matchTitle">Theme3</div>
-					<div class="braketParticipant">
-						<div class="braketNameCard">
-							<img class="braketProfile" id="r3m31p" alt="매치3,1번 참가자"
-								src="/img/none_profile.png" />
-							<div class="braketName" id="r3m31n">ㅇㅇㅇ</div>
-						</div>
-						<div class="braketName">VS</div>
-						<div class="braketNameCard">
-							<img class="braketProfile" id="r3m32p" alt="매치3,2번 참가자"
-								src="/img/none_profile.png" />
-							<div class="braketName" id="r3m32n">ㅇㅇㅇ</div>
-						</div>
-					</div>
+			<div class="match">
+				<div id="themeTitle2" class="matchTitle">Theme3</div>
+				<div class="braketParticipant">
+					<div class="braketNameCard" id="r3m31">&nbsp;</div>
+					<div class="braketName">VS</div>
+					<div class="braketNameCard" id="r3m32">&nbsp;</div>
 				</div>
 			</div>
 		</div>
+
 
 	</div>
 </body>

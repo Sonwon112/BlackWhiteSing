@@ -104,6 +104,8 @@ src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Medium.otf')format('o
 
 .braketColumn{
 	display:flex;
+	align-items:center;
+	justify-content: center;
 }
 .matchTitle{
 	font-family: "DNFForgedBlade";
@@ -138,8 +140,8 @@ src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Medium.otf')format('o
 	background-image: url("/img/theme/theme_back.png");
 	background-size: contain;
 	background-repeat: no-repeat;
-	width:24vh;
-	height:32vh;
+	width:21vh;
+	height:28vh;
 	border-radius: 20px;
 	opacity: 0;
 }

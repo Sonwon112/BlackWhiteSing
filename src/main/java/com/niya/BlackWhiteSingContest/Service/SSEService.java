@@ -37,8 +37,10 @@ public class SSEService {
 	 * @param data 보낼 데이터
 	 */
 	public void sendDataToStaff(String eventName, String data) {
+		
 		for(String key : emitterMap.keySet()) {
 			if(key.equals("overlay")) continue;
+			log.info(key+"에게 "+data+"를 보냄");
 			sendData(key, eventName, data);
 		}
 	}
@@ -57,6 +59,7 @@ public class SSEService {
 		
 		SseEmitter emitter = emitterMap.get(target);
 		try {
+			
 			emitter.send(SseEmitter.event().name(eventName).data(data));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
