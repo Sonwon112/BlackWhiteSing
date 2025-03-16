@@ -87,7 +87,7 @@ function connectSSE() {
 	});
 	eventSource.addEventListener("setR3Match",(event)=>{
 		let [match,team,idx] = event.data.split(";");
-		
+		applyR3Match(match, team, idx);
 	})
 	
 }
@@ -171,7 +171,7 @@ function setR3Match(match, team ){
 	
 	let postData={
 		type : 20,
-		tag : match+";"+team+";"+arrIndex;
+		tag : match+";"+team+";"+arrIndex,
 		name : staffName
 	}
 	
@@ -181,6 +181,7 @@ function setR3Match(match, team ){
 
 function applyR3Match(match, team, idx){
 	let inputId = `#mi${match}${team}`;
+	console.log(inputId);
 	$(inputId).val(Participant[idx]);
 }
 

@@ -185,6 +185,10 @@ $("document").ready(() => {
 		
 		unsetLeavingOut(round,match);
 	});
+	eventSource.addEventListener("setR3Match",(event)=>{
+		let [match,team,partIdx] = event.data.split(";");
+		setR3BraketNameCard(match,team,partIdx);
+	});
 	
 	//$("#screen5").css("visibility", "visible");
 });
@@ -217,7 +221,7 @@ function unsetLeavingOut(round,match){
 	
 	r1LeaveArr = r1LeaveArr.filter((e)=>{e!=e1 && e!=e2});
 	r2bRoulletIndex = r2bRoulletIndex.filter((e)=>{e!=pv1 && e!=pv2});
-	console.log(r2bRoulletIndex);
+	//console.log(r2bRoulletIndex);
 	
 	e1.animate({opacity:1},{duration:300,fill:"forwards",easing:"ease"});
 	e2.animate({opacity:1},{duration:300,fill:"forwards",easing:"ease"});
@@ -225,10 +229,33 @@ function unsetLeavingOut(round,match){
 
 function setR3TeamNameCard(team, teamOrder, partIndex){
 	let id="#finalProfile"+team+teamOrder;
-	console.log(id);
+	//console.log(id);
 	$(id).css("background-image",`url(/img/part/participant/namecard${partIndex}.png)`)
 	
 	const e = document.querySelector(id);
+	e.animate({
+		transform: [
+			'translateY(20px)',
+			'translateY(0px)'
+		],
+		opacity: [
+			0,
+			1
+		]
+	},
+	{
+		duration: 300,
+		fill: 'forwards',
+		easing: 'ease'
+	});
+}
+
+function setR3BraketNameCard(match, team, partIdx){
+	let id = `#r3m${match}${team}`
+	$(id).css("background-image",`url(/img/part/participant/namecard${partIdx}.png)`);
+	console.log(id);
+	const e = document.querySelector(id);
+	
 	e.animate({
 		transform: [
 			'translateY(20px)',
@@ -357,6 +384,8 @@ function setBraketNameCard(tag){
 		if (i > match) clearInterval(Braket);
 	}, 600);	
 }
+
+
 
 
 function sendServer(endPoint, type, data) {
