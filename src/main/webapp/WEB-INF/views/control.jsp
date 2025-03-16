@@ -97,17 +97,17 @@
 	</div>
 	<div class="innerBox">
 		2라운드[대진표]
-		<button onclick="shuffle(1)">흑팀 추첨</button>
+		<button id="pickBlack" onclick="shuffle(1)">흑팀 추첨</button>
 		<button>흑팀 리셋</button>
 		&nbsp;
-		<button onclick="shuffle(2)">백팀 추첨</button>
+		<button id="pickWhite" onclick="shuffle(2)">백팀 추첨</button>
 		<button>백팀 리셋</button>
 	</div>
 	<div class="innerBox">
 		3라운드[테마]
 		<button onclick="shuffle(3)">섞기</button>
-		<button onclick="changeTheme(0)">리셋</button>
-		<button onclick="changeTheme(1)">뽑기</button>
+		<button onclick="pickTheme(0)">리셋</button>
+		<button onclick="pickTheme(1)">뽑기</button>
 	</div>
 	
 </div>

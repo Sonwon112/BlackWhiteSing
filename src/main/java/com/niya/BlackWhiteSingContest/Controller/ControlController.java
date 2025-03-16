@@ -147,6 +147,28 @@ public class ControlController {
 		return successDTO();
 	}
 	
+	
+	/**
+	 * 테마 뽑기
+	 * @param dto
+	 * @return
+	 */
+    @PostMapping("/pick_theme")
+    public ResponseEntity<ControlDTO> pickTheme(@RequestBody ControlDTO dto){
+
+        if (!service.checkName(dto.getName())) {
+            ControlDTO responseDTO = new ControlDTO();
+            responseDTO.setType(402);
+            responseDTO.setTag("can't found User");
+            ResponseEntity<ControlDTO> response = new ResponseEntity<ControlDTO>(responseDTO, HttpStatus.NOT_FOUND);
+            return response;
+        }
+        
+        service.sendToOverlay( DRAW_THEME_EVENT, dto.getTag());
+        
+        return successDTO();
+    }
+	
 	/**
 	 * 3라운드 팀 구성
 	 * @param dto

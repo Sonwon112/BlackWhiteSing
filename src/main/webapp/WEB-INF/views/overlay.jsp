@@ -158,51 +158,55 @@
 		</div>
 		<!-- 메인 컨텐츠 -->
 		<div class="mainContent">
-			<div class="drawNameCard" style="margin-right: 280px">
+			<div class="drawNameCard" id="r21Profile" style="margin-right:14em;margin-top:-80%">
 				&nbsp;
 			</div>
 			<div id="VS">
 				<img alt="vs" src="/img/logo/vs.png">
 			</div>
-			<div class="drawNameCard" style="margin-left: 280px">
+			<div class="drawNameCard" id="r22Profile" style="margin-left:14em;margin-top:-80%">
 				&nbsp;
 			</div>
 		</div>
 		<!-- 이미지 룰렛 -->
-		<div class="flex" style="margin-left: 1.4%">
-			<div class="r2ImageRoullet" style="margin-left: 1.2em;">
-				<%
-				for (int i = 0; i < 6; i++) {
-					if (i == 2) {
-				%>
-				<img class="roulletProfile" alt="참여자프로필<%=i%>"
-					src="/img/none_profile.png" id="r2b_roulletProfile<%=i %>" />
-				<%
-				} else {
-				%>
-				<img class="roulletProfile" alt="참여자프로필<%=i%>"
-					src="/img/none_profile.png" id="r2b_roulletProfile<%=i %>" />
-				<%
-				}
-				}
-				%>
+		<div class="flex" style="justify-content:space-around;">
+			<div class="flex center mask2" id="r2_mask">
+				<div class="r2ImageRoullet center" id="r2bRoulletOutter"  style="margin-left:11em;">
+					<%
+					for (int i = 0; i < 6; i++) {
+						if (i == 2) {
+					%>
+					<img class="roulletProfile" alt="참여자프로필<%=i%>"
+						src="/img/none_profile.png" id="r2b_roulletProfile<%=i %>" />
+					<%
+					} else {
+					%>
+					<img class="roulletProfile" alt="참여자프로필<%=i%>"
+						src="/img/none_profile.png" id="r2b_roulletProfile<%=i %>" />
+					<%
+					}
+					}
+					%>
+				</div>
 			</div>
-			<div class="r2ImageRoullet" style="margin-left: 1em;">
-				<%
-				for (int i = 0; i < 6; i++) {
-					if (i == 2) {
-				%>
-				<img class="roulletPick" alt="참여자프로필<%=i%>"
-					src="/img/none_profile.png"  id="r2w_roulletProfile<%=i %>" />
-				<%
-				} else {
-				%>
-				<img class="roulletProfile" alt="참여자프로필<%=i%>"
-					src="/img/none_profile.png"  id="r2w_roulletProfile<%=i %>" />
-				<%
-				}
-				}
-				%>
+			<div class="flex center mask2" id="r2_mask">
+				<div class="r2ImageRoullet center" id="r2wRoulletOutter" style="margin-left:11em;">
+					<%
+					for (int i = 0; i < 6; i++) {
+						if (i == 2) {
+					%>
+					<img class="roulletProfile" alt="참여자프로필<%=i%>"
+						src="/img/none_profile.png"  id="r2w_roulletProfile<%=i %>" />
+					<%
+					} else {
+					%>
+					<img class="roulletProfile" alt="참여자프로필<%=i%>"
+						src="/img/none_profile.png"  id="r2w_roulletProfile<%=i %>" />
+					<%
+					}
+					}
+					%>
+				</div>
 			</div>
 		</div>
 

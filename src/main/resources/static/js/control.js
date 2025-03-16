@@ -107,9 +107,34 @@ function changeMode(index) {
 
 	sendServer("change",postData)
 }
+let bPick = false;
+let wPick = false;
 
 // 0 : 1라운드 대진표, 1 : 2라운드 흑팀, 2 : 2라운드 백팀, 3 : 3라운드 테마 추첨
 function shuffle(index) {
+	if(index == 1){
+		if(wPick){
+			$("#pickWhite").removeAttr("disabled");
+			wPick = false;
+		}else{
+			$("#pickBlack").attr("disabled", true);
+			bPick = true;	
+		}
+		
+	}
+	
+	
+	if(index == 2){
+		
+		if(bPick){
+			$("#pickBlack").removeAttr("disabled");
+			bPick = false;	
+		}else{
+			$("#pickWhite").attr("disabled", true);
+			wPick = true;	
+		}
+	}
+	
 	if (!sseConnectState) {
 		alert("서버에 먼저 접속해주세요");
 		return;
@@ -137,6 +162,20 @@ function changeName(index){
 	}
 	
 	sendServer("change_name",postData)
+}
+
+function pickTheme(data) {
+    if (!sseConnectState) {
+            alert("서버에 먼저 접속해주세요");
+            return;
+        }
+    
+            let postData = {
+            type: 3,
+            tag: data,
+            name: staffName
+        }
+     sendServer("pick_theme",postData);
 }
 
 // 0 : 흑팀, 1 : 백팀
