@@ -242,8 +242,8 @@ public class ControlController {
 	
 	@PostMapping("/set_score")
 	public ResponseEntity<ControlDTO> SetScore(@RequestBody ControlDTO dto){
-		
-		
+		//log.info(dto.getName() + "이" + dto.getType() + "을 보냈습니다. : " + dto.getTag());
+		service.setScore(dto.getTag());
 		return successDTO();
 	}
 	

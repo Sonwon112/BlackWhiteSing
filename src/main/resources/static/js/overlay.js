@@ -198,6 +198,10 @@ $("document").ready(() => {
 		let [match,team,partIdx] = event.data.split(";");
 		setR3BraketNameCard(match,team,partIdx);
 	});
+	eventSource.addEventListener("setScore",(event)=>{
+		let [match, pos, score] = event.data.split(";");
+		applyScore(match, pos, score);
+	});
 	eventSource.addEventListener("showWinner",showWinner);
 	eventSource.addEventListener("setWinTeam", (event)=>{
 		let winTeam = event.data.split(",");
@@ -403,7 +407,10 @@ function setBraketNameCard(tag){
 	}, 600);	
 }
 
-
+function applyScore(match,pos,score){
+	let id = `#s${match}${pos}`;
+	$(id).text(score);
+}
 
 
 function sendServer(endPoint, type, data) {

@@ -167,6 +167,15 @@ src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Medium.otf')format('o
 	-webkit-text-stroke:1px #777777;
 }
 
+.score{
+	font-family: "DNFForgedBlade";
+	font-size:3em;
+	color:white;
+	width:100%;
+	text-align:center;
+	-webkit-text-stroke:1px #777777;
+}
+
 .match{
 	width:30%;
 	margin:1em;

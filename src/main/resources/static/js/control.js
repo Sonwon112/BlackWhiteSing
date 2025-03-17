@@ -98,6 +98,10 @@ function connectSSE() {
 		let [match,team,idx] = event.data.split(";");
 		applyR3Match(match, team, idx);
 	})
+	eventSource.addEventListener("setScore",(event)=>{
+		let [match, pos, score] = event.data.split(";");
+		applyScore(match, pos, score);
+	});
 	
 }
 
@@ -287,8 +291,8 @@ function setScore(match,pos){
 	
 	let postData={
 		type:40,
-		tag:`${match};${pos}${score}`,
-		name : staffNmatch
+		tag:`${match};${pos};${score}`,
+		name : staffName
 	}
 	
 	sendServer("set_score",postData);

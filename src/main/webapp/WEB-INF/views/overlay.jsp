@@ -329,7 +329,18 @@
 			</div>
 		</div>
 		<div class="braketColumn">
-		
+			<div class="match flex center" style="height:8vh">
+				<div class="score" id="s11"></div>
+				<div class="score" id="s12"></div>
+			</div>
+			<div class="match flex center" style="height:8vh">
+				<div class="score" id="s21"></div>
+				<div class="score" id="s22"></div>
+			</div>
+			<div class="match flex center" style="height:8vh">
+				<div class="score" id="s31"></div>
+				<div class="score" id="s32"></div>
+			</div>
 		</div>
 	</div>
 	
