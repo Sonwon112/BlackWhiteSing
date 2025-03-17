@@ -55,4 +55,17 @@ public class ControlService {
 		sseService.sendDataToStaff("setR3Match", data);
 	}
 	
+	public void showWinner() {
+		sseService.sendData("overlay", "showWinner", "show");
+	}
+	
+	public void setWinner(String data) {
+		sseService.sendData("overlay", "setWinTeam", data);
+	}
+	
+	public void setScore(String data) {
+		sseService.sendData("overlay", "setScore", data);
+		sseService.sendDataToStaff("setScore", data);
+	}
+	
 }

@@ -52,7 +52,7 @@ $("document").ready(() => {
 	currScreen = $("#screen0");
 
 	// 화면 제어를 위한 배열에 삽입
-	for (let i = 0; i < 8; i++) {
+	for (let i = 0; i < 9; i++) {
 		let id = "#screen" + i
 		drawScreen.push($(id));
 	}
@@ -126,9 +126,6 @@ $("document").ready(() => {
 		}
 	});
 
-	eventSource.addEventListener("drawParticipant", (event) => {
-		//대진표 뽑기
-	});
 
 	eventSource.addEventListener("drawCard", (event) => {
 		// 카드 뽑기
@@ -201,6 +198,12 @@ $("document").ready(() => {
 		let [match,team,partIdx] = event.data.split(";");
 		setR3BraketNameCard(match,team,partIdx);
 	});
+	eventSource.addEventListener("showWinner",showWinner);
+	eventSource.addEventListener("setWinTeam", (event)=>{
+		let winTeam = event.data.split(",");
+		setWinTeam(winTeam);
+	})
+	
 	
 	//$("#screen5").css("visibility", "visible");
 });
@@ -256,7 +259,7 @@ function setR3TeamNameCard(team, teamOrder, partIndex){
 		]
 	},
 	{
-		duration: 300,
+		duration: 800,
 		fill: 'forwards',
 		easing: 'ease'
 	});
@@ -279,7 +282,7 @@ function setR3BraketNameCard(match, team, partIdx){
 		]
 	},
 	{
-		duration: 300,
+		duration: 800,
 		fill: 'forwards',
 		easing: 'ease'
 	});
@@ -375,7 +378,7 @@ function setBraketNameCard(tag){
 			]
 		},
 			{
-				duration: 300,
+				duration: 800,
 				fill: 'forwards',
 				easing: 'ease'
 			});
@@ -390,7 +393,7 @@ function setBraketNameCard(tag){
 			]
 		},
 			{
-				duration: 300,
+				duration: 800,
 				fill: 'forwards',
 				easing: 'ease'
 			});
@@ -440,4 +443,29 @@ function drawn1RoundProfile() {
 
 }
 
+function setWinTeam(teamName){
+	teamName.forEach((e,i)=>{
+		let id = `#w${i}`;
+		$(id).text(e);
+	});
+}
+
+function showWinner(){
+	let e = document.querySelector("#txtWinner");
+	e.animate({
+			transform: [
+				'translateY(20px)',
+				'translateY(0px)'
+			],
+			opacity: [
+				0,
+				1
+			]
+		},
+			{
+				duration: 1500,
+				fill: 'forwards',
+				easing: 'ease'
+			});
+}
 

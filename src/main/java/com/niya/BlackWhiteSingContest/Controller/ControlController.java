@@ -86,6 +86,12 @@ public class ControlController {
 		case "6":
 			log.info("3라운드 팀 편성");
 			break;
+		case "7":
+			log.info("3라운드 팀 대진표");
+			break;
+		case "8":
+			log.info("우승자 표시");
+			break;
 		}
 		service.sendToOverlay(CHANGE_SCREEN_EVENT, dto.getTag());
 
@@ -213,6 +219,29 @@ public class ControlController {
 				break;
 		}
 		
+		
+		
+		return successDTO();
+	}
+	
+	@PostMapping("/show_winner")
+	public ResponseEntity<ControlDTO> ShowWinner(@RequestBody ControlDTO dto){
+		log.info(dto.getName() + "이" + dto.getType() + "을 보냈습니다. : " + dto.getTag());
+		switch(dto.getType()) {
+		case 30:
+			service.showWinner();
+			break;
+		case 31:
+			service.setWinner(dto.getTag());
+			break;
+		}
+		
+		
+		return successDTO();
+	}
+	
+	@PostMapping("/set_score")
+	public ResponseEntity<ControlDTO> SetScore(@RequestBody ControlDTO dto){
 		
 		
 		return successDTO();

@@ -9,7 +9,10 @@ let Participant = ["니야", "그나로","뮬","나츠키","히미캉","꾸이�
 			   		 "레드","퀸슈아","이신","루나밍","햄쿠비","코오리"];
 
 let ThemeArr = ["테마1", "테마2", "테마3", "테마4", "테마5", "테마6"];
-				   
+
+let r3B = [];
+let r3W = [];
+		   
 let staffName;
 let sseConnectState = false;
 
@@ -25,6 +28,12 @@ $("document").ready(() => {
 		let id = "#pInput"+i;
 		$(id).val(Participant[i]);
 	}
+	
+	$("input[name='winTeam']").change(function() {
+		var winVal = $("input[name='winTeam']:checked").val();
+		//console.log(winVal);
+		setWinTeam(winVal);
+	});
 });
 
 function connectSSE() {
@@ -50,7 +59,7 @@ function connectSSE() {
 		}
 	});
 	eventSource.addEventListener("rsp",(event)=>{
-		console.log(event.data);
+		//console.log(event.data);
 		let [team,hand] = event.data.split(";");
 		text = hand =="0" ? "바위" : hand=="1" ? "가위" : "보";
 				
@@ -188,6 +197,15 @@ function setTeam(team, index){
 		alert("잘못된 닉네임입니다.");
 		return;
 	}
+	switch(team){
+		case 0:
+			r3B.push(inputName);
+			break;
+		case 1:
+			r3W.push(inputName);
+			break; 
+	}
+	
 	
 	let postData = {
 		type : team,
@@ -198,6 +216,7 @@ function setTeam(team, index){
 	sendServer("set_team",postData)
 }
 
+// 3라운드 대진표 편성
 function setR3Match(match, team ){
 	let inputId = `#mi${match}${team}`;
 	let inputName = $(inputId).val();
@@ -220,7 +239,7 @@ function setR3Match(match, team ){
 
 function applyR3Match(match, team, idx){
 	let inputId = `#mi${match}${team}`;
-	console.log(inputId);
+	//console.log(inputId);
 	$(inputId).val(Participant[idx]);
 }
 
@@ -237,7 +256,7 @@ function applyLeavingOut(round,match,pos){
 	posVal = pos % 2 == 1 ? (match-1)*2 : (match-1)*2+1;
 	let id = `#r${round}Txt${posVal}`
 	
-	console.log(id);
+	//console.log(id);
 	$(id).css("text-decoration","line-through");
 	let btnClass = `.r${round}m${match}`;
 	$(btnClass).attr("disabled",true);
@@ -247,7 +266,7 @@ function resetLeavingOut(round,match){
 	let postData={
 		type : 11,
 		tag : round+";"+match,
-		name : "staffName"
+		name : staffName
 	}
 	sendServer("leaving_out",postData);
 }
@@ -262,6 +281,55 @@ function applyResetLeavingOut(round,match){
 	$(btnClass).attr("disabled",false);
 }
 
+function setScore(match,pos){
+	let id = `#si${match}${pos}`
+	let score = $(id).val();
+	
+	let postData={
+		type:40,
+		tag:`${match};${pos}${score}`,
+		name : staffNmatch
+	}
+	
+	sendServer("set_score",postData);
+}
+
+function applyScore(match,pos,score){
+	let id = `#si${match}${pos}`;
+	$(id).val(score);
+}
+
+function showWinner(){
+	let postData = {
+		type : 30,
+		tag : "showWin",
+		name : staffName
+	}
+	
+	sendServer("show_winner", postData);
+}
+
+function setWinTeam(winTeam){
+	
+	let postData={
+		type : 31,
+		tag : "",
+		name : staffName
+	}
+	
+	switch(winTeam){
+		case "0":
+			//console.log(r3B);
+			postData.tag = r3B+"";
+			break;
+		case "1":
+			//console.log(r3W);
+			postData.tag = r3W+"";
+			break;
+	}
+	
+	sendServer("show_winner",postData);
+}
 
 function sendServer(endPoint, postData){
 	
@@ -281,5 +349,7 @@ function sendServer(endPoint, postData){
 			console.log(err)
 		});
 }
+
+
 
 

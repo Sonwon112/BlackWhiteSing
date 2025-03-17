@@ -83,7 +83,12 @@
 	</div>
 	<div class="innerBox">
 		우승자 발표
-		<button onclick="changeMode(5)">공개하기</button>
+		<button onclick="changeMode(8)">우승자화면 표시</button>
+		<button onclick="showWinner()">우승자 표시</button>
+		<label for="opB">흑팀</label>
+		<input type="radio" id="opB" name="winTeam" value="0">
+		<label for="opW">백팀</label>
+		<input type="radio" id="opW" name="winTeam" value="1">
 	</div>
 </div>
 <!-- 추첨 박스 -->
@@ -198,11 +203,13 @@
 		<div class="flex">
 			1.<p id="theme0">테마 1</p>&ensp;
 			<!-- Match1의 흑 -->
-			<input type="text" placeholder="흑" id="mi11"/>&nbsp;
+			<input class="r3Input" type="text" placeholder="흑" id="mi11"/>&nbsp;
+			<input class="r3Input" type="text" placeholder="점수" id="si11" oninput="setScore(1,1)"/>&nbsp;
 			<button onclick="setR3Match(1,1)">입력</button>&nbsp;
 			<button class="r3m1" onclick="setLeavingOut(3,1,1)">탈락</button>&nbsp;
 			<!-- Match1의 백 -->
-			<input type="text" placeholder="백" id="mi12"/>&nbsp;
+			<input class="r3Input" type="text" placeholder="백" id="mi12"/>&nbsp;
+			<input class="r3Input" type="text" placeholder="점수" id="si12" oninput="setScore(1,2)"/>&nbsp;
 			<button onclick="setR3Match(1,2)">입력</button>&nbsp;
 			<button class="r3m1" onclick="setLeavingOut(3,1,2)">탈락</button>&nbsp;
 			<button onclick="resetLeavingOut(3,1)">리셋</button>
@@ -210,11 +217,13 @@
 		<div class="flex">
 			2.<p id="theme1">테마 2</p>&ensp; 
 			<!-- Match2의 흑 -->
-			<input type="text" placeholder="흑" id="mi21"/>&nbsp;
+			<input class="r3Input" type="text" placeholder="흑" id="mi21"/>&nbsp;
+			<input class="r3Input" type="text" placeholder="점수" id="si21" oninput="setScore(2,1)"/>&nbsp;
 			<button onclick="setR3Match(2,1)">입력</button>&nbsp;
 			<button class="r3m2" onclick="setLeavingOut(3,2,1)">탈락</button>&nbsp;
 			<!-- Match2의 백 -->
-			<input type="text" placeholder="백" id="mi22"/>&nbsp;
+			<input class="r3Input" type="text" placeholder="백" id="mi22"/>&nbsp;
+			<input class="r3Input" type="text" placeholder="점수" id="si22" oninput="setScore(2,2)"/>&nbsp;
 			<button onclick="setR3Match(2,2)">입력</button>&nbsp;
 			<button class="r3m2" onclick="setLeavingOut(3,2,2)">탈락</button>&nbsp;
 			<button onclick="resetLeavingOut(3,2)">리셋</button>
@@ -222,11 +231,13 @@
 		<div class="flex">
 			3.<p id="theme2">테마 3</p>&ensp;
 			<!-- Match3의 흑 -->
-			<input type="text" placeholder="흑" id="mi31"/>&nbsp;
+			<input class="r3Input" type="text" placeholder="흑" id="mi31"/>&nbsp;
+			<input class="r3Input" type="text" placeholder="점수" id="si31" oninput="setScore(3,1)"/>&nbsp;
 			<button onclick="setR3Match(3,1)">입력</button>&nbsp;
 			<button class="r3m3" onclick="setLeavingOut(3,3,1)">탈락</button>&nbsp;
 			<!-- Match3의 백 -->
-			<input type="text" placeholder="백" id="mi32"/>&nbsp;
+			<input class="r3Input" type="text" placeholder="백" id="mi32"/>&nbsp;
+			<input class="r3Input" type="text" placeholder="점수" id="si32" oninput="setScore(3,2)"/>&nbsp;
 			<button onclick="setR3Match(3,2)">입력</button>&nbsp;
 			<button class="r3m3" onclick="setLeavingOut(3,3,2)">탈락</button>&nbsp;
 			<button onclick="resetLeavingOut(3,3)">리셋</button>
