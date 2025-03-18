@@ -60,7 +60,10 @@ public class ControlService {
 	}
 	
 	public void setWinner(String data) {
-		sseService.sendData("overlay", "setWinTeam", data);
+		String winTeamNames = data.split(";")[0];
+		String winTeamIndex = data.split(";")[1];
+		sseService.sendDataToStaff("setWinTeam", winTeamIndex);
+		sseService.sendData("overlay", "setWinTeam", winTeamNames);
 	}
 	
 	public void setScore(String data) {
@@ -68,4 +71,13 @@ public class ControlService {
 		sseService.sendDataToStaff("setScore", data);
 	}
 	
+	public void setRound(int data) {
+		pickRepo.setCurrRound(data);
+		sseService.sendDataToStaff("setRound", ""+data);
+	}
+	
+	public void resetRoullet(int round) {
+		sseService.sendData("overlay", "resetRoullet", ""+round);
+	}
+
 }

@@ -86,29 +86,28 @@
 		<button onclick="changeMode(8)">우승자화면 표시</button>
 		<button onclick="showWinner()">우승자 표시</button>
 		<label for="opB">흑팀</label>
-		<input type="radio" id="opB" name="winTeam" value="0">
+		<input type="radio" id="op0" name="winTeam" value="0">
 		<label for="opW">백팀</label>
-		<input type="radio" id="opW" name="winTeam" value="1">
+		<input type="radio" id="op1" name="winTeam" value="1">
 	</div>
 </div>
 <!-- 추첨 박스 -->
 <div class="outerBox">
 	<div class="title">추첨</div>
 	<hr/>
-	<div class="innerBox">
+	<div class="innerBox c1">
 		1라운드[대진표]
 		<button onclick="shuffle(0)">추첨</button>
-		<button>리셋</button>
+		<button onclick="resetRoullet(0)">리셋</button>
 	</div>
-	<div class="innerBox">
+	<div class="innerBox c2">
 		2라운드[대진표]
 		<button id="pickBlack" onclick="shuffle(1)">흑팀 추첨</button>
-		<button>흑팀 리셋</button>
 		&nbsp;
 		<button id="pickWhite" onclick="shuffle(2)">백팀 추첨</button>
-		<button>백팀 리셋</button>
+		<button id="resetWhite" onclick="resetRoullet(2)">2라운드 리셋</button>
 	</div>
-	<div class="innerBox">
+	<div class="innerBox c3">
 		3라운드[테마]
 		<button onclick="shuffle(3)">섞기</button>
 		<button onclick="pickTheme(0)">리셋</button>
@@ -117,7 +116,7 @@
 	
 </div>
 <!-- 1라운드 대진표 -->
-<div class="outerBox">
+<div class="outerBox c1">
 	<details>
 		<summary class="title">
 			1R 대진표
@@ -150,7 +149,7 @@
 	</details>
 </div>
 <!-- 2라운드 대진표 -->
-<div class="outerBox">
+<div class="outerBox c2">
 	<details>
 		<summary class="title">2R 대진표</summary>
 		<hr/>
@@ -181,7 +180,7 @@
 	</details>
 </div>
 <!-- 3라운드 대진표 -->
-<div class="outerBox">
+<div class="outerBox c3">
 	<details>
 		<summary class="title">3R 대진표</summary>
 		<hr/>

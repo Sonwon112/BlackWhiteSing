@@ -1,6 +1,5 @@
-/**
- * 
- */
+let round;
+
 let R1_participantDiv = [];
 let R2_participantDiv = [];
 
@@ -103,6 +102,29 @@ function connectSSE() {
 		applyScore(match, pos, score);
 	});
 	
+	eventSource.addEventListener("setRound", (event)=>{
+		round = Number(event.data);
+		console.log(round);
+		controlTools();
+	});
+	
+	eventSource.addEventListener("setWinTeam", (event)=>{
+		let id = `#op${event.data}`;
+		$(id).prop("checked",true);
+	});
+	
+}
+
+function controlTools(){
+	for(let i = 1; i <= 3; i++){
+		let className = `.c${i} button`;
+		if(i == round){
+			$(className).attr("disabled",false);
+			continue;
+		}
+		
+		$(className).attr("disabled",true);
+	}
 }
 
 function changeMode(index) {
@@ -125,6 +147,12 @@ let wPick = false;
 
 // 0 : 1라운드 대진표, 1 : 2라운드 흑팀, 2 : 2라운드 백팀, 3 : 3라운드 테마 추첨
 function shuffle(index) {
+	
+	if (!sseConnectState) {
+		alert("서버에 먼저 접속해주세요");
+		return;
+	}
+	
 	if(index == 1){
 		if(wPick){
 			$("#pickWhite").removeAttr("disabled");
@@ -147,11 +175,6 @@ function shuffle(index) {
 			wPick = true;	
 		}
 	}
-	
-	if (!sseConnectState) {
-		alert("서버에 먼저 접속해주세요");
-		return;
-	}
 
 	let postData = {
 		type: 2,
@@ -162,7 +185,28 @@ function shuffle(index) {
 	sendServer("shuffle",postData)
 }
 
+function resetRoullet(index){
+	
+	if(index == "2"){
+		$("#pickBlack").attr("disabled",false);
+		$("#pickWhite").attr("disabled",false);
+	}
+	
+	let postData = {
+		type : 51,
+		tag : `${index}`,
+		name : staffName
+	}
+	
+	sendServer("reset_roullet", postData);
+}
+
 function changeName(index){
+	if (!sseConnectState) {
+		alert("서버에 먼저 접속해주세요");
+		return;
+	}
+	
 	let inputId = "#pInput"+index;
 	let changedName = $(inputId).val();
 	
@@ -193,6 +237,11 @@ function pickTheme(data) {
 
 // 0 : 흑팀, 1 : 백팀
 function setTeam(team, index){
+	if (!sseConnectState) {
+		alert("서버에 먼저 접속해주세요");
+		return;
+	}
+	
 	let inputId = "#t"+team+""+index;
 	let inputName = $(inputId).val();
 	
@@ -222,6 +271,11 @@ function setTeam(team, index){
 
 // 3라운드 대진표 편성
 function setR3Match(match, team ){
+	if (!sseConnectState) {
+		alert("서버에 먼저 접속해주세요");
+		return;
+	}
+	
 	let inputId = `#mi${match}${team}`;
 	let inputName = $(inputId).val();
 	
@@ -249,6 +303,11 @@ function applyR3Match(match, team, idx){
 
 
 function setLeavingOut(round,match,pos){
+	if (!sseConnectState) {
+		alert("서버에 먼저 접속해주세요");
+		return;
+	}
+	
 	let postData = {
 		type : 10,
 		tag : round+";"+match+";"+pos,
@@ -267,6 +326,11 @@ function applyLeavingOut(round,match,pos){
 }
 
 function resetLeavingOut(round,match){
+	if (!sseConnectState) {
+		alert("서버에 먼저 접속해주세요");
+		return;
+	}
+	
 	let postData={
 		type : 11,
 		tag : round+";"+match,
@@ -286,6 +350,11 @@ function applyResetLeavingOut(round,match){
 }
 
 function setScore(match,pos){
+	if (!sseConnectState) {
+		alert("서버에 먼저 접속해주세요");
+		return;
+	}
+	
 	let id = `#si${match}${pos}`
 	let score = $(id).val();
 	
@@ -304,6 +373,11 @@ function applyScore(match,pos,score){
 }
 
 function showWinner(){
+	if (!sseConnectState) {
+		alert("서버에 먼저 접속해주세요");
+		return;
+	}
+	
 	let postData = {
 		type : 30,
 		tag : "showWin",
@@ -314,6 +388,10 @@ function showWinner(){
 }
 
 function setWinTeam(winTeam){
+	if (!sseConnectState) {
+		alert("서버에 먼저 접속해주세요");
+		return;
+	}
 	
 	let postData={
 		type : 31,
@@ -324,11 +402,11 @@ function setWinTeam(winTeam){
 	switch(winTeam){
 		case "0":
 			//console.log(r3B);
-			postData.tag = r3B+"";
+			postData.tag = r3B+";"+winTeam;
 			break;
 		case "1":
 			//console.log(r3W);
-			postData.tag = r3W+"";
+			postData.tag = r3W+";"+winTeam;
 			break;
 	}
 	

@@ -3,11 +3,14 @@
  */
 let drawScreen = []; // 0 : 로고 표시, 1 : 1라운드, 2 : 1라운드, 3 : 2라운드, 4 : 2라운드, 5 : 테마 추첨, 6 : 파이널
 let currScreen;
+let backup_r1RuolletIndex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 let r1RoulletIndex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 let r1LeaveArr = []
 
+let backup_r2bRoulletIndex = [];
 let r2bRoulletIndex = []
-let r2wRoulletIndex = [12,13,14,15,16,17]
+let backup_r2wRoulletIndex = [12,13,14,15,16,17];
+let r2wRoulletIndex = [12,13,14,15,16,17];
 
 let themeCard = [];
 
@@ -115,7 +118,7 @@ $("document").ready(() => {
 		// 2라운드 대진표 추첨
 		if(event.data=="3"){
 			if(r2bRoulletIndex.length == 6){
-				
+				backup_r2bRoulletIndex = [...r2bRoulletIndex]
 				for(let i = 0; i < r2bRoulletIndex.length; i++){
 					let img = new Image();
 					img.src = "/img/roullet/roullet" + r2bRoulletIndex[i]+".webp";
@@ -208,6 +211,9 @@ $("document").ready(() => {
 		setWinTeam(winTeam);
 	})
 	
+	eventSource.addEventListener("resetRoullet", (event)=>{
+		resetRoullet(Number(event.data));
+	})
 	
 	//$("#screen5").css("visibility", "visible");
 });
@@ -439,16 +445,6 @@ function sendServer(endPoint, type, data) {
 
 }
 
-
-function drawn1RoundProfile() {
-	let cycle = Math.floor(Math.random() * 15 + 20);
-	let count = 1;
-
-	let roullet = setInterval(() => {
-
-	});
-
-}
 
 function setWinTeam(teamName){
 	teamName.forEach((e,i)=>{

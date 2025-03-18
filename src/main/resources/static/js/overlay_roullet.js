@@ -92,7 +92,7 @@ function checkR2PickMatchEnd(round){
 	}
 	
 	if(round == 2 && r2bRoulletIndex.length == 1){
-		move(round, 1, 0, 0, [10, 3], [time, time*2, time*4]);
+		move(round, 1);
 		console.log(r2bRoulletIndex);
 		r2bPickProfile = r2BlackImgs[pickIndex];
 		r2bPickProfile.className = "roulletPick";
@@ -101,7 +101,7 @@ function checkR2PickMatchEnd(round){
 	}
 	
 	if(round == 3 && r2wRoulletIndex.length == 1){
-		move(round, 1, 0, 0, [10, 3], [time, time*2, time*4]);
+		move(round, 1);
 		r2wPickProfile = r2WhiteImgs[pickIndex];
 		r2wPickProfile.className = "roulletPick";
 		PickPart(round);
@@ -126,15 +126,10 @@ function roulletRotate(round){
 				r1RoulletImgs = r1RoulletImgs.filter((e)=>e!=pickProfile);
 				pickProfile.remove();
 				r1Roullet.style.marginLeft = r1RoulletImgs.length%2 == 0 ? "5.5em" : "0em";
-				if(r1RoulletImgs.length == 9){
-					$("#r1_mask").animate({width:"650px"},800);
-				}else if(r1RoulletImgs.length == 6){
-					$("#r1_mask").animate({width:"180px"},800);
-				}
 			}
 			pickIndex = r1RoulletImgs.length%2 == 0 ? (r1RoulletImgs.length/2) - 1 : Math.floor(r1RoulletImgs.length/2);
 			if(r1RoulletIndex.length == 1){
-				move(round, 1, 0, 0, [10, 3], [time, time*2, time*4]);
+				move(round, 1);
 				pickProfile = r1RoulletImgs[pickIndex];
 				pickProfile.className = "roulletPick";
 				PickPart(round);
@@ -156,15 +151,57 @@ function roulletRotate(round){
 	}
 	
 	
-	move(round, cycle, 0, 0, [10, 3], [time, time*2, time*4]);
+	move(round, cycle);
 
 }
 
 
-
-function move(round, total, currCnt,idx, changeCnt, changeTime){
+let cloneArr=[];
+function move(round, total){
+	switch (round){
+		case 1:
+			let remain = total % r1RoulletIndex.length;
+			let count = Math.floor(total/r1RoulletIndex.length);
+			//console.log(remain+", "+count);
+			
+			for(let i = 0; i < count; i++){
+				for(let j = r1RoulletIndex.length-1; j>=0; j--){
+					let clone = r1RoulletImgs[j].cloneNode(true);
+					
+					r1Roullet.appendChild(clone);
+					
+					r1RoulletImgs.push
+				}
+			}
+			
+			for(let i = r1RoulletIndex.length-1; i < r1RoulletIndex.length-1-remain; i-- ){
+				let clone = r1RoulletImgs[j].cloneNode(true);
+					
+				r1Roullet.appendChild(clone);
+					
+			}
+			
+			r1Roullet.animate({
+				transform:[
+					`translateX(0em)`,
+					`translateX(${0.2*(count*r1RoulletIndex.length+remain)})`]
+				},
+				{
+					duration: 2000,
+					fill: 'forwards',
+					easing: 'ease-in-out'
+				});
+			
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+	}
 	
-	if(total == currCnt){
+	
+	
+	/*if(total == currCnt){
 		setTimeout(()=>{
 			//console.log("");
 			switch(round){
@@ -192,9 +229,7 @@ function move(round, total, currCnt,idx, changeCnt, changeTime){
 		}, changeTime[idx]+500);	
 		return;
 	} 
-	if(total - currCnt <= changeCnt[idx]){
-		idx++;
-	}
+	
 	dura = changeTime[idx];
 	switch(round){
 		case 1:
@@ -212,11 +247,8 @@ function move(round, total, currCnt,idx, changeCnt, changeTime){
 			break;
 	}
 	
-	if(total == 1) return;
-	setTimeout(()=>{
-		if(total-1 == currCnt) isLast = true;
-		move(round, total, ++currCnt, idx, changeCnt, changeTime);
-	},dura);
+	if(total == 1) return;*/
+
 }
 
 function r1Anim(){
@@ -452,4 +484,65 @@ function PickPart(round){
 				
 				break;
 		}
+}
+
+function resetRoullet(round){
+	let tmpImg;
+	switch(round){
+		case 0:
+			// 1라운드
+			r1Roullet.innerText='';
+			
+			isFullPick = true;
+			checkIsFull();
+			r1RoulletImgs = [];
+			r1Pick = [];
+			
+			for(let i = 0; i < backup_r1RuolletIndex.length; i++){
+				tmpImg = document.createElement("img");
+				tmpImg.id = `r1_roulletProfile${i}`;
+				tmpImg.className = "roulletProfile";
+				tmpImg.src = "/img/roullet/roullet" + backup_r1RuolletIndex[i]+".webp"
+				
+				r1RoulletIndex = backup_r1RuolletIndex;
+				r1RoulletImgs.push(tmpImg);
+				r1Roullet.appendChild(tmpImg);
+			}
+			break;
+		case 2:
+			// 2라운드
+			isFullPick2B = true;
+			isFullPick2W = true;
+			r2checkIsFull();
+			r2BlackImgs = [];
+			r2bPick=[];
+			r2WhiteImgs=[];
+			r2wPick = [];
+			
+			r2bRoullet.innerText='';
+			r2wRoullet.innerText='';
+			
+			for(let i = 0; i < backup_r2bRoulletIndex.length; i++){
+				tmpImg = document.createElement("img");
+				tmpImg.id = `r2b_roulletProfile${i}`;
+				tmpImg.className = "roulletProfile";
+				tmpImg.src = "/img/roullet/roullet" + backup_r2bRoulletIndex[i]+".webp"
+				
+				r2bRoulletIndex = backup_r2bRoulletIndex;
+				r2BlackImgs.push(tmpImg);
+				r2bRoullet.appendChild(tmpImg);
+			}
+			
+			for(let i = 0; i < backup_r2wRoulletIndex.length; i++){
+				tmpImg = document.createElement("img");
+				tmpImg.id = `r2b_roulletProfile${i}`;
+				tmpImg.className = "roulletProfile";
+				tmpImg.src = "/img/roullet/roullet" + backup_r2wRoulletIndex[i]+".webp"
+				
+				r2wRoulletIndex = backup_r2wRoulletIndex;
+				r2WhiteImgs.push(tmpImg);
+				r2wRoullet.appendChild(tmpImg);
+			}
+			break;
+	}
 }

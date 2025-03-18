@@ -5,7 +5,11 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Repository
+@Getter @Setter
 public class PickRepository {
 	
 	private String[] Participant = {"니야", "그나로","뮬","나츠키","히미캉","꾸이링",
@@ -14,6 +18,8 @@ public class PickRepository {
 	private List<Integer> r1Pick = new ArrayList<Integer>();
 	private List<Integer> r2Pick = new ArrayList<Integer>();
 	private List<Integer> r3Pick = new ArrayList<Integer>();
+	
+	private int currRound = 0;
 
 	public void setPick(int round, String[] pickArr) {
 		switch (round) {
@@ -42,10 +48,5 @@ public class PickRepository {
 	public void changeNmae(int index, String name) {
 		Participant[index] = name;
 	}
-	
-	public List<Integer> getR1Pick(){return r1Pick;}
-	public List<Integer> getR2Pick(){return r2Pick;}
-	public List<Integer> getR3Pick(){return r3Pick;}
-	public String[] getParticipant() {return Participant;};
 
 }
