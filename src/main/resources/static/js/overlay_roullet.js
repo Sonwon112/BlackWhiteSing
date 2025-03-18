@@ -33,6 +33,8 @@ async function checkIsFull(){
 		easing: 'ease'
 	});
 	
+	
+	
 	return new Promise((r)=>{
 		setTimeout(r,1200)
 		isFullPick = false;
@@ -67,11 +69,13 @@ async function r2checkIsFull(){
 		easing: 'ease'
 	});
 	
+	
 	return new Promise((r)=>{
 		setTimeout(r,1200)
 		isFullPick2B = false;
 		isFullPick2W = false;
 	});
+	
 }
 
 
@@ -108,6 +112,8 @@ function checkR2PickMatchEnd(round){
 		return false;
 	}
 	
+	
+	
 	return true;
 }
 
@@ -117,17 +123,20 @@ let isLast = false;
 
 function roulletRotate(round){
 	
-	let cycle = Math.floor(Math.random()*20+20);
+	let cycle = Math.floor(Math.random()*30+40);
 	
 	switch(round){
 		case 1:
+			$("#r1_mask").animate({width:`${16*11*r1RoulletImgs.length}px`},800);
 			pickProfile.className="roulletProfile";
 			if(r1Pick.length != 0){
 				r1RoulletImgs = r1RoulletImgs.filter((e)=>e!=pickProfile);
 				pickProfile.remove();
-				r1Roullet.style.marginLeft = r1RoulletImgs.length%2 == 0 ? "5.5em" : "0em";
+				if(r1Pick.length == 0) r1Roullet.style.marginLeft = "5.5em"; 
+				else r1Roullet.style.marginLeft = r1Pick.length%2 == 0 ? "5.5em" : "0em";
 			}
-			pickIndex = r1RoulletImgs.length%2 == 0 ? (r1RoulletImgs.length/2) - 1 : Math.floor(r1RoulletImgs.length/2);
+			if(r1Pick.length == 0) (r1Pick.length/2);
+			else pickIndex = r1Pick.length%2 == 0 ? (r1Pick.length/2) : Math.floor(r1Pick.length/2);
 			if(r1RoulletIndex.length == 1){
 				move(round, 1);
 				pickProfile = r1RoulletImgs[pickIndex];
@@ -158,6 +167,7 @@ function roulletRotate(round){
 
 let cloneArr=[];
 function move(round, total){
+	console.log(total);
 	switch (round){
 		case 1:
 			let remain = total % r1RoulletIndex.length;
@@ -165,33 +175,47 @@ function move(round, total){
 			//console.log(remain+", "+count);
 			
 			for(let i = 0; i < count; i++){
-				for(let j = r1RoulletIndex.length-1; j>=0; j--){
+				for(let j = 0; j < r1RoulletIndex.length; j++){
 					let clone = r1RoulletImgs[j].cloneNode(true);
-					
 					r1Roullet.appendChild(clone);
-					
-					r1RoulletImgs.push
+					r1RoulletImgs.push(clone);
 				}
 			}
 			
-			for(let i = r1RoulletIndex.length-1; i < r1RoulletIndex.length-1-remain; i-- ){
-				let clone = r1RoulletImgs[j].cloneNode(true);
-					
+			for(let i = 0; i < remain ; i++ ){
+				let clone = r1RoulletImgs[i].cloneNode(true);
 				r1Roullet.appendChild(clone);
-					
+				r1RoulletImgs.push(clone);
 			}
 			
-			r1Roullet.animate({
+			r1Anims = r1Roullet.animate({
 				transform:[
 					`translateX(0em)`,
-					`translateX(${0.2*(count*r1RoulletIndex.length+remain)})`]
+					`translateX(${-11*(count*r1RoulletIndex.length+remain)}em)`]
 				},
 				{
-					duration: 2000,
+					duration: 200*total,
 					fill: 'forwards',
-					easing: 'ease-in-out'
+					easing: 'ease-out'
 				});
 			
+			r1Anims.finished.then(()=>{
+				for(let i = 0; i < r1RoulletImgs.length-(12-r1Pick.length); i++){
+					r1RoulletImgs[i].remove();
+					
+				}
+				
+				r1RoulletImgs = r1RoulletImgs.slice(r1RoulletImgs.length-(12-r1Pick.length))
+				console.log(r1RoulletImgs);
+				r1Roullet.animate({transform:[`translateX(0em)`]},{duration: 0,fill: 'forwards',easing: 'linear'});
+				
+				pickIndex = r1RoulletImgs.length%2 == 0 ? (r1RoulletImgs.length/2) - 1 : Math.floor(r1RoulletImgs.length/2);
+				console.log(pickIndex);
+				pickProfile = r1RoulletImgs[pickIndex];
+				pickProfile.className = "roulletPick";
+				PickPart(round);
+			});
+				
 			break;
 		case 2:
 			break;
