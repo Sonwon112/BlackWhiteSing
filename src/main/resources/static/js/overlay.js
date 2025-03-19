@@ -317,8 +317,9 @@ function setBraketNameCard(tag){
 			
 			if(r1Pick.length < 12){
 				// 테스트 데이터
-				targetArr = [2,3,4,1,5,8,7,6,9,10,11,0];
-				r1Pick = targetArr;
+				//targetArr = [2,3,4,1,5,8,7,6,9,10,11,0];
+				//r1Pick = targetArr;
+				return;
 			}else{
 				targetArr = r1Pick;
 			}
@@ -335,8 +336,9 @@ function setBraketNameCard(tag){
 			
 			if(r2bPick.length < 6){
 				// 테스트 데이터
-				targetArr = [2,3,4,1,5,2,7,1,2,10,11,0];
-				r2Pick = targetArr;
+				//targetArr = [2,3,4,1,5,2,7,1,2,10,11,0];
+				//r2Pick = targetArr;
+				return;
 			}else{
 				for(let i =0; i < r2bPick.length; i++){
 					console.log(r2bPick[i]+","+r2wPick);

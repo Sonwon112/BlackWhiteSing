@@ -188,32 +188,35 @@ function move(round, total){
 				r1RoulletImgs.push(clone);
 			}
 			
-			r1Anims = r1Roullet.animate({
-				transform:[
-					`translateX(0em)`,
-					`translateX(${-11*(count*r1RoulletIndex.length+remain)}em)`]
-				},
-				{
-					duration: 200*total,
-					fill: 'forwards',
-					easing: 'ease-out'
-				});
+			let partLength = (-11*(count*r1RoulletIndex.length+remain))/10;
+			
+			r1Anims = r1Roullet.animate(
+				[{transform:`translateX(0em)`, offset : 0},
+				{transform:`translateX(${partLength * 4}em)`, offset : 0.1},
+				{transform:`translateX(${partLength * 6}em)`, offset : 0.3},
+				{transform:`translateX(${partLength * 8}em)`, offset : 0.6},
+				{transform:`translateX(${partLength * 10}em)`, offset : 1}],
+				{duration: 100*total,fill: 'forwards',easing: 'ease'}
+				);
 			
 			r1Anims.finished.then(()=>{
-				for(let i = 0; i < r1RoulletImgs.length-(12-r1Pick.length); i++){
-					r1RoulletImgs[i].remove();
+				setTimeout(()=>{
+					for(let i = 0; i < r1RoulletImgs.length-(12-r1Pick.length); i++){
+						r1RoulletImgs[i].remove();
+						
+					}
 					
-				}
+					r1RoulletImgs = r1RoulletImgs.slice(r1RoulletImgs.length-(12-r1Pick.length))
+					console.log(r1RoulletImgs);
+					r1Roullet.animate({transform:[`translateX(0em)`]},{duration: 0,fill: 'forwards',easing: 'linear'});
+					
+					pickIndex = r1RoulletImgs.length%2 == 0 ? (r1RoulletImgs.length/2) - 1 : Math.floor(r1RoulletImgs.length/2);
+					console.log(pickIndex);
+					pickProfile = r1RoulletImgs[pickIndex];
+					pickProfile.className = "roulletPick";
+					PickPart(round);	
+				}, 500);
 				
-				r1RoulletImgs = r1RoulletImgs.slice(r1RoulletImgs.length-(12-r1Pick.length))
-				console.log(r1RoulletImgs);
-				r1Roullet.animate({transform:[`translateX(0em)`]},{duration: 0,fill: 'forwards',easing: 'linear'});
-				
-				pickIndex = r1RoulletImgs.length%2 == 0 ? (r1RoulletImgs.length/2) - 1 : Math.floor(r1RoulletImgs.length/2);
-				console.log(pickIndex);
-				pickProfile = r1RoulletImgs[pickIndex];
-				pickProfile.className = "roulletPick";
-				PickPart(round);
 			});
 				
 			break;
