@@ -1,0 +1,30 @@
+@charset "UTF-8";
+.outerBox{
+	border : 2px black solid;
+	border-radius : 20px;
+	width : 80%;
+	padding : 10px;	
+	margin:10px;
+}
+
+.innerBox{
+	padding : 5px;
+}
+
+.title{
+	font-size:20px;
+}
+
+.flex{
+	display: flex;
+	align-items:center;
+	height: 40px;
+}
+
+.inputName{
+	width:5%;
+}
+
+.r3Input{
+	width:5em;
+}

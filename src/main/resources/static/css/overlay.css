@@ -1,0 +1,319 @@
+@charset "UTF-8";
+
+@font-face{
+font-family:'DNFForgedBlade';font-style:normal;font-weight:500;
+src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Medium.otf')format('opentype')}
+
+
+.contentBody{
+	position : absolute;
+	display:none;
+	background-image:url("/img/background/background_2.png");
+	width:100%;
+	height:1080px;
+	background-size:contain;
+}
+
+.winnerBody{
+	position : absolute;
+	display:none;
+	background-image:url("/img/background/background_0.png");
+	/**filter:brightness(1.2);**/
+	width:100%;
+	height:1080px;
+	background-size:contain;
+}
+
+.winTeam{
+	font-family: "DNFForgedBlade";
+	height: 12vh;
+	color:white;
+	width:100%;
+	text-align: center;
+	font-size: 4em;
+}
+
+.winner{
+	font-family: "DNFForgedBlade";
+	color:white;
+	width: 100%;
+	text-align: center;
+	font-size: 5em;
+}
+
+.winTeam-shadow{
+	text-shadow : 0px 1px 0px #666666,0px 2px 0px #666666,0px 3px 0px #666666,0px 4px 0px #666666,0px 5px 0px #666666,0px 6px 0px #666666,0px 7px 0px #666666,0px 8px 0px #666666,10px 18px 7px #000000
+}
+
+.winner-shadow{
+	text-shadow : 0px 1px 0px #666666,0px 2px 0px #666666,0px 3px 0px #666666,0px 4px 0px #666666,0px 5px 0px #666666,0px 6px 0px #666666,0px 7px 0px #666666,4px 11px 5px #000000
+}
+
+.contentTitle{
+	margin:30px;
+	font-family: "DNFForgedBlade";
+	font-size:5em;
+	color:white;
+	text-align: center;
+}
+
+.mainContent{
+	display: flex;
+	height:55%;
+	width:100%;
+	align-items: center;
+	justify-content: center;
+}
+
+.matchTxt{
+	position:absolute;
+	width:100%;
+	font-family: "DNFForgedBlade";
+	font-style:italic;
+	font-size : 5em;
+	color:white;
+	
+}
+
+.txtStroke{
+	-webkit-text-stroke:3px #777777;
+	text-shadow: 8px 8px 5px #000000;
+}
+
+.around{
+	justify-content: space-around;
+}
+
+.evenly{
+	justify-content: space-evenly;
+}
+
+.drawNameCard{
+	display: inline;
+	margin-left : 150px;
+	margin-right : 150px;
+	border : solid 2px #BBBBBB;
+	border-radius : 20px;
+	width:33vh;
+	height:44vh;
+	background-image: url("/img/theme/theme_back.png");
+	background-size:contain;
+	background-repeat: no-repeat;
+}
+
+.drawnProfile{
+	width:18em;
+	height:18em;
+	border-radius: 18px 18px 0px 0px;
+}
+
+.drawnName{
+	display:flex;
+	font-family :"DNFForgedBlade";
+	font-size:3em;
+	justify-content:center;
+	align-items: center;
+	height:14vh;
+}
+
+.imageRoullet{
+	/*margin-left:em;*/
+	display:flex;
+	width:100%;
+	/*align-items: center;
+	justify-content: center;*/
+}
+
+.r2ImageRoullet{
+	display:flex;
+	width:100%;
+	/*overflow:hidden;*/
+	/*width:48%;*/
+}
+
+.roulletProfile{
+	margin-top:1em;
+	width:11em;
+	height:11em;
+	opacity: 0.5;
+	will-change: transform;
+	
+}
+
+.roulletPick{
+	margin-top:1em;
+	width:11em;
+	width:11em;
+}
+
+.flex{
+	display:flex;
+}
+
+.center{
+	align-items: center;
+	justify-content: center;
+}
+
+.mask{
+	width:121em;
+	overflow: hidden;
+	align-items:center;
+}
+
+.mask2{
+	width:44em;
+	overflow: hidden;
+	align-items:center;
+}
+
+.braketColumn{
+	display:flex;
+	align-items:center;
+	justify-content: center;
+}
+.matchTitle{
+	font-family: "DNFForgedBlade";
+	font-size:3em;
+	color:white;
+	width:100%;
+	text-align:center;
+	margin-top:-0.6em;
+	-webkit-text-stroke:1px #777777;
+}
+
+.score{
+	font-family: "DNFForgedBlade";
+	font-size:3em;
+	color:white;
+	width:100%;
+	text-align:center;
+	-webkit-text-stroke:1px #777777;
+}
+
+.match{
+	width:30%;
+	margin:1em;
+	border-top:1px solid #BBBBBB;
+	border-bottom:1px solid #BBBBBB;	
+}
+
+.braketProfile{
+	width:12em;
+	height:12em;
+}
+
+.braketParticipant{
+	display:flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.braketNameCard{
+	display:inline;
+	margin:10px 20px 10px 20px;
+	background-image: url("/img/theme/theme_back.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	width:21vh;
+	height:28vh;
+	border-radius: 20px;
+	opacity: 0;
+}
+
+.braketName{
+	font-family:"DNFForgedBlade";
+	font-size:2em;
+	font-weight:bold;
+	text-align:center;
+}
+.finalcolumn{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height:40%;
+}
+
+.finalBraketNameCard{
+	border:1px solid #BBBBBB;
+	border-radius: 20px;
+	margin:10px;
+	width: 24vh;
+	height: 32vh;
+	border: 1px solid #BBBBBB;
+	border-radius: 20px;
+	background-image: url("/img/theme/theme_back.png");
+	background-size:contain;
+	background-repeat: no-repeat;
+}
+
+.finalNameCardProfile{
+	width: 16em;
+	height: 16em;
+	border-radius: 18px 18px 0px 0px;
+}
+.themeCard{
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 24vh;
+	height: 32vh;
+	border: 1px solid #BBBBBB;
+	border-radius: 20px;
+	background-image: url("/img/theme/theme_back.png");
+	background-size:contain;
+	background-repeat: no-repeat;
+}
+
+.theme{
+	font-family :"DNFForgedBlade";
+	font-size: 3em;
+	text-align: center;
+}
+
+.bg-wait-video{
+	position:absolute;
+	top:0px;
+	left:0px;
+	z-index:-1;
+	height: 100vh;
+	width:100%;
+	object-fit:cover;
+}
+
+.rpsColumn{
+	display:flex;
+	align-items:center;
+	justify-content: center;
+}
+.rps{
+	width:10em;
+	height:10em;
+	
+	background-size:contain;
+	margin-left:19%;
+	margin-right:19%;
+}
+
+#screen0{
+	position : absolute;
+	margin:0px;
+	padding: 0px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width:100%;
+	height:1080px;
+	opacity: 1;
+}
+
+#VS{
+	font-family: "DNFForgedBlade";
+	font-size:3em;
+}
+
+#logo{
+	width: 50em;
+}
