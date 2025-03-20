@@ -14,6 +14,41 @@ src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Medium.otf')format('o
 	background-size:contain;
 }
 
+.winnerBody{
+	position : absolute;
+	display:none;
+	background-image:url("/img/background/background_0.png");
+	/**filter:brightness(1.2);**/
+	width:100%;
+	height:1080px;
+	background-size:contain;
+}
+
+.winTeam{
+	font-family: "DNFForgedBlade";
+	height: 12vh;
+	color:white;
+	width:100%;
+	text-align: center;
+	font-size: 4em;
+}
+
+.winner{
+	font-family: "DNFForgedBlade";
+	color:white;
+	width: 100%;
+	text-align: center;
+	font-size: 5em;
+}
+
+.winTeam-shadow{
+	text-shadow : 0px 1px 0px #666666,0px 2px 0px #666666,0px 3px 0px #666666,0px 4px 0px #666666,0px 5px 0px #666666,0px 6px 0px #666666,0px 7px 0px #666666,0px 8px 0px #666666,10px 18px 7px #000000
+}
+
+.winner-shadow{
+	text-shadow : 0px 1px 0px #666666,0px 2px 0px #666666,0px 3px 0px #666666,0px 4px 0px #666666,0px 5px 0px #666666,0px 6px 0px #666666,0px 7px 0px #666666,4px 11px 5px #000000
+}
+
 .contentTitle{
 	margin:30px;
 	font-family: "DNFForgedBlade";
@@ -28,6 +63,29 @@ src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Medium.otf')format('o
 	width:100%;
 	align-items: center;
 	justify-content: center;
+}
+
+.matchTxt{
+	position:absolute;
+	width:100%;
+	font-family: "DNFForgedBlade";
+	font-style:italic;
+	font-size : 5em;
+	color:white;
+	
+}
+
+.txtStroke{
+	-webkit-text-stroke:3px #777777;
+	text-shadow: 8px 8px 5px #000000;
+}
+
+.around{
+	justify-content: space-around;
+}
+
+.evenly{
+	justify-content: space-evenly;
 }
 
 .drawNameCard{
@@ -59,15 +117,18 @@ src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Medium.otf')format('o
 }
 
 .imageRoullet{
-	margin-left:-2em;
+	/*margin-left:em;*/
 	display:flex;
-	width:100%;	
+	width:100%;
+	/*align-items: center;
+	justify-content: center;*/
 }
 
 .r2ImageRoullet{
 	display:flex;
-	overflow:hidden;
-	width:48%;
+	width:100%;
+	/*overflow:hidden;*/
+	/*width:48%;*/
 }
 
 .roulletProfile{
@@ -75,29 +136,59 @@ src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Medium.otf')format('o
 	width:11em;
 	height:11em;
 	opacity: 0.5;
+	will-change: transform;
+	
 }
 
 .roulletPick{
-	margin-left:-1em;
-	margin-top:-1em;
-	width:14em;
-	width:14em;
+	margin-top:1em;
+	width:11em;
+	width:11em;
 }
 
 .flex{
 	display:flex;
 }
 
+.center{
+	align-items: center;
+	justify-content: center;
+}
+
+.mask{
+	width:121em;
+	overflow: hidden;
+	align-items:center;
+}
+
+.mask2{
+	width:44em;
+	overflow: hidden;
+	align-items:center;
+}
+
 .braketColumn{
 	display:flex;
+	align-items:center;
+	justify-content: center;
 }
 .matchTitle{
 	font-family: "DNFForgedBlade";
-	font-size:2.3em;
+	font-size:3em;
+	color:white;
 	width:100%;
 	text-align:center;
 	margin-top:-0.6em;
-	-webkit-text-stroke:1px white;
+	-webkit-text-stroke:1px #777777;
+}
+
+.score{
+	font-family: "DNFForgedBlade";
+	font-size:3em;
+	color:white;
+	width:100%;
+	text-align:center;
+	-webkit-text-stroke:1px #777777;
 }
 
 .match{
@@ -121,11 +212,19 @@ src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Medium.otf')format('o
 .braketNameCard{
 	display:inline;
 	margin:10px 20px 10px 20px;
+	background-image: url("/img/theme/theme_back.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	width:21vh;
+	height:28vh;
+	border-radius: 20px;
+	opacity: 0;
 }
 
 .braketName{
 	font-family:"DNFForgedBlade";
-	font-size:1.3em;
+	font-size:2em;
+	font-weight:bold;
 	text-align:center;
 }
 .finalcolumn{
