@@ -26,6 +26,9 @@
 		<div class="contentTitle">
 			<img alt="1라운드 대진표 추첨 타이틀" src="/img/part/braket_title.png"></>
 		</div>
+		<div class="matchTxt flex center" >
+			<div class="txtStroke" id="r1Match">Match1</div>
+		</div>
 		<!-- 메인 컨텐츠 -->
 		<div class="mainContent">
 			<div class="drawNameCard" id="r11Profile" style="margin-top: -80%">
@@ -136,6 +139,10 @@
 		<div class="contentTitle">
 			<img alt="2라운드 대진표 추첨 타이틀" src="/img/part/braket_title.png"></>
 		</div>
+		<div class="matchTxt flex center" >
+			<div class="txtStroke" id="r2Match">Match1</div>
+		</div>
+		
 		<!-- 메인 컨텐츠 -->
 		<div class="mainContent">
 			<div class="drawNameCard" id="r21Profile"

@@ -65,6 +65,21 @@ src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Medium.otf')format('o
 	justify-content: center;
 }
 
+.matchTxt{
+	position:absolute;
+	width:100%;
+	font-family: "DNFForgedBlade";
+	font-style:italic;
+	font-size : 5em;
+	color:white;
+	
+}
+
+.txtStroke{
+	-webkit-text-stroke:3px #777777;
+	text-shadow: 8px 8px 5px #000000;
+}
+
 .around{
 	justify-content: space-around;
 }
@@ -210,7 +225,6 @@ src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Medium.otf')format('o
 	font-family:"DNFForgedBlade";
 	font-size:2em;
 	font-weight:bold;
-	color:white;
 	text-align:center;
 }
 .finalcolumn{

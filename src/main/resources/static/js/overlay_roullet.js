@@ -37,7 +37,8 @@ async function checkIsFull(){
 	
 	
 	return new Promise((r)=>{
-		setTimeout(r,1200)
+		setTimeout(r,1200);
+		
 		isFullPick = false;
 	});
 }
@@ -73,7 +74,7 @@ async function r2checkIsFull(){
 	
 	
 	return new Promise((r)=>{
-		setTimeout(r,1200)
+		setTimeout(r,1200);
 		isFullPick2B = false;
 		isFullPick2W = false;
 	});
@@ -99,7 +100,7 @@ function checkR2PickMatchEnd(round){
 		
 		r2BlackImgs = r2BlackImgs.filter((e)=>e!=r2bPickProfile);
 		r2WhiteImgs = r2WhiteImgs.filter((e)=>e!=r2wPickProfile);
-		
+		$("#r2Match").text(`Match${r2bPick.length+1}`);
 	}
 	
 	if(round == 2){
@@ -169,6 +170,7 @@ function roulletRotate(round){
 	
 	switch(round){
 		case 1:
+			$("#r1Match").text(`Match${Math.floor(r1Pick.length/2) + 1}`);
 			$("#r1_mask").animate({width:`${16*11*(12-r1Pick.length)}px`},800);
 			pickProfile.className="roulletProfile";
 			if(r1Pick.length != 0){
