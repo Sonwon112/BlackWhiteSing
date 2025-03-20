@@ -46,7 +46,7 @@
 		<!-- 이미지 룰렛 -->
 		<div class="flex center">
 			<div class="flex mask" id="r1_mask">
-				<div class="imageRoullet" id="r1RoulletOutter">
+				<div class="imageRoullet" id="r1RoulletOutter" style="margin-left:-0.5em">
 					<%
 					for (int i = 0; i < 12; i++) {
 						if (i != 5) {
@@ -146,11 +146,17 @@
 			<div class="drawNameCard" id="r22Profile"
 				style="margin-left: 14em; margin-top: -80%">&nbsp;</div>
 		</div>
+		
+		<div class="flex around">
+			<img alt="vs" src="/img/logo/arrowpoint.png" style="width: 2%" />
+			<img alt="vs" src="/img/logo/arrowpoint.png" style="width: 2%" />
+		</div>
+		
 		<!-- 이미지 룰렛 -->
 		<div class="flex" style="justify-content: space-around;">
-			<div class="flex center mask2" id="r2_mask">
-				<div class="r2ImageRoullet center" id="r2bRoulletOutter"
-					style="margin-left: 11em;">
+			<div class="flex center mask2" id="r2b_mask" >
+				<div class="r2ImageRoullet" id="r2bRoulletOutter"
+					style="margin-left: -11em;">
 					<%
 					for (int i = 0; i < 6; i++) {
 						if (i == 2) {
@@ -168,9 +174,8 @@
 					%>
 				</div>
 			</div>
-			<div class="flex center mask2" id="r2_mask">
-				<div class="r2ImageRoullet center" id="r2wRoulletOutter"
-					style="margin-left: 11em;">
+			<div class="flex center mask2" id="r2w_mask">
+				<div class="r2ImageRoullet" id="r2wRoulletOutter" style="margin-left:-11em">
 					<%
 					for (int i = 0; i < 6; i++) {
 						if (i == 2) {

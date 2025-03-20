@@ -218,7 +218,7 @@ $("document").ready(() => {
 	//$("#screen5").css("visibility", "visible");
 });
 
-
+// 탈락자 반영
 function setLeavingOut(round,match,pos){
 	let id = `#r${round}m${match}${pos}`
 	let e = document.querySelector(id);
@@ -237,6 +237,7 @@ function setLeavingOut(round,match,pos){
 	e.animate({opacity:[0.2]},{duration:300,fill:"forwards",easing:"ease"});
 }
 
+// 탈락 취소
 function unsetLeavingOut(round,match){
 	let e1 = document.querySelector(`#r${round}m${match}1`);
 	let e2 = document.querySelector(`#r${round}m${match}2`);
@@ -252,6 +253,7 @@ function unsetLeavingOut(round,match){
 	e2.animate({opacity:1},{duration:300,fill:"forwards",easing:"ease"});
 }
 
+// 3라운드에서 컨트롤 창에서 3라운드 팀편성 정보 변경시 반영하는 함수
 function setR3TeamNameCard(team, teamOrder, partIndex){
 	let id="#finalProfile"+team+teamOrder;
 	//console.log(id);
@@ -275,6 +277,7 @@ function setR3TeamNameCard(team, teamOrder, partIndex){
 	});
 }
 
+// 컨트롤 창에서 입력한 3라운드 대진표 정보를 반영하는 함수
 function setR3BraketNameCard(match, team, partIdx){
 	let id = `#r3m${match}${team}`
 	$(id).css("background-image",`url(/img/part/participant/namecard${partIdx}.png)`);
@@ -298,6 +301,7 @@ function setR3BraketNameCard(match, team, partIdx){
 	});
 }
 
+// 대진표 구성을 반영하는 함수
 function setBraketNameCard(tag){
 	
 	let idx = 0;
@@ -314,7 +318,7 @@ function setBraketNameCard(tag){
 			id = "#r1m";
 			match = 6;
 			i = 1;
-			
+			//console.log(r1Pick.length);
 			if(r1Pick.length < 12){
 				// 테스트 데이터
 				//targetArr = [2,3,4,1,5,8,7,6,9,10,11,0];
@@ -341,7 +345,7 @@ function setBraketNameCard(tag){
 				return;
 			}else{
 				for(let i =0; i < r2bPick.length; i++){
-					console.log(r2bPick[i]+","+r2wPick);
+					//console.log(r2bPick[i]+","+r2wPick);
 					r2Pick.push(r2bPick[i]);
 					r2Pick.push(r2wPick[i]);
 				}
@@ -415,12 +419,13 @@ function setBraketNameCard(tag){
 	}, 600);	
 }
 
+// 컨트롤 창에서 입력한 점수 반영
 function applyScore(match,pos,score){
 	let id = `#s${match}${pos}`;
 	$(id).text(score);
 }
 
-
+// 서버로 점수를 보내는 함수
 function sendServer(endPoint, type, data) {
 
 	let postData = {
@@ -447,7 +452,7 @@ function sendServer(endPoint, type, data) {
 
 }
 
-
+// 승리한 팀 닉네임 정보를 반영하는 함수
 function setWinTeam(teamName){
 	teamName.forEach((e,i)=>{
 		let id = `#w${i}`;
@@ -455,6 +460,7 @@ function setWinTeam(teamName){
 	});
 }
 
+// 우승자 닉네임을 표시하는 함수
 function showWinner(){
 	let e = document.querySelector("#txtWinner");
 	e.animate({

@@ -111,7 +111,7 @@ src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Medium.otf')format('o
 
 .r2ImageRoullet{
 	display:flex;
-	margin-left:-5.5em;
+	width:100%;
 	/*overflow:hidden;*/
 	/*width:48%;*/
 }
