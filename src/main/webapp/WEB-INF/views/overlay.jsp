@@ -24,21 +24,21 @@
 	<div id="screen1" class="contentBody">
 		<!-- title -->
 		<div class="contentTitle">
-			<img alt="1라운드 대진표 추첨 타이틀" src="/img/part/braket_title.png"></>
+			<img alt="1라운드 대진표 추첨 타이틀" src="/img/part/braket_title_r1.png" />
 		</div>
-		<div class="matchTxt flex center" >
+		<div class="matchTxt flex center">
 			<div class="txtStroke" id="r1Match">Match1</div>
 		</div>
 		<!-- 메인 컨텐츠 -->
 		<div class="mainContent">
-			<div class="drawNameCard" id="r11Profile" style="margin-top: -80%">
+			<div class="drawNameCard" id="r11Profile" style="margin-top: -90%">
 				<!-- 먼저 추첨 된 참여자 -->
 				&nbsp;
 			</div>
 			<div id="VS">
 				<img alt="vs" src="/img/logo/vs.png" />
 			</div>
-			<div class="drawNameCard" id="r12Profile" style="margin-top: -80%">
+			<div class="drawNameCard" id="r12Profile" style="margin-top: -90%">
 				<!-- 먼저 추첨 된 참여자 -->
 				&nbsp;
 			</div>
@@ -137,7 +137,7 @@
 	<div id="screen3" class="contentBody">
 		<!-- title -->
 		<div class="contentTitle">
-			<img alt="2라운드 대진표 추첨 타이틀" src="/img/part/braket_title.png"></>
+			<img alt="2라운드 대진표 추첨 타이틀" src="/img/part/braket_title_r2.png"></>
 		</div>
 		<div class="matchTxt flex center" >
 			<div class="txtStroke" id="r2Match">Match1</div>
@@ -146,12 +146,12 @@
 		<!-- 메인 컨텐츠 -->
 		<div class="mainContent">
 			<div class="drawNameCard" id="r21Profile"
-				style="margin-right: 14em; margin-top: -80%">&nbsp;</div>
+				style="margin-right: 14em; margin-top: -90%">&nbsp;</div>
 			<div id="VS">
 				<img alt="vs" src="/img/logo/vs.png">
 			</div>
 			<div class="drawNameCard" id="r22Profile"
-				style="margin-left: 14em; margin-top: -80%">&nbsp;</div>
+				style="margin-left: 14em; margin-top: -90%">&nbsp;</div>
 		</div>
 		
 		<div class="flex around">

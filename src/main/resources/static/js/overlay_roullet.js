@@ -5,18 +5,23 @@ let isFullPick2W = false;
 
 let pickIndex=5;
 
+
+let cardDownDura = 800;
+let cardWaitDura = 1600;
+let cardMoveDistance = 170;
+
 // 1라운드에서 인원 2명이 모드 골라졌을 때 네임카드를 위로 올리는 애니메이션 실행 함수
 async function checkIsFull(){
 	if(!isFullPick)return;
 	let element = document.querySelector("#r11Profile");
 	element.animate({
 		transform: [
-			'translateY(150%)',
+			`translateY(${cardMoveDistance}%)`,
 			'translateY(0%)',
 		]
 	},
 	{
-		duration: 1000,
+		duration: cardDownDura,
 		fill: 'forwards',
 		easing: 'ease'
 	});
@@ -24,12 +29,12 @@ async function checkIsFull(){
 	element = document.querySelector("#r12Profile");
 	element.animate({
 		transform: [
-			'translateY(150%)',
+			`translateY(${cardMoveDistance}%)`,
 			'translateY(0%)',
 		]
 	},
 	{
-		duration: 1000,
+		duration: cardDownDura,
 		fill: 'forwards',
 		easing: 'ease'
 	});
@@ -49,12 +54,12 @@ async function r2checkIsFull(){
 	let element = document.querySelector("#r21Profile");
 	element.animate({
 		transform: [
-			'translateY(150%)',
+			`translateY(${cardMoveDistance}%)`,
 			'translateY(0%)',
 		]
 	},
 	{
-		duration: 1000,
+		duration: cardDownDura,
 		fill: 'forwards',
 		easing: 'ease'
 	});
@@ -62,12 +67,12 @@ async function r2checkIsFull(){
 	element = document.querySelector("#r22Profile");
 	element.animate({
 		transform: [
-			'translateY(150%)',
+			`translateY(${cardMoveDistance}%)`,
 			'translateY(0%)',
 		]
 	},
 	{
-		duration: 1000,
+		duration: cardDownDura,
 		fill: 'forwards',
 		easing: 'ease'
 	});
@@ -438,9 +443,11 @@ function pickAnim(picked){
 	return pickImg;
 }
 
+
 // 중앙에 위치한 이미지를 골라서 네임카드에 이미지 반영후 화면에 표시하는 함수
 function PickPart(round){
 	let pickImg;
+	let element;
 	switch(round){
 			case 1:
 				pickImg = pickAnim(pickProfile);
@@ -448,46 +455,32 @@ function PickPart(round){
 				r1Pick.push(pickImg);
 				//console.log(r1Pick);
 				r1RoulletIndex = r1RoulletIndex.filter((e)=> e!=r1Pick[r1Pick.length - 1]);
+				if(r1Pick.length % 2 == 1){
+					element = document.querySelector("#r11Profile");
+					element.style.backgroundImage = "url(/img/part/participant/namecard" + r1Pick[r1Pick.length - 1] + ".png)";
+				}else{
+					element = document.querySelector("#r12Profile");
+					element.style.backgroundImage = "url(/img/part/participant/namecard" + r1Pick[r1Pick.length - 1] + ".png)";
+					isFullPick = true;
+				}
+				
 				
 				setTimeout(()=>{
-					if (r1Pick.length % 2 == 1) {
-						// 첫번째
-						const element = document.querySelector("#r11Profile");
-						element.style.backgroundImage = "url(/img/part/participant/namecard" + r1Pick[r1Pick.length - 1] + ".png)";
-						element.animate(
-							{
-								transform: [
-									'translateY(0)',
-									'translateY(150%)',
-								]
-							},
-							{
-								duration: 1000,
-								fill: 'forwards',
-								easing: 'ease'
-							}
-						);
-					} else {
-						// 두번째
-						const element = document.querySelector("#r12Profile");
-						element.style.backgroundImage = "url(/img/part/participant/namecard" + r1Pick[r1Pick.length - 1] + ".png)";
-						element.animate(
-							{
-								transform: [
-									'translateY(0)',
-									'translateY(150%)',
-								]
-							},
-							{
-								duration: 1000,
-								fill: 'forwards',
-								easing: 'ease'
-							}
-						);
-						isFullPick = true;
-					}
-					
-				},2400);				
+					element.animate(
+						{
+							transform: [
+								'translateY(0)',
+								`translateY(${cardMoveDistance}%)`,
+							]
+						},
+						{
+							duration: cardDownDura,
+							fill: 'forwards',
+							easing: 'ease'
+						}
+					);
+				
+				},cardWaitDura);				
 				break;
 			case 2:
 				//console.log(pickIndex+","+r2bPickProfile);
@@ -496,27 +489,26 @@ function PickPart(round){
 				r2bPick.push(pickImg);
 				//console.log("black"+r2bPick);
 				r2bRoulletIndex = r2bRoulletIndex.filter((e)=> e!=r2bPick[r2bPick.length - 1]);
-
+				element = document.querySelector("#r21Profile");
+				element.style.backgroundImage = "url(/img/part/participant/namecard" + r2bPick[r2bPick.length - 1] + ".png)";
+									
 				// 2라운드 흑
 				setTimeout(()=>{
-						// 첫번째
-					const element = document.querySelector("#r21Profile");
-					element.style.backgroundImage = "url(/img/part/participant/namecard" + r2bPick[r2bPick.length - 1] + ".png)";
 					element.animate(
 						{
 							transform: [
 								'translateY(0)',
-								'translateY(150%)',
+								`translateY(${cardMoveDistance}%)`,
 							]
 						},
 						{
-							duration: 1000,
+							duration: cardDownDura,
 							fill: 'forwards',
 							easing: 'ease'
 						}
 					);
 					isFullPick2B = true;	
-				},2400);			
+				},cardWaitDura);			
 				
 				break;
 			case 3:
@@ -526,27 +518,25 @@ function PickPart(round){
 				r2wPick.push(pickImg);
 				//console.log("white"+r2wPick);
 				r2wRoulletIndex = r2wRoulletIndex.filter((e)=> e!=r2wPick[r2wPick.length - 1]);
-
-				// 2라운드 흑
-				setTimeout(()=>{
-						// 첫번째
-					const element = document.querySelector("#r22Profile");
-					element.style.backgroundImage = "url(/img/part/participant/namecard" + r2wPick[r2wPick.length - 1] + ".png)";
+				element = document.querySelector("#r22Profile");
+				element.style.backgroundImage = "url(/img/part/participant/namecard" + r2wPick[r2wPick.length - 1] + ".png)";
+				
+				setTimeout(()=>{		
 					element.animate(
 						{
 							transform: [
 								'translateY(0)',
-								'translateY(150%)',
+								`translateY(${cardMoveDistance}%)`,
 							]
 						},
 						{
-							duration: 1000,
+							duration: cardDownDura,
 							fill: 'forwards',
 							easing: 'ease'
 						}
 					);
 					isFullPick2W = true;
-				},2400);
+				},cardWaitDura);
 				
 				break;
 		}
