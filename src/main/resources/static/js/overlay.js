@@ -254,10 +254,12 @@ function unsetLeavingOut(round,match){
 }
 
 // 3라운드에서 컨트롤 창에서 3라운드 팀편성 정보 변경시 반영하는 함수
-function setR3TeamNameCard(team, teamOrder, partIndex){
+function setR3TeamNameCard(team, teamOrder, partIdx){
 	let id="#finalProfile"+team+teamOrder;
+	let idx = Number(partIdx) > 11 ? partIdx : partIdx+"_1";
+	//console.log(partIdx+", :"+idx);
 	//console.log(id);
-	$(id).css("background-image",`url(/img/part/participant/namecard${partIndex}.png)`)
+	$(id).css("background-image",`url(/img/part/participant/namecard${idx}.png)`)
 	
 	const e = document.querySelector(id);
 	e.animate({
@@ -280,7 +282,10 @@ function setR3TeamNameCard(team, teamOrder, partIndex){
 // 컨트롤 창에서 입력한 3라운드 대진표 정보를 반영하는 함수
 function setR3BraketNameCard(match, team, partIdx){
 	let id = `#r3m${match}${team}`
-	$(id).css("background-image",`url(/img/part/participant/namecard${partIdx}.png)`);
+
+	let idx = Number(partIdx) > 11 ? partIdx : partIdx+"_1";
+	//console.log(partIdx+", :"+idx);
+	$(id).css("background-image",`url(/img/part/participant/namecard${idx}.png)`);
 	//console.log(id);
 	const e = document.querySelector(id);
 	
