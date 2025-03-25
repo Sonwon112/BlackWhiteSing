@@ -137,8 +137,8 @@ function PickTheme() {
 		element.animate(
 			{
 				transform: [
-					'rotateY(0deg)',
-					'rotateY(180deg)'
+					'rotateY(180deg)',
+					'rotateY(0deg)'
 				]
 			},
 			{
@@ -162,8 +162,8 @@ function PickTheme() {
 		element.animate(
 			{
 				transform: [
-					'rotateY(0deg)',
-					'rotateY(180deg)'
+					'rotateY(180deg)',
+					'rotateY(0deg)'
 				]
 			},
 			{
@@ -186,8 +186,8 @@ function PickTheme() {
 		element.animate(
 			{
 				transform: [
-					'rotateY(0deg)',
-					'rotateY(180deg)'
+					'rotateY(180deg)',
+					'rotateY(0deg)'
 				]
 			},
 			{

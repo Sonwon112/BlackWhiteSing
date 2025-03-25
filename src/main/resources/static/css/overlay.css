@@ -209,6 +209,19 @@ src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Medium.otf')format('o
 	align-items: center;
 }
 
+.showNameCard{
+	display:inline;
+	margin:10px 20px 10px 20px;
+	background-image: url("/img/theme/theme_back_reverse.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	width:21vh;
+	height:28vh;
+	border-radius: 20px;
+	opacity: 0;	
+	transform:rotateY(180deg);
+}
+
 .braketNameCard{
 	display:inline;
 	margin:10px 20px 10px 20px;
@@ -218,7 +231,15 @@ src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Medium.otf')format('o
 	width:21vh;
 	height:28vh;
 	border-radius: 20px;
-	opacity: 0;
+	opacity: 0;	
+}
+
+.opacity1{
+	opacity: 1;
+}
+
+.border{
+	border:1px solid #BBBBBB;
 }
 
 .braketName{
@@ -226,6 +247,7 @@ src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Medium.otf')format('o
 	font-size:2em;
 	font-weight:bold;
 	text-align:center;
+	color:white;
 }
 .finalcolumn{
 	display: flex;
@@ -262,9 +284,10 @@ src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Medium.otf')format('o
 	height: 32vh;
 	border: 1px solid #BBBBBB;
 	border-radius: 20px;
-	background-image: url("/img/theme/theme_back.png");
+	background-image: url("/img/theme/theme_back_reverse.png");
 	background-size:contain;
 	background-repeat: no-repeat;
+	transform:rotateY(180deg);
 }
 
 .theme{

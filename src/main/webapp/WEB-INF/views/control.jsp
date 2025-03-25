@@ -66,6 +66,13 @@
 	<hr/>
 	<button onclick="changeMode(0)">로고 표시</button><br/>
 	<div class="innerBox">
+		<button onclick="changeMode(9)">수식어 공개 화면</button>
+		<button onclick="showName(0)">수식어 공개</button>
+		<br/>
+		<button onclick="changeMode(10)">닉네임 공개 화면</button>
+		<button onclick="showName(1)">닉네임 공개</button>
+	</div>
+	<div class="innerBox">
 		1라운드
 		<button onclick="changeMode(1)">1라운드 추첨</button>
 		<button onclick="changeMode(2)">1라운드 대진표</button>

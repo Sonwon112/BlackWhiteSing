@@ -432,6 +432,14 @@ function sendServer(endPoint, postData){
 		});
 }
 
-
+function showName(screen){
+	let postData={
+		type : screen,
+		tag : "show",
+		name : staffName
+	}
+	
+	sendServer("show_name", postData);
+}
 
 

@@ -11,6 +11,7 @@
 <script src="/js/overlay.js"></script>
 <script src="/js/overlay_roullet.js"></script>
 <script src="/js/overlay_Theme.js"></script>
+<script src="/js/overlay_show.js"></script>
 <link href="/css/overlay.css" rel="stylesheet" />
 </head>
 <body>
@@ -20,6 +21,30 @@
 			autoplay muted loop></video>
 		<img id="logo" alt="로고" src="/img/logo/logo.png" />
 	</div>
+	
+	<div id="screen9" class="contentBody">
+		<div class="contentTitle">
+			<img alt="수식언 타이틀" src="/img/part/black_title.png"/>
+		</div>
+		<div class="flex around">
+			<div class="showNameCard opacity1 border" id="blackCard0">&nbsp;</div>
+			<div class="showNameCard opacity1 border" id="blackCard1">&nbsp;</div>
+			<div class="showNameCard opacity1 border" id="blackCard2">&nbsp;</div>
+			<div class="showNameCard opacity1 border" id="blackCard3">&nbsp;</div>
+			<div class="showNameCard opacity1 border" id="blackCard4">&nbsp;</div>
+			<div class="showNameCard opacity1 border" id="blackCard5">&nbsp;</div>
+		</div>
+		<div class="flex around">
+			<div class="showNameCard opacity1 border" id="blackCard6">&nbsp;</div>
+			<div class="showNameCard opacity1 border" id="blackCard7">&nbsp;</div>
+			<div class="showNameCard opacity1 border" id="blackCard8">&nbsp;</div>
+			<div class="showNameCard opacity1 border" id="blackCard9">&nbsp;</div>
+			<div class="showNameCard opacity1 border" id="blackCard10">&nbsp;</div>
+			<div class="showNameCard opacity1 border" id="blackCard11">&nbsp;</div>
+		</div>
+		
+	</div>
+	
 	<!-- 1라운드 대진표 추첨 -->
 	<div id="screen1" class="contentBody">
 		<!-- title -->
@@ -266,6 +291,24 @@
 			</div>
 		</div>
 	</div>
+	
+	<div id="screen10" class="contentBody">
+		<div class="contentTitle">
+			<img alt="결승 진출 타이틀" src="/img/part/part_title.png"/>
+		</div>
+		<div class="flex center">
+			<div class="showNameCard opacity1 border" id="r3_partCard0">&nbsp;</div>
+			<div class="showNameCard opacity1 border" id="r3_partCard1">&nbsp;</div>
+			<div class="showNameCard opacity1 border" id="r3_partCard2">&nbsp;</div>
+		</div>
+		<div class="flex center">
+			<div class="showNameCard opacity1 border" id="r3_partCard3">&nbsp;</div>
+			<div class="showNameCard opacity1 border" id="r3_partCard4">&nbsp;</div>
+			<div class="showNameCard opacity1 border" id="r3_partCard5">&nbsp;</div>
+		</div>
+		
+	</div>
+	
 	<!-- 3라운드 테마추첨 -->
 	<div id="screen5" class="contentBody">
 		<div class="contentTitle">

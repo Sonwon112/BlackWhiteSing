@@ -79,5 +79,9 @@ public class ControlService {
 	public void resetRoullet(int round) {
 		sseService.sendData("overlay", "resetRoullet", ""+round);
 	}
+	
+	public void showName(int screen) {
+		sseService.sendData("overlay", "showName", ""+screen);
+	}
 
 }

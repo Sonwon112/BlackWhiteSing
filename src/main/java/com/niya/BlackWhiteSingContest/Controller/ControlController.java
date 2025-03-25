@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.niya.BlackWhiteSingContest.Model.ControlDTO;
 import com.niya.BlackWhiteSingContest.Service.ControlService;
@@ -325,6 +326,21 @@ public class ControlController {
 		ResponseEntity<ControlDTO> response = new ResponseEntity<ControlDTO>(responseDTO, HttpStatus.OK);
 
 		return response;
+	}
+	
+	/**
+	 * 
+	 */
+	@PostMapping("/show_name")
+	public ResponseEntity<ControlDTO> ShowName(@RequestBody ControlDTO dto){
+		if(!checkUser(dto.getName())) {
+			return failDTO(HttpStatus.NOT_FOUND, 402, "사용자를 찾을 수 없습니다");
+		}
+		service.showName(dto.getType());
+		
+		
+		
+		return successDTO();
 	}
 	
 }

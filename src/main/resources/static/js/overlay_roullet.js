@@ -437,6 +437,7 @@ function pickAnim(picked){
 	
 	let pickImg = picked.src;
 	pickImg = pickImg.split("/");
+	
 	pickImg = pickImg[pickImg.length-1].split(".")[0];
 	pickImg = pickImg.slice(7);
 	
@@ -452,15 +453,15 @@ function PickPart(round){
 			case 1:
 				pickImg = pickAnim(pickProfile);
 				// 1라운드
-				r1Pick.push(pickImg);
+				r1Pick.push(pickImg.split("_")[0]);
 				//console.log(r1Pick);
 				r1RoulletIndex = r1RoulletIndex.filter((e)=> e!=r1Pick[r1Pick.length - 1]);
 				if(r1Pick.length % 2 == 1){
 					element = document.querySelector("#r11Profile");
-					element.style.backgroundImage = "url(/img/part/participant/namecard" + r1Pick[r1Pick.length - 1] + ".png)";
+					element.style.backgroundImage = "url(/img/part/participant/namecard" + pickImg + ".png)";
 				}else{
 					element = document.querySelector("#r12Profile");
-					element.style.backgroundImage = "url(/img/part/participant/namecard" + r1Pick[r1Pick.length - 1] + ".png)";
+					element.style.backgroundImage = "url(/img/part/participant/namecard" + pickImg + ".png)";
 					isFullPick = true;
 				}
 				

@@ -32,6 +32,8 @@ let r2bPick = [];
 let r2wPick = [];
 let r2Pick = [];
 
+let r3Part = [];
+
 let themePick = [];
 
 let ThemeArr = ["테마1", "테마2", "테마3", "테마4", "테마5", "테마6"];
@@ -55,7 +57,7 @@ $("document").ready(() => {
 	currScreen = $("#screen0");
 
 	// 화면 제어를 위한 배열에 삽입
-	for (let i = 0; i < 9; i++) {
+	for (let i = 0; i < 11; i++) {
 		let id = "#screen" + i
 		drawScreen.push($(id));
 	}
@@ -64,7 +66,7 @@ $("document").ready(() => {
 	for (let i = 0; i < r1RoulletIndex.length; i++) {
 		let roulletProfileId = "#r1_roulletProfile" + i;
 		let img = new Image();
-		img.src = "/img/roullet/roullet" + r1RoulletIndex[i]+".webp";
+		img.src = "/img/roullet/roullet" + r1RoulletIndex[i]+"_2.webp";
 		
 		let element = document.querySelector(roulletProfileId);
 		element.src= img.src;
@@ -209,11 +211,15 @@ $("document").ready(() => {
 	eventSource.addEventListener("setWinTeam", (event)=>{
 		let winTeam = event.data.split(",");
 		setWinTeam(winTeam);
-	})
+	});
 	
 	eventSource.addEventListener("resetRoullet", (event)=>{
 		resetRoullet(Number(event.data));
-	})
+	});
+	
+	eventSource.addEventListener("showName",(event)=>{
+		showName(Number(event.data));
+	});
 	
 	//$("#screen5").css("visibility", "visible");
 });
@@ -230,6 +236,9 @@ function setLeavingOut(round,match,pos){
 		
 		r2bRoulletIndex.push(r1Pick[posVal]);
 		//console.log(r2bRoulletIndex);
+	}else if(round == 2){
+		posVal = pos % 2 == 1 ? (match-1)*2+1 : (match-1)*2;
+		r3Part.push(r2Pick[posVal]);
 	}
 
 	e.style.backgroundColor="#000000";
@@ -245,8 +254,14 @@ function unsetLeavingOut(round,match){
 	let pv2 = (match-1)*2+1;
 	
 	
-	r1LeaveArr = r1LeaveArr.filter((e)=>{e!=e1 && e!=e2});
-	r2bRoulletIndex = r2bRoulletIndex.filter((e)=>{e!=pv1 && e!=pv2});
+	if(round == 1){
+		r1LeaveArr = r1LeaveArr.filter((e)=>{e!=e1 && e!=e2});
+		r2bRoulletIndex = r2bRoulletIndex.filter((e)=>{e!=r1Pick[pv1] && e!=r1Pick[pv2]});	
+	}else if(round == 2){
+		r3Part = r3Part.filter((e)=>{e!=r2Pick[pv1] && e!=r2Pick[pv2]});		
+	}
+	
+
 	//console.log(r2bRoulletIndex);
 	
 	e1.animate({opacity:1},{duration:300,fill:"forwards",easing:"ease"});
@@ -328,7 +343,7 @@ function setBraketNameCard(tag){
 				// 테스트 데이터
 				//targetArr = [2,3,4,1,5,8,7,6,9,10,11,0];
 				//r1Pick = targetArr;
-				return;
+				//return;
 			}else{
 				targetArr = r1Pick;
 			}
@@ -345,9 +360,9 @@ function setBraketNameCard(tag){
 			
 			if(r2bPick.length < 6){
 				// 테스트 데이터
-				//targetArr = [2,3,4,1,5,2,7,1,2,10,11,0];
-				//r2Pick = targetArr;
-				return;
+				targetArr = [2,12,4,16,5,2,7,1,2,15,11,0];
+				r2Pick = targetArr;
+				//return;
 			}else{
 				for(let i =0; i < r2bPick.length; i++){
 					//console.log(r2bPick[i]+","+r2wPick);
