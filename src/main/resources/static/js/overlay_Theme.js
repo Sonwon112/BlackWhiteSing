@@ -148,7 +148,7 @@ function PickTheme() {
 			}
 		);
 		setTimeout(() => {
-			element.style.backgroundImage = "url(/img/theme/" + themeCard[themePickIndex[0]].slice(1) + ".png)";
+			element.style.backgroundImage = "url(/img/theme/" + themeCard[themePickIndex[0]].slice(1) + ".webp)";
 			sendServer("pickTheme",0,themeCard[themePickIndex[0]].slice(10));
 			$("#themeTitle0").text(ThemeArr[themeCard[themePickIndex[0]].slice(10)]);
 		}, 130);
@@ -173,7 +173,7 @@ function PickTheme() {
 			}
 		);
 		setTimeout(() => {
-			element.style.backgroundImage = "url(/img/theme/" + themeCard[themePickIndex[1]].slice(1) + ".png)";
+			element.style.backgroundImage = "url(/img/theme/" + themeCard[themePickIndex[1]].slice(1) + ".webp)";
 			sendServer("pickTheme",1,themeCard[themePickIndex[1]].slice(10));
 			$("#themeTitle1").text(ThemeArr[themeCard[themePickIndex[1]].slice(10)]);
 		}, 130);
@@ -197,7 +197,7 @@ function PickTheme() {
 			}
 		);
 		setTimeout(() => {
-			element.style.backgroundImage = "url(/img/theme/" + themeCard[themePickIndex[2]].slice(1) + ".png)";
+			element.style.backgroundImage = "url(/img/theme/" + themeCard[themePickIndex[2]].slice(1) + ".webp)";
 			sendServer("pickTheme",2,themeCard[themePickIndex[2]].slice(10));
 			$("#themeTitle2").text(ThemeArr[themeCard[themePickIndex[2]].slice(10)]);
 		}, 130);
@@ -228,7 +228,7 @@ function resetThemeCard() {
 			}
 		);
 
-		$(cardID).css("background-image", "url(/img/theme/theme_back.png)");
+		$(cardID).css("background-image", "url(/img/theme/theme_back.webp)");
 
 		themeCard.push(cardID);
 

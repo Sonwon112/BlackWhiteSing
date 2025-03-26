@@ -19,12 +19,12 @@
 	<div id="screen0">
 		<video class="bg-wait-video" src="/img/background/background_wait.mp4"
 			autoplay muted loop></video>
-		<img id="logo" alt="로고" src="/img/logo/logo.png" />
+		<img id="logo" alt="로고" src="/img/logo/logo.webp" />
 	</div>
 	
 	<div id="screen9" class="contentBody">
 		<div class="contentTitle">
-			<img alt="수식언 타이틀" src="/img/part/black_title.png"/>
+			<img alt="수식언 타이틀" src="/img/part/black_title.webp"/>
 		</div>
 		<div class="flex around">
 			<div class="showNameCard opacity1 border" id="blackCard0">&nbsp;</div>
@@ -49,7 +49,7 @@
 	<div id="screen1" class="contentBody">
 		<!-- title -->
 		<div class="contentTitle">
-			<img alt="1라운드 대진표 추첨 타이틀" src="/img/part/braket_title_r1.png" />
+			<img alt="1라운드 대진표 추첨 타이틀" src="/img/part/braket_title_r1.webp" />
 		</div>
 		<div class="matchTxt flex center">
 			<div class="txtStroke" id="r1Match">Match1</div>
@@ -61,7 +61,7 @@
 				&nbsp;
 			</div>
 			<div id="VS">
-				<img alt="vs" src="/img/logo/vs.png" />
+				<img alt="vs" src="/img/logo/vs.webp" />
 			</div>
 			<div class="drawNameCard" id="r12Profile" style="margin-top: -90%">
 				<!-- 먼저 추첨 된 참여자 -->
@@ -69,7 +69,7 @@
 			</div>
 		</div>
 		<div class="flex center">
-			<img alt="vs" src="/img/logo/arrowpoint.png" style="width: 2%" />
+			<img alt="vs" src="/img/logo/arrowpoint.webp" style="width: 2%" />
 		</div>
 		<!-- 이미지 룰렛 -->
 		<div class="flex center">
@@ -80,12 +80,12 @@
 						if (i != 5) {
 					%>
 					<img id="r1_roulletProfile<%=i %>" class="roulletProfile"
-						alt="참여자프로필<%=i %>" src="/img/none_profile.png" />
+						alt="참여자프로필<%=i %>" src="/img/none_profile.webp" />
 					<%
 					} else {
 					%>
 					<img id="r1_roulletProfile<%=i %>" class="roulletProfile"
-						alt="참여자프로필<%=i %>" src="/img/none_profile.png" />
+						alt="참여자프로필<%=i %>" src="/img/none_profile.webp" />
 					<%
 					}
 					}
@@ -98,7 +98,7 @@
 	<!-- 1라운드 대진표 -->
 	<div id="screen2" class="contentBody">
 		<div class="contentTitle">
-			<img alt="1라운드 대진표 타이틀" src="/img/part/round1_title.png"></>
+			<img alt="1라운드 대진표 타이틀" src="/img/part/round1_title.webp"></>
 		</div>
 		<div class="braketColumn">
 			<div class="match">
@@ -162,7 +162,7 @@
 	<div id="screen3" class="contentBody">
 		<!-- title -->
 		<div class="contentTitle">
-			<img alt="2라운드 대진표 추첨 타이틀" src="/img/part/braket_title_r2.png"></>
+			<img alt="2라운드 대진표 추첨 타이틀" src="/img/part/braket_title_r2.webp"></>
 		</div>
 		<div class="matchTxt flex center" >
 			<div class="txtStroke" id="r2Match">Match1</div>
@@ -173,15 +173,15 @@
 			<div class="drawNameCard" id="r21Profile"
 				style="margin-right: 14em; margin-top: -90%">&nbsp;</div>
 			<div id="VS">
-				<img alt="vs" src="/img/logo/vs.png">
+				<img alt="vs" src="/img/logo/vs.webp">
 			</div>
 			<div class="drawNameCard" id="r22Profile"
 				style="margin-left: 14em; margin-top: -90%">&nbsp;</div>
 		</div>
 		
 		<div class="flex around">
-			<img alt="vs" src="/img/logo/arrowpoint.png" style="width: 2%" />
-			<img alt="vs" src="/img/logo/arrowpoint.png" style="width: 2%" />
+			<img alt="vs" src="/img/logo/arrowpoint.webp" style="width: 2%" />
+			<img alt="vs" src="/img/logo/arrowpoint.webp" style="width: 2%" />
 		</div>
 		
 		<!-- 이미지 룰렛 -->
@@ -194,12 +194,12 @@
 						if (i == 2) {
 					%>
 					<img class="roulletProfile" alt="참여자프로필<%=i%>"
-						src="/img/none_profile.png" id="r2b_roulletProfile<%=i %>" />
+						src="/img/none_profile.webp" id="r2b_roulletProfile<%=i %>" />
 					<%
 					} else {
 					%>
 					<img class="roulletProfile" alt="참여자프로필<%=i%>"
-						src="/img/none_profile.png" id="r2b_roulletProfile<%=i %>" />
+						src="/img/none_profile.webp" id="r2b_roulletProfile<%=i %>" />
 					<%
 					}
 					}
@@ -213,12 +213,12 @@
 						if (i == 2) {
 					%>
 					<img class="roulletProfile" alt="참여자프로필<%=i%>"
-						src="/img/none_profile.png" id="r2w_roulletProfile<%=i %>" />
+						src="/img/none_profile.webp" id="r2w_roulletProfile<%=i %>" />
 					<%
 					} else {
 					%>
 					<img class="roulletProfile" alt="참여자프로필<%=i%>"
-						src="/img/none_profile.png" id="r2w_roulletProfile<%=i %>" />
+						src="/img/none_profile.webp" id="r2w_roulletProfile<%=i %>" />
 					<%
 					}
 					}
@@ -231,7 +231,7 @@
 	<!-- 2라운드 대진표 -->
 	<div id="screen4" class="contentBody">
 		<div class="contentTitle">
-			<img alt="2라운드 대진표 타이틀" src="/img/part/round2_title.png"></>
+			<img alt="2라운드 대진표 타이틀" src="/img/part/round2_title.webp"></>
 		</div>
 		<div class="braketColumn">
 			<div class="match">
@@ -294,7 +294,7 @@
 	
 	<div id="screen10" class="contentBody">
 		<div class="contentTitle">
-			<img alt="결승 진출 타이틀" src="/img/part/part_title.png"/>
+			<img alt="결승 진출 타이틀" src="/img/part/part_title.webp"/>
 		</div>
 		<div class="flex center">
 			<div class="showNameCard opacity1 border" id="r3_partCard0">&nbsp;</div>
@@ -312,7 +312,7 @@
 	<!-- 3라운드 테마추첨 -->
 	<div id="screen5" class="contentBody">
 		<div class="contentTitle">
-			<img alt="테마추첨 타이틀" src="/img/theme/theme_title.png"></>
+			<img alt="테마추첨 타이틀" src="/img/theme/theme_title.webp"></>
 		</div>
 		<div class="themeCard" id="themeCard0">&nbsp;</div>
 		<div class="themeCard" id="themeCard1">&nbsp;</div>
@@ -324,7 +324,7 @@
 	<!-- 3라운드 팀 편성표 -->
 	<div id="screen6" class="contentBody">
 		<div class="contentTitle">
-			<img alt="3라운드 대진표 타이틀" src="/img/part/final_title.png"></>
+			<img alt="3라운드 대진표 타이틀" src="/img/part/final_title.webp"></>
 		</div>
 		<div class="rpsColumn">
 			<div id="rps0" class="rps">&nbsp;</div>
@@ -339,7 +339,7 @@
 			}
 			%>
 			<div id="VS">
-				<img alt="vs" src="/img/logo/vs.png">
+				<img alt="vs" src="/img/logo/vs.webp">
 			</div>
 			<%
 			for (int i = 0; i < 3; i++) {
@@ -353,7 +353,7 @@
 	<!-- 3라운드 대진표 -->
 	<div id="screen7" class="contentBody">
 		<div class="contentTitle">
-			<img alt="3라운드 대진표 타이틀" src="/img/part/final_title.png"></>
+			<img alt="3라운드 대진표 타이틀" src="/img/part/final_title.webp"></>
 		</div>
 		<div class="braketColumn" style="margin-top: 10em">
 			<div class="match">
@@ -416,9 +416,9 @@
 			<div id="w2" class="winner winner-shadow">
 				팀원3
 			</div> 
-			<!-- <div class="braketNameCard" id="w1" style="opacity:1;background-image:url('/img/part/participant/namecard0.png');border:1px solid #888888">&nbsp;</div>
-			<div class="braketNameCard" id="w2" style="opacity:1;background-image:url('/img/part/participant/namecard12.png');border:1px solid #888888">&nbsp;</div>
-			<div class="braketNameCard" id="w3" style="opacity:1;background-image:url('/img/part/participant/namecard8.png');border:1px solid #888888">&nbsp;</div>
+			<!-- <div class="braketNameCard" id="w1" style="opacity:1;background-image:url('/img/part/participant/namecard0.webp');border:1px solid #888888">&nbsp;</div>
+			<div class="braketNameCard" id="w2" style="opacity:1;background-image:url('/img/part/participant/namecard12.webp');border:1px solid #888888">&nbsp;</div>
+			<div class="braketNameCard" id="w3" style="opacity:1;background-image:url('/img/part/participant/namecard8.webp');border:1px solid #888888">&nbsp;</div>
 			 -->
 		</div>
 	</div>

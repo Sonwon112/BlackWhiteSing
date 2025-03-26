@@ -336,8 +336,13 @@ public class ControlController {
 		if(!checkUser(dto.getName())) {
 			return failDTO(HttpStatus.NOT_FOUND, 402, "사용자를 찾을 수 없습니다");
 		}
-		service.showName(dto.getType());
-		
+		if(dto.getTag().equals("show")) {
+			service.showName(dto.getType());
+		}	
+		else if(dto.getTag().equals("hide")) {
+			service.hideName(dto.getType());
+		}
+			
 		
 		
 		return successDTO();

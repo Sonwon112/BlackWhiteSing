@@ -458,10 +458,10 @@ function PickPart(round){
 				r1RoulletIndex = r1RoulletIndex.filter((e)=> e!=r1Pick[r1Pick.length - 1]);
 				if(r1Pick.length % 2 == 1){
 					element = document.querySelector("#r11Profile");
-					element.style.backgroundImage = "url(/img/part/participant/namecard" + pickImg + ".png)";
+					element.style.backgroundImage = "url(/img/part/participant/namecard" + pickImg + ".webp)";
 				}else{
 					element = document.querySelector("#r12Profile");
-					element.style.backgroundImage = "url(/img/part/participant/namecard" + pickImg + ".png)";
+					element.style.backgroundImage = "url(/img/part/participant/namecard" + pickImg + ".webp)";
 					isFullPick = true;
 				}
 				
@@ -491,7 +491,7 @@ function PickPart(round){
 				//console.log("black"+r2bPick);
 				r2bRoulletIndex = r2bRoulletIndex.filter((e)=> e!=r2bPick[r2bPick.length - 1]);
 				element = document.querySelector("#r21Profile");
-				element.style.backgroundImage = "url(/img/part/participant/namecard" + r2bPick[r2bPick.length - 1] + ".png)";
+				element.style.backgroundImage = "url(/img/part/participant/namecard" + r2bPick[r2bPick.length - 1] + ".webp)";
 									
 				// 2라운드 흑
 				setTimeout(()=>{
@@ -520,7 +520,7 @@ function PickPart(round){
 				//console.log("white"+r2wPick);
 				r2wRoulletIndex = r2wRoulletIndex.filter((e)=> e!=r2wPick[r2wPick.length - 1]);
 				element = document.querySelector("#r22Profile");
-				element.style.backgroundImage = "url(/img/part/participant/namecard" + r2wPick[r2wPick.length - 1] + ".png)";
+				element.style.backgroundImage = "url(/img/part/participant/namecard" + r2wPick[r2wPick.length - 1] + ".webp)";
 				
 				setTimeout(()=>{		
 					element.animate(

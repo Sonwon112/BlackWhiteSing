@@ -7,7 +7,7 @@ let Participant = ["니야", "그나로","뮬","나츠키","히미캉","꾸이�
 				     "레드","퀸슈아","이신","루나밍","햄쿠비","코오리", // 여기까지 흑팀
 			   		 "레드1","퀸슈아1","이신1","루나밍1","햄쿠비1","코오리1"];
 
-let ThemeArr = ["테마1", "테마2", "테마3", "테마4", "테마5", "테마6"];
+let ThemeArr = ["설렘", "추억", "꿈", "본능", "청춘", "자유"];
 
 let r3B = [];
 let r3W = [];
@@ -440,6 +440,16 @@ function showName(screen){
 	}
 	
 	sendServer("show_name", postData);
+}
+
+function hideNmae(screen){
+	let postData={
+		type : screen,
+		tag : "hide", 
+		name : staffName
+	}	
+	
+	sendServer("show_name",postData);
 }
 
 

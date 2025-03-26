@@ -66,11 +66,10 @@
 	<hr/>
 	<button onclick="changeMode(0)">로고 표시</button><br/>
 	<div class="innerBox">
+		1라운드 이전 수식어 공개
 		<button onclick="changeMode(9)">수식어 공개 화면</button>
 		<button onclick="showName(0)">수식어 공개</button>
-		<br/>
-		<button onclick="changeMode(10)">닉네임 공개 화면</button>
-		<button onclick="showName(1)">닉네임 공개</button>
+		<button onclick="hideNmae(0)">수식어 리셋</button>
 	</div>
 	<div class="innerBox">
 		1라운드
@@ -81,6 +80,13 @@
 		2라운드
 		<button onclick="changeMode(3)">2라운드 추첨</button>
 		<button onclick="changeMode(4)">2라운드 대진표</button>
+	</div>
+	<br/>
+	<div class="innerBox">
+		3라운드 이전 닉네임 공개
+		<button onclick="changeMode(10)">닉네임 공개 화면</button>
+		<button onclick="showName(1)">닉네임 공개</button>
+		<button onclick="hideNmae(1)">닉네임 리셋</button>
 	</div>
 	<div class="innerBox">
 		3라운드

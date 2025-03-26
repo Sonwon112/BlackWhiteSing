@@ -36,7 +36,7 @@ let r3Part = [];
 
 let themePick = [];
 
-let ThemeArr = ["테마1", "테마2", "테마3", "테마4", "테마5", "테마6"];
+let ThemeArr = ["설렘", "추억", "꿈", "본능", "청춘", "자유"];
 
 let themePos = [
 	[20, 460],
@@ -174,13 +174,13 @@ $("document").ready(() => {
 		let imgUrl = "";
 		switch (hand) {
 			case "0":
-				imgUrl = "url(/img/rock.png)"
+				imgUrl = "url(/img/rock.webp)"
 				break;
 			case "1":
-				imgUrl = "url(/img/scissors.png)"
+				imgUrl = "url(/img/scissors.webp)"
 				break;
 			case "2":
-				imgUrl = "url(/img/paper.png)"
+				imgUrl = "url(/img/paper.webp)"
 				break;
 		}
 		let rpsId = "#rps" + team;
@@ -221,6 +221,10 @@ $("document").ready(() => {
 		showName(Number(event.data));
 	});
 	
+	eventSource.addEventListener("hideName",(event)=>{
+		hideName(Number(event.data));
+	});
+
 	//$("#screen5").css("visibility", "visible");
 });
 
@@ -274,7 +278,7 @@ function setR3TeamNameCard(team, teamOrder, partIdx){
 	let idx = Number(partIdx) > 11 ? partIdx : partIdx+"_1";
 	//console.log(partIdx+", :"+idx);
 	//console.log(id);
-	$(id).css("background-image",`url(/img/part/participant/namecard${idx}.png)`)
+	$(id).css("background-image",`url(/img/part/participant/namecard${idx}.webp)`)
 	
 	const e = document.querySelector(id);
 	e.animate({
@@ -300,7 +304,7 @@ function setR3BraketNameCard(match, team, partIdx){
 
 	let idx = Number(partIdx) > 11 ? partIdx : partIdx+"_1";
 	//console.log(partIdx+", :"+idx);
-	$(id).css("background-image",`url(/img/part/participant/namecard${idx}.png)`);
+	$(id).css("background-image",`url(/img/part/participant/namecard${idx}.webp)`);
 	//console.log(id);
 	const e = document.querySelector(id);
 	
@@ -360,8 +364,8 @@ function setBraketNameCard(tag){
 			
 			if(r2bPick.length < 6){
 				// 테스트 데이터
-				targetArr = [2,12,4,16,5,2,7,1,2,15,11,0];
-				r2Pick = targetArr;
+				//targetArr = [2,12,4,16,5,2,7,1,2,15,11,0];
+				//r2Pick = targetArr;
 				//return;
 			}else{
 				for(let i =0; i < r2bPick.length; i++){
@@ -401,9 +405,14 @@ function setBraketNameCard(tag){
 		else if(r1LeaveArr.includes(e2)) op2 = 0.2;
 		
 		//console.log(e1+", "+""+e2);
-		$(id + i + "1").css("background-image", "url(/img/part/participant/namecard" + targetArr[idx++] + ".png)");
-		$(id + i + "2").css("background-image", "url(/img/part/participant/namecard" + targetArr[idx++] + ".png)");
-		e1.animate({
+		if(tag=="2"){
+			$(id + i + "1").css("background-image", "url(/img/part/participant/namecard" + targetArr[idx++] + "_2.webp)");
+			$(id + i + "2").css("background-image", "url(/img/part/participant/namecard" + targetArr[idx++] + "_2.webp)");
+		}else if(tag=="4"){
+			$(id + i + "1").css("background-image", "url(/img/part/participant/namecard" + targetArr[idx++] + ".webp)");
+			$(id + i + "2").css("background-image", "url(/img/part/participant/namecard" + targetArr[idx++] + ".webp)");
+		}
+			e1.animate({
 			transform: [
 				'translateY(20px)',
 				'translateY(0px)'

@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div class="flex">
-		<img alt="로고" id="logo" src="/img/logo/logo.png" />
+		<img alt="로고" id="logo" src="/img/logo/logo.webp" />
 	</div>
 	<div class="flex">
 		<button id="rock" class="hand" onclick="sendHand(${team}, 0)">&nbsp;</button>
