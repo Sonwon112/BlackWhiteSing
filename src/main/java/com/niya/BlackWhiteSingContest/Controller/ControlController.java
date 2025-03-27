@@ -329,21 +329,33 @@ public class ControlController {
 	}
 	
 	/**
-	 * 
+	 * 수식어, 이름 공개
+	 * @param dto
+	 * @return
 	 */
 	@PostMapping("/show_name")
 	public ResponseEntity<ControlDTO> ShowName(@RequestBody ControlDTO dto){
 		if(!checkUser(dto.getName())) {
 			return failDTO(HttpStatus.NOT_FOUND, 402, "사용자를 찾을 수 없습니다");
 		}
+		
 		if(dto.getTag().equals("show")) {
 			service.showName(dto.getType());
 		}	
 		else if(dto.getTag().equals("hide")) {
 			service.hideName(dto.getType());
 		}
-			
+					
+		return successDTO();
+	}
+	
+	@PostMapping("/show_face")
+	public ResponseEntity<ControlDTO> ShowFace(@RequestBody ControlDTO dto){
+		if(!checkUser(dto.getName())){
+			return failDTO(HttpStatus.NOT_FOUND, 402, "사용자를 찾을 수 없습니다");
+		}
 		
+		service.showFace(dto.getTag());
 		
 		return successDTO();
 	}

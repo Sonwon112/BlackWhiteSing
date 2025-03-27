@@ -122,3 +122,21 @@ function hideName(screen){
 				break;
 		}
 }
+
+function showFace(match){
+	let e1 = document.querySelector(`#r1m${match}1`);
+	let e2 = document.querySelector(`#r1m${match}2`);
+	
+	let e1Anim = e1.animate({opacity:[0]},{duration:300,fill:"forwards",easing:"ease"});
+	let e2Anim = e2.animate({opacity:[0]},{duration:300,fill:"forwards",easing:"ease"});
+	
+	e1Anim.finished.then(()=>{
+		e1.style.backgroundImage="url(/img/part/participant/namecard" +r1Pick[(match*2)-2]+ ".webp)"
+		e1.animate({opacity:[1]},{duration:300,fill:"forwards",easing:"ease"});
+	});
+	
+	e2Anim.finished.then(()=>{
+		e2.style.backgroundImage="url(/img/part/participant/namecard" +r1Pick[(match*2)-1]+ ".webp)"
+		e2.animate({opacity:[1]},{duration:300,fill:"forwards",easing:"ease"});
+	});
+}

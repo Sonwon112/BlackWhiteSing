@@ -138,26 +138,32 @@
 		<div class="flex">
 			1. <p id="r1Txt0">참여자1</p>&nbsp;<button class="r1m1" onclick="setLeavingOut(1,1,1)">탈락</button>&nbsp;vs&nbsp;<p id="r1Txt1">참여자2</p>&nbsp;<button class="r1m1" onclick="setLeavingOut(1,1,2)">탈락</button>
 			&nbsp;<button onclick="resetLeavingOut(1,1)">리셋</button>
+			&nbsp;<button onclick="showFace(1)">얼굴공개</button>
 		</div>
 		<div class="flex">
 			2. <p id="r1Txt2">참여자1</p>&nbsp;<button class="r1m2" onclick="setLeavingOut(1,2,1)">탈락</button>&nbsp;vs&nbsp;<p id="r1Txt3">참여자2</p>&nbsp;<button class="r1m2" onclick="setLeavingOut(1,2,2)">탈락</button>
 			&nbsp;<button onclick="resetLeavingOut(1,2)">리셋</button>
+			&nbsp;<button onclick="showFace(2)">얼굴공개</button>
 		</div>
 		<div class="flex">
 			3. <p id="r1Txt4">참여자1</p>&nbsp;<button class="r1m3" onclick="setLeavingOut(1,3,1)">탈락</button>&nbsp;vs&nbsp;<p id="r1Txt5">참여자2</p>&nbsp;<button class="r1m3" onclick="setLeavingOut(1,3,2)">탈락</button>
 			&nbsp;<button onclick="resetLeavingOut(1,3)">리셋</button>
+			&nbsp;<button onclick="showFace(3)">얼굴공개</button>
 		</div>
 		<div class="flex">
 			4. <p id="r1Txt6">참여자1</p>&nbsp;<button class="r1m4" onclick="setLeavingOut(1,4,1)">탈락</button>&nbsp;vs&nbsp;<p id="r1Txt7">참여자2</p>&nbsp;<button class="r1m4" onclick="setLeavingOut(1,4,2)">탈락</button>
 			&nbsp;<button onclick="resetLeavingOut(1,4)">리셋</button>
+			&nbsp;<button onclick="showFace(4)">얼굴공개</button>
 		</div>
 		<div class="flex">
 			5. <p id="r1Txt8">참여자1</p>&nbsp;<button class="r1m5" onclick="setLeavingOut(1,5,1)">탈락</button>&nbsp;vs&nbsp;<p id="r1Txt9">참여자2</p>&nbsp;<button class="r1m5" onclick="setLeavingOut(1,5,2)">탈락</button>
 			&nbsp;<button onclick="resetLeavingOut(1,5)">리셋</button>
+			&nbsp;<button onclick="showFace(5)">얼굴공개</button>
 		</div>
 		<div class="flex">
 			6. <p id="r1Txt10">참여자1</p>&nbsp;<button class="r1m6" onclick="setLeavingOut(1,6,1)">탈락</button>&nbsp;vs&nbsp;<p id="r1Txt11">참여자2</p>&nbsp;<button class="r1m6" onclick="setLeavingOut(1,6,2)">탈락</button>
 			&nbsp;<button onclick="resetLeavingOut(1,6)">리셋</button>
+			&nbsp;<button onclick="showFace(6)">얼굴공개</button>
 		</div>
 	</details>
 </div>

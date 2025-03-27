@@ -224,7 +224,11 @@ $("document").ready(() => {
 	eventSource.addEventListener("hideName",(event)=>{
 		hideName(Number(event.data));
 	});
-
+	
+	eventSource.addEventListener("showFace",(event)=>{
+		showFace(Number(event.data));	
+	});
+	
 	//$("#screen5").css("visibility", "visible");
 });
 

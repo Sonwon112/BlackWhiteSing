@@ -452,4 +452,13 @@ function hideNmae(screen){
 	sendServer("show_name",postData);
 }
 
+function showFace(match){
+	let postData={
+		type : 60,
+		tag : ""+match,
+		name : staffName
+	}
+	
+	sendServer("show_face",postData)
+}
 

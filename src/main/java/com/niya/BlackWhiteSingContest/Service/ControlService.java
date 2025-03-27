@@ -87,4 +87,8 @@ public class ControlService {
 	public void hideName(int screen) {
 		sseService.sendData("overlay", "hideName", ""+screen);
 	}
+	
+	public void showFace(String match) {
+		sseService.sendData("overlay", "showFace", match);
+	}
 }
