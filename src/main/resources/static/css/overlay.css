@@ -275,18 +275,14 @@ src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Medium.otf')format('o
 	border-radius: 18px 18px 0px 0px;
 }
 .themeCard{
-	position: absolute;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	width: 24vh;
-	height: 32vh;
+	width: 30vh;
+	height: 40vh;
 	border: 1px solid #BBBBBB;
 	border-radius: 20px;
 	background-image: url("/img/theme/theme_back.webp");
 	background-size:contain;
 	background-repeat: no-repeat;
+	margin-top : 10%;
 }
 
 .theme{

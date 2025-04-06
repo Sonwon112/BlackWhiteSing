@@ -90,7 +90,7 @@
 	</div>
 	<div class="innerBox">
 		3라운드
-		<button onclick="changeMode(5)">테마 추첨</button>
+		<button onclick="changeMode(5)">테마 공개</button>
 		<button onclick="changeMode(6)">3라운드 팀편성</button>
 		<button onclick="changeMode(7)">3라운드 대진표</button>
 	</div>
@@ -122,9 +122,8 @@
 	</div>
 	<div class="innerBox c3">
 		3라운드[테마]
-		<button onclick="shuffle(3)">섞기</button>
+		<button onclick="shuffle(3)">테마공개</button>
 		<button onclick="pickTheme(0)">리셋</button>
-		<button onclick="pickTheme(1)">뽑기</button>
 	</div>
 	
 </div>

@@ -314,12 +314,14 @@
 		<div class="contentTitle">
 			<img alt="테마추첨 타이틀" src="/img/theme/theme_title.webp"></>
 		</div>
-		<div class="themeCard" id="themeCard0">&nbsp;</div>
-		<div class="themeCard" id="themeCard1">&nbsp;</div>
-		<div class="themeCard" id="themeCard2">&nbsp;</div>
-		<div class="themeCard" id="themeCard3">&nbsp;</div>
+		<div class="flex around">
+			<div class="themeCard" id="themeCard0">&nbsp;</div>
+			<div class="themeCard" id="themeCard1">&nbsp;</div>
+			<div class="themeCard" id="themeCard2">&nbsp;</div>
+		</div>
+		<!--<div class="themeCard" id="themeCard3">&nbsp;</div>
 		<div class="themeCard" id="themeCard4">&nbsp;</div>
-		<div class="themeCard" id="themeCard5">&nbsp;</div>
+		<div class="themeCard" id="themeCard5">&nbsp;</div>-->
 	</div>
 	<!-- 3라운드 팀 편성표 -->
 	<div id="screen6" class="contentBody">

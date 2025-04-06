@@ -82,7 +82,7 @@ public class ControlController {
 			service.setRound(2);
 			break;
 		case "5":
-			log.info("3라운드 테마 추첨");
+			log.info("3라운드 테마 공개");
 			service.setRound(3);
 			break;
 		case "6":
@@ -119,7 +119,7 @@ public class ControlController {
 		int temp = Integer.parseInt(dto.getTag());
 		
 		if (dto.getTag().equals("3")){
-			log.info("테마 추첨");
+			log.info("테마 공개");
 			service.sendToOverlay( DRAW_THEME_EVENT, dto.getTag());
 		}
 		else {

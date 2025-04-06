@@ -147,8 +147,8 @@ $("document").ready(() => {
 		// 테마 뽑기
 
 		if (event.data === "1") {
-			// 카드 고르기
-			PickTheme();
+			// 사라진 기능
+			//PickTheme();
 		} else if (event.data === "0") {
 			//console.log("theme : " + event.data);
 			// 리셋
@@ -156,7 +156,7 @@ $("document").ready(() => {
 		} else {
 			// 테마 섞기
 			//console.log("테마추첨 시작");
-			drawnTheme();
+			PickTheme();
 		}
 	});
 
