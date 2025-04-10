@@ -137,7 +137,7 @@ src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Medium.otf')format('o
 	height:11em;
 	opacity: 0.5;
 	will-change: transform;
-	
+	z-index: 1;
 }
 
 .roulletPick{
@@ -334,4 +334,20 @@ src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Medium.otf')format('o
 
 #logo{
 	width: 50em;
+}
+
+#screen12{
+	background-image: url("/img/background/guideScene0.png");
+}
+
+#screen13{
+	background-image: url("/img/background/guideScene1.png");
+}
+
+#screen14{
+	background-image: url("/img/background/guideScene2.png");
+}
+
+#screen15{
+	background-image: url("/img/background/guideScene3.png");
 }

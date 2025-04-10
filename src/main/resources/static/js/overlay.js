@@ -36,7 +36,7 @@ let r3Part = [];
 
 let themePick = [];
 
-let ThemeArr = ["설렘", "추억", "꿈", "본능", "청춘", "자유"];
+let ThemeArr = ["눈물", "설렘", "도파민"];
 
 let themePos = [
 	[20, 460],
@@ -57,7 +57,7 @@ $("document").ready(() => {
 	currScreen = $("#screen0");
 
 	// 화면 제어를 위한 배열에 삽입
-	for (let i = 0; i < 11; i++) {
+	for (let i = 0; i < 16; i++) {
 		let id = "#screen" + i
 		drawScreen.push($(id));
 	}
@@ -279,7 +279,7 @@ function unsetLeavingOut(round,match){
 // 3라운드에서 컨트롤 창에서 3라운드 팀편성 정보 변경시 반영하는 함수
 function setR3TeamNameCard(team, teamOrder, partIdx){
 	let id="#finalProfile"+team+teamOrder;
-	let idx = Number(partIdx) > 11 ? partIdx : partIdx+"_1";
+	let idx = partIdx;
 	//console.log(partIdx+", :"+idx);
 	//console.log(id);
 	$(id).css("background-image",`url(/img/part/participant/namecard${idx}.webp)`)
@@ -306,7 +306,7 @@ function setR3TeamNameCard(team, teamOrder, partIdx){
 function setR3BraketNameCard(match, team, partIdx){
 	let id = `#r3m${match}${team}`
 
-	let idx = Number(partIdx) > 11 ? partIdx : partIdx+"_1";
+	let idx = partIdx;
 	//console.log(partIdx+", :"+idx);
 	$(id).css("background-image",`url(/img/part/participant/namecard${idx}.webp)`);
 	//console.log(id);
@@ -413,8 +413,11 @@ function setBraketNameCard(tag){
 			$(id + i + "1").css("background-image", "url(/img/part/participant/namecard" + targetArr[idx++] + "_2.webp)");
 			$(id + i + "2").css("background-image", "url(/img/part/participant/namecard" + targetArr[idx++] + "_2.webp)");
 		}else if(tag=="4"){
-			$(id + i + "1").css("background-image", "url(/img/part/participant/namecard" + targetArr[idx++] + ".webp)");
-			$(id + i + "2").css("background-image", "url(/img/part/participant/namecard" + targetArr[idx++] + ".webp)");
+			
+			$(id + i + "1").css("background-image", "url(/img/part/participant/namecard" + (targetArr[idx] < 12 ? targetArr[idx]+"_1" : targetArr[idx])  + ".webp)");
+			idx++;
+			$(id + i + "2").css("background-image", "url(/img/part/participant/namecard" + (targetArr[idx] < 12 ? targetArr[idx]+"_1" : targetArr[idx]) + ".webp)");
+			idx++;
 		}
 			e1.animate({
 			transform: [

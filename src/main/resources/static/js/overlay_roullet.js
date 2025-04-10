@@ -191,6 +191,7 @@ function roulletRotate(round){
 				}
 				r1RoulletImgs = r1RoulletImgs.slice(r1RoulletImgs.length-1)
 				r1Roullet.animate({transform:[`translateX(0em)`]},{duration: 100,fill: 'forwards',easing: 'linear'});
+				r1Roullet.style.marginLeft = "0em";
 				
 				pickProfile = r1RoulletImgs[0];
 				//console.log(pickProfile);
@@ -421,6 +422,7 @@ function move(round, total){
 
 // 카드가 선택 되었을 때 강조하는 애니메이션 실행하고 골라진 카드의 인덱스 추출 수행
 function pickAnim(picked){
+	picked.style.zIndex = "2";
 	picked.animate(
 		{
 			transform: [
@@ -491,7 +493,7 @@ function PickPart(round){
 				//console.log("black"+r2bPick);
 				r2bRoulletIndex = r2bRoulletIndex.filter((e)=> e!=r2bPick[r2bPick.length - 1]);
 				element = document.querySelector("#r21Profile");
-				element.style.backgroundImage = "url(/img/part/participant/namecard" + r2bPick[r2bPick.length - 1] + ".webp)";
+				element.style.backgroundImage = "url(/img/part/participant/namecard" + r2bPick[r2bPick.length - 1] + "_1.webp)";
 									
 				// 2라운드 흑
 				setTimeout(()=>{
@@ -562,7 +564,7 @@ function resetRoullet(round){
 				tmpImg = document.createElement("img");
 				tmpImg.id = `r1_roulletProfile${i}`;
 				tmpImg.className = "roulletProfile";
-				tmpImg.src = "/img/roullet/roullet" + backup_r1RuolletIndex[i]+".webp"
+				tmpImg.src = "/img/roullet/roullet" + backup_r1RuolletIndex[i]+"_2.webp"
 				
 				r1RoulletIndex = backup_r1RuolletIndex;
 				r1RoulletImgs.push(tmpImg);

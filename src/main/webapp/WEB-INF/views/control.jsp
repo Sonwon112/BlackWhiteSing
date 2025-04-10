@@ -65,6 +65,7 @@
 	<div class="title">화면전환</div>
 	<hr/>
 	<button onclick="changeMode(0)">로고 표시</button><br/>
+	<button onclick="changeMode(12)">전체 안내</button>
 	<div class="innerBox">
 		1라운드 이전 수식어 공개
 		<button onclick="changeMode(9)">수식어 공개 화면</button>
@@ -73,11 +74,20 @@
 	</div>
 	<div class="innerBox">
 		1라운드
+		<button onclick="changeMode(13)">1라운드 안내</button>
 		<button onclick="changeMode(1)">1라운드 추첨</button>
 		<button onclick="changeMode(2)">1라운드 대진표</button>
 	</div>
 	<div class="innerBox">
+		2라운드 이전 수식어 공개
+		<button onclick="changeMode(11)">백팀 공개 화면</button>
+		<button onclick="showName(2)">백팀 카드 공개</button>
+		<button onclick="hideNmae(2)">백팀 카드 리셋</button>
+	</div>
+	
+	<div class="innerBox">
 		2라운드
+		<button onclick="changeMode(14)">2라운드 안내</button>
 		<button onclick="changeMode(3)">2라운드 추첨</button>
 		<button onclick="changeMode(4)">2라운드 대진표</button>
 	</div>
@@ -90,6 +100,7 @@
 	</div>
 	<div class="innerBox">
 		3라운드
+		<button onclick="changeMode(15)">3라운드 안내</button>
 		<button onclick="changeMode(5)">테마 공개</button>
 		<button onclick="changeMode(6)">3라운드 팀편성</button>
 		<button onclick="changeMode(7)">3라운드 대진표</button>
@@ -218,7 +229,7 @@
 		</div>
 		<hr>
 		<div class="flex">
-			1.<p id="theme0">테마 1</p>&ensp;
+			1.<p id="theme0">눈물</p>&ensp;
 			<!-- Match1의 흑 -->
 			<input class="r3Input" type="text" placeholder="흑" id="mi11"/>&nbsp;
 			<input class="r3Input" type="text" placeholder="점수" id="si11" oninput="setScore(1,1)"/>&nbsp;
@@ -232,7 +243,7 @@
 			<button onclick="resetLeavingOut(3,1)">리셋</button>
 		</div>
 		<div class="flex">
-			2.<p id="theme1">테마 2</p>&ensp; 
+			2.<p id="theme1">설렘</p>&ensp; 
 			<!-- Match2의 흑 -->
 			<input class="r3Input" type="text" placeholder="흑" id="mi21"/>&nbsp;
 			<input class="r3Input" type="text" placeholder="점수" id="si21" oninput="setScore(2,1)"/>&nbsp;
@@ -246,7 +257,7 @@
 			<button onclick="resetLeavingOut(3,2)">리셋</button>
 		</div>
 		<div class="flex">
-			3.<p id="theme2">테마 3</p>&ensp;
+			3.<p id="theme2">도파민</p>&ensp;
 			<!-- Match3의 흑 -->
 			<input class="r3Input" type="text" placeholder="흑" id="mi31"/>&nbsp;
 			<input class="r3Input" type="text" placeholder="점수" id="si31" oninput="setScore(3,1)"/>&nbsp;

@@ -22,6 +22,7 @@
 		<img id="logo" alt="로고" src="/img/logo/logo.webp" />
 	</div>
 	
+	<!-- 흑팀 참여자 수식어 표시 -->
 	<div id="screen9" class="contentBody">
 		<div class="contentTitle">
 			<img alt="수식언 타이틀" src="/img/part/black_title.webp"/>
@@ -158,6 +159,25 @@
 			</div>
 		</div>
 	</div>
+	
+	<!-- 2라운드 백팀 표시 -->
+	<div id="screen11" class="contentBody">
+		<div class="contentTitle">
+			<img alt="백팀 타이틀" src="/img/part/white_title.webp"/>
+		</div>
+		<div class="flex center">
+			<div class="showNameCard opacity1 border" id="whiteCard0">&nbsp;</div>
+			<div class="showNameCard opacity1 border" id="whiteCard1">&nbsp;</div>
+			<div class="showNameCard opacity1 border" id="whiteCard2">&nbsp;</div>
+		</div>
+		<div class="flex center">
+			<div class="showNameCard opacity1 border" id="whiteCard3">&nbsp;</div>
+			<div class="showNameCard opacity1 border" id="whiteCard4">&nbsp;</div>
+			<div class="showNameCard opacity1 border" id="whiteCard5">&nbsp;</div>
+		</div>
+		
+	</div>
+	
 	<!-- 2라운드 대진표 추첨 -->
 	<div id="screen3" class="contentBody">
 		<!-- title -->
@@ -292,6 +312,7 @@
 		</div>
 	</div>
 	
+	<!-- 결승 진출자 표시 -->
 	<div id="screen10" class="contentBody">
 		<div class="contentTitle">
 			<img alt="결승 진출 타이틀" src="/img/part/part_title.webp"/>
@@ -400,7 +421,7 @@
 			</div>
 		</div>
 	</div>
-	
+	<!-- 우승팀 공개 -->
 	<div id="screen8" class="winnerBody">
 		
 		<div class="flex center" id="txtWinner" style="opacity:0;margin-top:2vh;padding:0;margin-left:0;flex-direction:column">
@@ -423,6 +444,23 @@
 			<div class="braketNameCard" id="w3" style="opacity:1;background-image:url('/img/part/participant/namecard8.webp');border:1px solid #888888">&nbsp;</div>
 			 -->
 		</div>
+	</div>
+	
+	<!-- 전체 안내 -->
+	<div id="screen12" class="contentBody">
+		&nbsp;
+	</div>
+	<!-- 1R 안내 -->
+	<div id="screen13" class="contentBody">
+		&nbsp;
+	</div>
+	<!-- 2R 안내 -->
+	<div id="screen14" class="contentBody">
+		&nbsp;
+	</div>
+	<!-- 3R 안내 -->
+	<div id="screen15" class="contentBody">
+		&nbsp;
 	</div>
 </body>
 </html>
