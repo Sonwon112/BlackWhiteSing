@@ -442,7 +442,7 @@ function showName(screen){
 	sendServer("show_name", postData);
 }
 
-function hideNmae(screen){
+function hideName(screen){
 	let postData={
 		type : screen,
 		tag : "hide", 

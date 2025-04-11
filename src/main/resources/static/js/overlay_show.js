@@ -88,6 +88,64 @@ function showName(screen) {
 				}, 130);
 			}
 			break;
+		case 3:
+			let totalScoreBlack = document.querySelector("#s41");
+
+			totalScoreBlack.animate({
+				transform: [
+					'translateY(20px)',
+					'translateY(0px)'
+				],
+				opacity: [
+					0,
+					1
+				]
+			},
+				{
+					duration: 800,
+					fill: 'forwards',
+					easing: 'ease'
+				});
+			break;
+		case 4:
+			let totalScoreWhite = document.querySelector("#s42");
+
+			totalScoreWhite.animate({
+				transform: [
+					'translateY(20px)',
+					'translateY(0px)'
+				],
+				opacity: [
+					0,
+					1
+				]
+			},
+				{
+					duration: 800,
+					fill: 'forwards',
+					easing: 'ease'
+				});
+			break;
+		case 5:
+			$("#scoerGuide").hide();
+			let totalScoreGroup = document.querySelector("#totalScore");
+
+			totalScoreGroup.animate({
+				transform: [
+					'translateY(20px)',
+					'translateY(0px)'
+				],
+				opacity: [
+					0,
+					1
+				]
+			},
+				{
+					duration: 800,
+					fill: 'forwards',
+					easing: 'ease'
+				});
+			break;
 	}
 }
 
@@ -176,7 +234,53 @@ function hideName(screen) {
 				}, 130);
 			}
 			break;
+		case 3:
+			let totalScoreBlack = document.querySelector("#s41");
 
+			totalScoreBlack.animate({
+				opacity: [
+					1,
+					0
+				]
+			},
+				{
+					duration: 10,
+					fill: 'forwards',
+					easing: 'ease'
+				});
+			break;
+		case 4:
+			let totalScoreWhite = document.querySelector("#s42");
+
+			totalScoreWhite.animate({
+				opacity: [
+					1,
+					0
+				]
+			},
+				{
+					duration: 10,
+					fill: 'forwards',
+					easing: 'ease'
+				});
+			break;
+		case 5:
+			let totalScoreGroup = document.querySelector("#totalScore");
+
+			totalScoreGroup.animate({
+				opacity: [
+					1,
+					0
+				]
+			},
+				{
+					duration: 10,
+					fill: 'forwards',
+					easing: 'ease'
+				});
+				
+			$("#scoerGuide").show();
+			break;
 	}
 }
 

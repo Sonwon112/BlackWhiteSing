@@ -70,7 +70,7 @@
 		1라운드 이전 수식어 공개
 		<button onclick="changeMode(9)">수식어 공개 화면</button>
 		<button onclick="showName(0)">수식어 공개</button>
-		<button onclick="hideNmae(0)">수식어 리셋</button>
+		<button onclick="hideName(0)">수식어 리셋</button>
 	</div>
 	<div class="innerBox">
 		1라운드
@@ -82,7 +82,7 @@
 		2라운드 이전 수식어 공개
 		<button onclick="changeMode(11)">백팀 공개 화면</button>
 		<button onclick="showName(2)">백팀 카드 공개</button>
-		<button onclick="hideNmae(2)">백팀 카드 리셋</button>
+		<button onclick="hideName(2)">백팀 카드 리셋</button>
 	</div>
 	
 	<div class="innerBox">
@@ -96,7 +96,7 @@
 		3라운드 이전 닉네임 공개
 		<button onclick="changeMode(10)">닉네임 공개 화면</button>
 		<button onclick="showName(1)">닉네임 공개</button>
-		<button onclick="hideNmae(1)">닉네임 리셋</button>
+		<button onclick="hideName(1)">닉네임 리셋</button>
 	</div>
 	<div class="innerBox">
 		3라운드
@@ -104,6 +104,15 @@
 		<button onclick="changeMode(5)">테마 공개</button>
 		<button onclick="changeMode(6)">3라운드 팀편성</button>
 		<button onclick="changeMode(7)">3라운드 대진표</button>
+	</div>
+	<div class="innerBox">
+		점수
+		<button onclick="showName(5)">점수 표시</button>
+		<button onclick="hideName(5)">점수 숨기기</button>
+		<button onclick="showName(3)">흑팀 합계</button>
+		<button onclick="hideName(3)">흑팀 합계 숨기기</button>
+		<button onclick="showName(4)">백팀 합계</button>
+		<button onclick="hideName(4)">백팀 합계 숨기기</button>
 	</div>
 	<div class="innerBox">
 		우승자 발표
@@ -269,6 +278,11 @@
 			<button onclick="setR3Match(3,2)">입력</button>&nbsp;
 			<button class="r3m3" onclick="setLeavingOut(3,3,2)">탈락</button>&nbsp;
 			<button onclick="resetLeavingOut(3,3)">리셋</button>
+		</div>
+		
+		<div class="flex">
+			<input class="r3Input" type="text" placeholder="흑" id="si41" oninput="setScore(4,1)"/>&nbsp;
+			<input class="r3Input" type="text" placeholder="백" id="si42" oninput="setScore(4,2)"/>&nbsp;
 		</div>
 	</details>
 </div>

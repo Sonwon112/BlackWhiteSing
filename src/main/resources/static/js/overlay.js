@@ -282,7 +282,7 @@ function setR3TeamNameCard(team, teamOrder, partIdx){
 	let idx = partIdx;
 	//console.log(partIdx+", :"+idx);
 	//console.log(id);
-	$(id).css("background-image",`url(/img/part/participant/namecard${idx}.webp)`)
+	$(id).css("background-image",`url(/img/part/participant/namecard${idx}_3.webp)`)
 	
 	const e = document.querySelector(id);
 	e.animate({
@@ -308,7 +308,7 @@ function setR3BraketNameCard(match, team, partIdx){
 
 	let idx = partIdx;
 	//console.log(partIdx+", :"+idx);
-	$(id).css("background-image",`url(/img/part/participant/namecard${idx}.webp)`);
+	$(id).css("background-image",`url(/img/part/participant/namecard${idx}_3.webp)`);
 	//console.log(id);
 	const e = document.querySelector(id);
 	
@@ -458,7 +458,15 @@ function setBraketNameCard(tag){
 // 컨트롤 창에서 입력한 점수 반영
 function applyScore(match,pos,score){
 	let id = `#s${match}${pos}`;
-	$(id).text(score);
+	if(match == 4){
+		if(pos == 1)
+			$(id).html("흑팀 &emsp;&emsp;"+score);
+		else
+			$(id).html(score+"&emsp;&emsp; 백팀");
+	}else{
+		$(id).text(score);	
+	}
+	
 }
 
 // 서버로 점수를 보내는 함수

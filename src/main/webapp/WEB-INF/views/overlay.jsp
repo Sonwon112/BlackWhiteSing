@@ -420,6 +420,18 @@
 				<div class="score" id="s32"></div>
 			</div>
 		</div>
+		<div class="braketColumn" id="scoerGuide">
+			<div class="score">
+				시청자 점수만 표시중
+			</div>
+		</div>
+		<div class="braketColumn" id="totalScore" style="opacity:0;">
+			<div class="match flex center" style="height:8vh;width:60%">
+				<div class="totalScore" id="s41">흑</div>
+				<div class="totalScore" style="opacity:1;"> : </div>
+				<div class="totalScore" id="s42">백</div>
+			</div>
+		</div>
 	</div>
 	<!-- 우승팀 공개 -->
 	<div id="screen8" class="winnerBody">
