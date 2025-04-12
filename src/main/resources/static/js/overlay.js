@@ -229,8 +229,23 @@ $("document").ready(() => {
 		showFace(Number(event.data));	
 	});
 	
+	eventSource.addEventListener("setR2Part",(event)=>{
+		setR2Part(event.data);
+	})
 	//$("#screen5").css("visibility", "visible");
 });
+
+function setR2Part(r2Part){
+	let partID = r2Part.split(";");
+	for (let i = 0; i < partID.length; i++) {
+		let img = new Image();
+		img.src = "/img/roullet/roullet" + partID[i] + ".webp";
+		r2BlackImgs[i].src = img.src;
+	}
+	r2bRoulletIndex = partID;
+	backup_r2bRoulletIndex = partID;
+}
+
 
 // 탈락자 반영
 function setLeavingOut(round,match,pos){

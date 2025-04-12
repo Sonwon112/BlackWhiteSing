@@ -91,4 +91,8 @@ public class ControlService {
 	public void showFace(String match) {
 		sseService.sendData("overlay", "showFace", match);
 	}
+	
+	public void setR2Part(String r2Part) {
+		sseService.sendData("overlay", "setR2Part", r2Part);
+	}
 }

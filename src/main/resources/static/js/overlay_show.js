@@ -80,7 +80,7 @@ function showName(screen) {
 				);
 
 				setTimeout(() => {
-					let imgId = 11 + i;
+					let imgId = 12 + i;
 					element.style.backgroundImage = "url(/img/part/participant/namecard" + imgId + ".webp)";
 					element.style.transform = "scaleX(-1)";
 					//sendServer("pickTheme", 0, themeCard[themePickIndex[0]].slice(10));

@@ -3,8 +3,8 @@ let round;
 let R1_participantDiv = [];
 let R2_participantDiv = [];
 
-let Participant = ["토다기", "햄쿠비","꾸이링","펩코이","체리","엘라",
-				     "앵보","린시","맹숙","타츠메유키","아오키레이","모로", // 여기까지 흑팀
+let Participant = ["토다기(울때는삼분할)", "햄쿠비(카피바라펀치)","꾸이링(태그중요해요)","펩코이(쏙쏙이빨)","체리(또랑햇감자)","엘라(명창신데렐라)",
+				     "앵보(인천체인소맨)","린시(골목길 버태연)","맹숙(묵은지소녀)","타츠메유키(신음창법용용)","아오키레이(치지직)","모로(섹시한쇼타보)", // 여기까지 흑팀
 			   		 "나디","보라곰","루빈","로보문릿","판구리","온유"];
 
 let ThemeArr = ["눈물","설렘","도파민"];
@@ -462,3 +462,38 @@ function showFace(match){
 	sendServer("show_face",postData)
 }
 
+function setResetScore(){
+	for(let i = 1; i <= 3; i++){
+		for(let j = 1; j <= 2; j++){
+			let id = `#si${i}${j}`
+			$(id).val("");	
+			let postData={
+				type:50,
+				tag:`${i};${j};`,
+				name : staffName
+			}
+			sendServer("set_score",postData);
+		}
+	}
+}
+
+function setR2Participant(){
+	let participant = "";
+	for(let i = 0; i < 12; i++){
+		
+		let id = `#r2CheckBox${i}`;
+		if($(id).is(":checked")){
+			if(i != 0)
+				participant += ";";
+			participant += $(id).val();
+		}
+	}
+	console.log(participant);
+	let postData={
+		type : 60,
+		tag : participant,
+		name : staffName
+	}
+	
+	sendServer("set_r2_part",postData);
+}

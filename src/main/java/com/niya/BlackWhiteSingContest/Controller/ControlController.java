@@ -360,4 +360,15 @@ public class ControlController {
 		return successDTO();
 	}
 	
+	@PostMapping("/set_r2_part")
+	public ResponseEntity<ControlDTO> setR2Part(@RequestBody ControlDTO dto){
+		if(!checkUser(dto.getName())){
+			return failDTO(HttpStatus.NOT_FOUND, 402, "사용자를 찾을 수 없습니다");
+		}
+		
+		service.setR2Part(dto.getTag());
+		
+		return successDTO();
+	}
+	
 }
