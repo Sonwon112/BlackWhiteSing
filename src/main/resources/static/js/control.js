@@ -483,7 +483,7 @@ function setR2Participant(){
 		
 		let id = `#r2CheckBox${i}`;
 		if($(id).is(":checked")){
-			if(i != 0)
+			if(participant!="")
 				participant += ";";
 			participant += $(id).val();
 		}
@@ -494,6 +494,6 @@ function setR2Participant(){
 		tag : participant,
 		name : staffName
 	}
-	
+	console.log(participant);
 	sendServer("set_r2_part",postData);
 }

@@ -240,7 +240,8 @@ function setR2Part(r2Part){
 	for (let i = 0; i < partID.length; i++) {
 		let img = new Image();
 		img.src = "/img/roullet/roullet" + partID[i] + ".webp";
-		r2BlackImgs[i].src = img.src;
+		r2BlackImgs[i].src = `/img/roullet/roullet${partID[i]}.webp`;
+		
 	}
 	r2bRoulletIndex = partID;
 	backup_r2bRoulletIndex = partID;
