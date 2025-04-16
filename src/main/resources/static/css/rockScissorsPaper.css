@@ -3,10 +3,8 @@ button{
 	border : none;
 }
 body{
-	position: absolute;
-	background-image: url("/img/background/background_2.png");
-	background-repeat: no-repeat;
-	background-size: cover;
+	background-image: url("/img/background/background_2.webp");
+	background-size: auto;
 }
 
 #logo{
@@ -37,21 +35,21 @@ body{
 }
 
 #rock{
-	background-image: url("/img/rock.png");
+	background-image: url("/img/rock.webp");
 	background-size: contain;
 	width: 20em;
 	height: 20em;
 }
 
 #scissors{
-	background-image: url("/img/scissors.png");
+	background-image: url("/img/scissors.webp");
 	background-size: contain;
 	width: 20em;
 	height: 20em;
 }
 
 #paper{
-	background-image: url("/img/paper.png");
+	background-image: url("/img/paper.webp");
 	background-size: contain;
 	width: 20em;
 	height: 20em;

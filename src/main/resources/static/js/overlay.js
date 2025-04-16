@@ -36,7 +36,7 @@ let r3Part = [];
 
 let themePick = [];
 
-let ThemeArr = ["테마1", "테마2", "테마3", "테마4", "테마5", "테마6"];
+let ThemeArr = ["눈물", "설렘", "도파민"];
 
 let themePos = [
 	[20, 460],
@@ -57,7 +57,7 @@ $("document").ready(() => {
 	currScreen = $("#screen0");
 
 	// 화면 제어를 위한 배열에 삽입
-	for (let i = 0; i < 11; i++) {
+	for (let i = 0; i < 16; i++) {
 		let id = "#screen" + i
 		drawScreen.push($(id));
 	}
@@ -147,8 +147,8 @@ $("document").ready(() => {
 		// 테마 뽑기
 
 		if (event.data === "1") {
-			// 카드 고르기
-			PickTheme();
+			// 사라진 기능
+			//PickTheme();
 		} else if (event.data === "0") {
 			//console.log("theme : " + event.data);
 			// 리셋
@@ -156,7 +156,7 @@ $("document").ready(() => {
 		} else {
 			// 테마 섞기
 			//console.log("테마추첨 시작");
-			drawnTheme();
+			PickTheme();
 		}
 	});
 
@@ -174,13 +174,13 @@ $("document").ready(() => {
 		let imgUrl = "";
 		switch (hand) {
 			case "0":
-				imgUrl = "url(/img/rock.png)"
+				imgUrl = "url(/img/rock.webp)"
 				break;
 			case "1":
-				imgUrl = "url(/img/scissors.png)"
+				imgUrl = "url(/img/scissors.webp)"
 				break;
 			case "2":
-				imgUrl = "url(/img/paper.png)"
+				imgUrl = "url(/img/paper.webp)"
 				break;
 		}
 		let rpsId = "#rps" + team;
@@ -221,8 +221,32 @@ $("document").ready(() => {
 		showName(Number(event.data));
 	});
 	
+	eventSource.addEventListener("hideName",(event)=>{
+		hideName(Number(event.data));
+	});
+	
+	eventSource.addEventListener("showFace",(event)=>{
+		showFace(Number(event.data));	
+	});
+	
+	eventSource.addEventListener("setR2Part",(event)=>{
+		setR2Part(event.data);
+	})
 	//$("#screen5").css("visibility", "visible");
 });
+
+function setR2Part(r2Part){
+	let partID = r2Part.split(";");
+	for (let i = 0; i < partID.length; i++) {
+		let img = new Image();
+		img.src = "/img/roullet/roullet" + partID[i] + ".webp";
+		r2BlackImgs[i].src = `/img/roullet/roullet${partID[i]}.webp`;
+		
+	}
+	r2bRoulletIndex = partID;
+	backup_r2bRoulletIndex = partID;
+}
+
 
 // 탈락자 반영
 function setLeavingOut(round,match,pos){
@@ -271,10 +295,10 @@ function unsetLeavingOut(round,match){
 // 3라운드에서 컨트롤 창에서 3라운드 팀편성 정보 변경시 반영하는 함수
 function setR3TeamNameCard(team, teamOrder, partIdx){
 	let id="#finalProfile"+team+teamOrder;
-	let idx = Number(partIdx) > 11 ? partIdx : partIdx+"_1";
+	let idx = partIdx;
 	//console.log(partIdx+", :"+idx);
 	//console.log(id);
-	$(id).css("background-image",`url(/img/part/participant/namecard${idx}.png)`)
+	$(id).css("background-image",`url(/img/part/participant/namecard${idx}_3.webp)`)
 	
 	const e = document.querySelector(id);
 	e.animate({
@@ -298,9 +322,9 @@ function setR3TeamNameCard(team, teamOrder, partIdx){
 function setR3BraketNameCard(match, team, partIdx){
 	let id = `#r3m${match}${team}`
 
-	let idx = Number(partIdx) > 11 ? partIdx : partIdx+"_1";
+	let idx = partIdx;
 	//console.log(partIdx+", :"+idx);
-	$(id).css("background-image",`url(/img/part/participant/namecard${idx}.png)`);
+	$(id).css("background-image",`url(/img/part/participant/namecard${idx}_3.webp)`);
 	//console.log(id);
 	const e = document.querySelector(id);
 	
@@ -360,8 +384,8 @@ function setBraketNameCard(tag){
 			
 			if(r2bPick.length < 6){
 				// 테스트 데이터
-				targetArr = [2,12,4,16,5,2,7,1,2,15,11,0];
-				r2Pick = targetArr;
+				//targetArr = [2,12,4,16,5,2,7,1,2,15,11,0];
+				//r2Pick = targetArr;
 				//return;
 			}else{
 				for(let i =0; i < r2bPick.length; i++){
@@ -401,9 +425,17 @@ function setBraketNameCard(tag){
 		else if(r1LeaveArr.includes(e2)) op2 = 0.2;
 		
 		//console.log(e1+", "+""+e2);
-		$(id + i + "1").css("background-image", "url(/img/part/participant/namecard" + targetArr[idx++] + ".png)");
-		$(id + i + "2").css("background-image", "url(/img/part/participant/namecard" + targetArr[idx++] + ".png)");
-		e1.animate({
+		if(tag=="2"){
+			$(id + i + "1").css("background-image", "url(/img/part/participant/namecard" + targetArr[idx++] + "_2.webp)");
+			$(id + i + "2").css("background-image", "url(/img/part/participant/namecard" + targetArr[idx++] + "_2.webp)");
+		}else if(tag=="4"){
+			
+			$(id + i + "1").css("background-image", "url(/img/part/participant/namecard" + (targetArr[idx] < 12 ? targetArr[idx]+"_1" : targetArr[idx])  + ".webp)");
+			idx++;
+			$(id + i + "2").css("background-image", "url(/img/part/participant/namecard" + (targetArr[idx] < 12 ? targetArr[idx]+"_1" : targetArr[idx]) + ".webp)");
+			idx++;
+		}
+			e1.animate({
 			transform: [
 				'translateY(20px)',
 				'translateY(0px)'
@@ -442,7 +474,15 @@ function setBraketNameCard(tag){
 // 컨트롤 창에서 입력한 점수 반영
 function applyScore(match,pos,score){
 	let id = `#s${match}${pos}`;
-	$(id).text(score);
+	if(match == 4){
+		if(pos == 1)
+			$(id).html("흑팀 &emsp;&emsp;"+score);
+		else
+			$(id).html(score+"&emsp;&emsp; 백팀");
+	}else{
+		$(id).text(score);	
+	}
+	
 }
 
 // 서버로 점수를 보내는 함수

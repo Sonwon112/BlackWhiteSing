@@ -3,11 +3,11 @@ let round;
 let R1_participantDiv = [];
 let R2_participantDiv = [];
 
-let Participant = ["니야", "그나로","뮬","나츠키","히미캉","꾸이링",
-				     "레드","퀸슈아","이신","루나밍","햄쿠비","코오리", // 여기까지 흑팀
-			   		 "레드1","퀸슈아1","이신1","루나밍1","햄쿠비1","코오리1"];
+let Participant = ["토다기(울때는삼분할)", "햄쿠비(카피바라펀치)","꾸이링(태그중요해요)","펩코이(쏙쏙이빨)","체리(또랑햇감자)","엘라(명창신데렐라)",
+				     "앵보(인천체인소맨)","린시(골목길 버태연)","맹숙(묵은지소녀)","타츠메유키(신음창법용용)","아오키레이(치지직)","모로(섹시한쇼타보)", // 여기까지 흑팀
+			   		 "나디","보라곰","루빈","로보문릿","판구리","온유"];
 
-let ThemeArr = ["테마1", "테마2", "테마3", "테마4", "테마5", "테마6"];
+let ThemeArr = ["눈물","설렘","도파민"];
 
 let r3B = [];
 let r3W = [];
@@ -442,4 +442,58 @@ function showName(screen){
 	sendServer("show_name", postData);
 }
 
+function hideName(screen){
+	let postData={
+		type : screen,
+		tag : "hide", 
+		name : staffName
+	}	
+	
+	sendServer("show_name",postData);
+}
 
+function showFace(match){
+	let postData={
+		type : 60,
+		tag : ""+match,
+		name : staffName
+	}
+	
+	sendServer("show_face",postData)
+}
+
+function setResetScore(){
+	for(let i = 1; i <= 3; i++){
+		for(let j = 1; j <= 2; j++){
+			let id = `#si${i}${j}`
+			$(id).val("");	
+			let postData={
+				type:50,
+				tag:`${i};${j};`,
+				name : staffName
+			}
+			sendServer("set_score",postData);
+		}
+	}
+}
+
+function setR2Participant(){
+	let participant = "";
+	for(let i = 0; i < 12; i++){
+		
+		let id = `#r2CheckBox${i}`;
+		if($(id).is(":checked")){
+			if(participant!="")
+				participant += ";";
+			participant += $(id).val();
+		}
+	}
+	console.log(participant);
+	let postData={
+		type : 60,
+		tag : participant,
+		name : staffName
+	}
+	console.log(participant);
+	sendServer("set_r2_part",postData);
+}

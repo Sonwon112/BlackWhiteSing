@@ -43,7 +43,7 @@ function drawnTheme() {
 				]
 			},
 			{
-				duration: 300,
+				ㅋduration: 300,
 				fill: 'forwards',
 				easing: 'ease'
 			}
@@ -73,7 +73,7 @@ function drawnTheme() {
 }
 // 카드 뽑는 함수
 function PickTheme() {
-	let themePickIndex = [0, 1, 2, 3, 4, 5];
+	/*let themePickIndex = [0, 1, 2, 3, 4, 5];
 
 	let currSelect = 0;
 
@@ -82,14 +82,12 @@ function PickTheme() {
 		themePickIndex = themePickIndex.filter((e) => e != target);
 		//console.log(target);
 		//console.log(themePickIndex);
-	}
+	}*/
 
 
-	let i = 0;
+	/*let i = 0;
 	let open = setInterval(() => {
 		const element = document.querySelector(themeCard[i]);
-
-		if (themePickIndex.includes(i)) {
 
 			let fromTop = Number(element.style.marginTop.split('p')[0]);
 			let fromLeft = Number(element.style.marginLeft.split('p')[0]);
@@ -116,23 +114,19 @@ function PickTheme() {
 				}
 			);
 
-
-
 			//console.log($(themeCard[i]));
 
 			currSelect++;
-		} else {
-			$(themeCard[i]).fadeOut('fast');
-		}
+		
 		i++;
 		if (i >= 6) clearInterval(open);
-	}, 100);
+	}, 100);*/
 
 
 	setTimeout(() => {
-		const element = document.querySelector(themeCard[themePickIndex[0]]);
-		$(themeCard[themePickIndex[0]]).css("margin-top", pickPos[0][0]);
-		$(themeCard[themePickIndex[0]]).css("margin-left", pickPos[0][1]);
+		const element = document.querySelector(themeCard[0]);
+		/*$(themeCard[themePickIndex[0]]).css("margin-top", pickPos[0][0]);
+		$(themeCard[themePickIndex[0]]).css("margin-left", pickPos[0][1]);*/
 
 		element.animate(
 			{
@@ -148,17 +142,17 @@ function PickTheme() {
 			}
 		);
 		setTimeout(() => {
-			element.style.backgroundImage = "url(/img/theme/" + themeCard[themePickIndex[0]].slice(1) + ".png)";
-			sendServer("pickTheme",0,themeCard[themePickIndex[0]].slice(10));
-			$("#themeTitle0").text(ThemeArr[themeCard[themePickIndex[0]].slice(10)]);
+			element.style.backgroundImage = "url(/img/theme/" + themeCard[0].slice(1) + ".webp)";
+			sendServer("pickTheme",0,themeCard[0].slice(10));
+			$("#themeTitle0").text(ThemeArr[themeCard[0].slice(10)]);
 		}, 130);
 		
-	}, 1800);
+	}, 10);
 
 	setTimeout(() => {
-		const element = document.querySelector(themeCard[themePickIndex[1]]);
-		$(themeCard[themePickIndex[1]]).css("margin-top", pickPos[1][0]);
-		$(themeCard[themePickIndex[1]]).css("margin-left", pickPos[1][1]);
+		const element = document.querySelector(themeCard[1]);
+		/*$(themeCard[themePickIndex[1]]).css("margin-top", pickPos[1][0]);
+		$(themeCard[themePickIndex[1]]).css("margin-left", pickPos[1][1]);*/
 		element.animate(
 			{
 				transform: [
@@ -173,16 +167,16 @@ function PickTheme() {
 			}
 		);
 		setTimeout(() => {
-			element.style.backgroundImage = "url(/img/theme/" + themeCard[themePickIndex[1]].slice(1) + ".png)";
-			sendServer("pickTheme",1,themeCard[themePickIndex[1]].slice(10));
-			$("#themeTitle1").text(ThemeArr[themeCard[themePickIndex[1]].slice(10)]);
+			element.style.backgroundImage = "url(/img/theme/" + themeCard[1].slice(1) + ".webp)";
+			sendServer("pickTheme",1,themeCard[1].slice(10));
+			$("#themeTitle1").text(ThemeArr[themeCard[1].slice(10)]);
 		}, 130);
-	}, 2400);
+	}, 610);
 
 	setTimeout(() => {
-		const element = document.querySelector(themeCard[themePickIndex[2]]);
-		$(themeCard[themePickIndex[2]]).css("margin-top", pickPos[2][0]);
-		$(themeCard[themePickIndex[2]]).css("margin-left", pickPos[2][1]);
+		const element = document.querySelector(themeCard[2]);
+		/*$(themeCard[themePickIndex[2]]).css("margin-top", pickPos[2][0]);
+		$(themeCard[themePickIndex[2]]).css("margin-left", pickPos[2][1]);*/
 		element.animate(
 			{
 				transform: [
@@ -197,21 +191,21 @@ function PickTheme() {
 			}
 		);
 		setTimeout(() => {
-			element.style.backgroundImage = "url(/img/theme/" + themeCard[themePickIndex[2]].slice(1) + ".png)";
-			sendServer("pickTheme",2,themeCard[themePickIndex[2]].slice(10));
-			$("#themeTitle2").text(ThemeArr[themeCard[themePickIndex[2]].slice(10)]);
+			element.style.backgroundImage = "url(/img/theme/" + themeCard[2].slice(1) + ".webp)";
+			sendServer("pickTheme",2,themeCard[2].slice(10));
+			$("#themeTitle2").text(ThemeArr[themeCard[2].slice(10)]);
 		}, 130);
-	}, 3000);
+	}, 1210);
 }
 
 // 테마 리셋하는 테마
 function resetThemeCard() {
 	themeCard.length = 0;
-	for (let i = 0; i < 6; i++) {
+	for (let i = 0; i < 3; i++) {
 		let cardID = "#themeCard" + i;
-		$(cardID).css("margin-top", themePos[i][0] + "px");
-		$(cardID).css("margin-left", themePos[i][1] + "px");
-		$(cardID).css("display", "");
+		/*$(cardID).css("margin-top", pickPos[i][0] + "px");
+		$(cardID).css("margin-left", pickPos[i][1] + "px");
+		$(cardID).css("display", "");*/
 
 
 		const element = document.querySelector(cardID);
@@ -228,7 +222,7 @@ function resetThemeCard() {
 			}
 		);
 
-		$(cardID).css("background-image", "url(/img/theme/theme_back.png)");
+		$(cardID).css("background-image", "url(/img/theme/theme_back.webp)");
 
 		themeCard.push(cardID);
 

@@ -82,7 +82,7 @@ public class ControlController {
 			service.setRound(2);
 			break;
 		case "5":
-			log.info("3라운드 테마 추첨");
+			log.info("3라운드 테마 공개");
 			service.setRound(3);
 			break;
 		case "6":
@@ -119,7 +119,7 @@ public class ControlController {
 		int temp = Integer.parseInt(dto.getTag());
 		
 		if (dto.getTag().equals("3")){
-			log.info("테마 추첨");
+			log.info("테마 공개");
 			service.sendToOverlay( DRAW_THEME_EVENT, dto.getTag());
 		}
 		else {
@@ -329,16 +329,44 @@ public class ControlController {
 	}
 	
 	/**
-	 * 
+	 * 수식어, 이름 공개
+	 * @param dto
+	 * @return
 	 */
 	@PostMapping("/show_name")
 	public ResponseEntity<ControlDTO> ShowName(@RequestBody ControlDTO dto){
 		if(!checkUser(dto.getName())) {
 			return failDTO(HttpStatus.NOT_FOUND, 402, "사용자를 찾을 수 없습니다");
 		}
-		service.showName(dto.getType());
 		
+		if(dto.getTag().equals("show")) {
+			service.showName(dto.getType());
+		}	
+		else if(dto.getTag().equals("hide")) {
+			service.hideName(dto.getType());
+		}
+					
+		return successDTO();
+	}
+	
+	@PostMapping("/show_face")
+	public ResponseEntity<ControlDTO> ShowFace(@RequestBody ControlDTO dto){
+		if(!checkUser(dto.getName())){
+			return failDTO(HttpStatus.NOT_FOUND, 402, "사용자를 찾을 수 없습니다");
+		}
 		
+		service.showFace(dto.getTag());
+		
+		return successDTO();
+	}
+	
+	@PostMapping("/set_r2_part")
+	public ResponseEntity<ControlDTO> setR2Part(@RequestBody ControlDTO dto){
+		if(!checkUser(dto.getName())){
+			return failDTO(HttpStatus.NOT_FOUND, 402, "사용자를 찾을 수 없습니다");
+		}
+		
+		service.setR2Part(dto.getTag());
 		
 		return successDTO();
 	}
